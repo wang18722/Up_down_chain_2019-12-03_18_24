@@ -1,0 +1,3 @@
+{\{ object.text }\}
+{\{ object.areas_id }\}
+{\{ object.content }\}
