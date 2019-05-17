@@ -2,7 +2,7 @@ from django.db import models
 
 class BaseModel(models.Model):
     #模型基类
-    create_time = models.DateTimeField(verbose_name="创建时间",auto_now_add=True)
+    create_time = models.DateField(verbose_name="创建时间",auto_now_add=True)
     update_time = models.DateTimeField(verbose_name="创建时间",auto_now=True)
 
     class Meta:
