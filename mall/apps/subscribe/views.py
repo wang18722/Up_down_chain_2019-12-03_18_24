@@ -1,18 +1,21 @@
 import re
 from rest_framework import status
-from rest_framework.mixins import RetrieveModelMixin, UpdateModelMixin
+from rest_framework.mixins import ListModelMixin
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
-from rest_framework.generics import RetrieveAPIView,ListAPIView, GenericAPIView, RetrieveUpdateAPIView
+from rest_framework.generics import GenericAPIView
 from rest_framework.views import APIView
 from areas.models import Area
-from .serializers import BidsSerializer, ArticledetailSerializer, Articlecollection
-from .models import Bids, ArticledetailModel
-# from .serializers import BidsIndexSerializer
-# from drf_haystack.viewsets import HaystackViewSet
+from utils.endtoday import rest_of_day
+from .serializers import BidsSerializer, BidsIndexSerializer, Articlecollection
+from .models import Bids, User
+from django_redis import get_redis_connection
+from drf_haystack.viewsets import HaystackViewSet
 
 class RemindInfoViews(APIView):
-
+    """
+    关键词设置
+    """
     permission_classes = [IsAuthenticated]
     def get(self,request):
         user = request.user
@@ -44,7 +47,7 @@ class RemindInfoViews(APIView):
 
     def put(self,request):
         # 获取前端数据
-        dict_data = request.query_params.dict()
+        dict_data = request.query_params
 
         areas_dict = dict_data.get('areas_dict')
         keywords_array = dict_data.get('keywords_array')
@@ -71,7 +74,10 @@ class RemindInfoViews(APIView):
             })
 
 class BidsSearchViewSet(APIView):
-
+    """
+    推送展示
+    """
+    permission_classes = [IsAuthenticated]
     def get(self,request,areas,keywords):
 
         try:
@@ -91,9 +97,9 @@ class BidsSearchViewSet(APIView):
                 id_dict = []
                 remind_time = request.user.bids_set_id.remind_long_time
                 end＿num = request.query_params.get('num')
+
                 # 把地区编号转为列表
                 list_area = list(eval(areas))
-
                 begin_num = end＿num-10
                 import datetime
                 def get_date(days=7):
@@ -115,6 +121,65 @@ class BidsSearchViewSet(APIView):
                 "message": "未授权",
             })
 
+class BidsSinglearticle(APIView):
+    """
+    单篇文章获取
+    """
+
+    def get(self, request):
+        """
+        获取单篇文章
+        """
+
+        user = request.user
+        pk = request.query_params.get('pk')
+        # user = User.objects.get(id=1)
+        # 默认未关注
+        is_collection = False
+        # 获取redis
+        collection = get_redis_connection('collection')
+        # 获取查看次数
+        begin_num = collection.get('collection_%s' % user.id)
+
+        if begin_num == None:
+            # 设置阅读数 / 要与认证功能结合 暂定
+            collection.setex("collection_%s" % user.id, rest_of_day(), 1)
+
+        # b类型转换
+        begin_num = int(begin_num.decode())
+        if begin_num >= 100:
+            return Response({
+                "message": "已到上线,请认证",
+            })
+        else:
+            # 设置阅读数 / 要与认证功能结合 暂定
+            collection.setex("collection_%s" % user.id, rest_of_day(), begin_num + 1)
+
+        try:
+            # 判断用户是否关注
+            user.article.get(id=pk)
+        except Exception:
+            # 不存在返回
+            article = Bids.objects.filter(id=pk)
+            serializers = BidsSerializer(instance=article, many=True)
+            return Response({
+                "is_collection": is_collection,
+                "article": serializers.data,
+                "message": "获取成功"
+            })
+
+        # 存在查询
+        article = user.article.filter(id=pk)
+        is_collection = True
+        # 对象转字典
+        serializers = BidsSerializer(instance=article, many=True)
+
+        return Response({
+            "is_collection": is_collection,
+            "article": serializers.data,
+            "message": "获取成功"
+        })
+
 # class ArticledetailViews(RetrieveUpdateAPIView):
 #     # queryset = Bids.objects.all()
 #     serializer_class = ArticledetailSerializer
@@ -131,86 +196,97 @@ class BidsSearchViewSet(APIView):
 #         is_collected = False
 #         if user
 
-class ArticledetailViews(APIView):
+
+
+class ArticledetailViews(GenericAPIView):
     """
     点击收藏
     """
     # permission_classes = [IsAuthenticated]
 
-    def get(self, request,pk):
+    def get(self,request):
         """
-        获取单篇文章
+        获取用户收藏文章
         """
         user = request.user
-        bid = Bids.objects.get(id=pk)
-        is_collection = False
-        coollection = ArticledetailModel.objects.filder(bids_id=bid.id,mid=user.id,focus=True)
-        if coollection.exists():
-            is_collection = True
-        # 对象转字典
-        serializer = ArticledetailSerializer(bid,many=True)
-        # print(serializer)
-
-        # 返回响应
-        return Response({
-            "is_collection":is_collection,
-            "article":serializer,
-            "message": "获取成功"
-        })
+        bids = user.article.all()
+        serializers = BidsSerializer(instance=bids, many=True)
+        return Response(serializers.data)
 
     def post(self,request):
         """
-        收藏
-        :param request:
-        :return:
+        收藏添加/删除
         """
-
+        user = request.user
         data_dict = request.data
 
-        # 创建关注
-        serializer = Articlecollection(data=data_dict)
-        serializer.is_valid(raise_exception=True)
+        try:
+            article = Bids.objects.get(id=data_dict['id'])
+        except Exception as e:
+            return Response({
+                "message": "服务器错误",
+            })
 
-        # 数据入库
-        serializer.save()
+        if not article:
+            return Response({
+                "message": "没有该文章",
+            })
+
+        # 反向添加/删除
+        if data_dict['is_collection'] == True:
+            user.article.remove(article.id)
+        else:
+            user.article.add(article.id)
 
         # 转成字典返回响应
-        return Response(serializer.validated_data, status=status.HTTP_201_CREATED)
+        return Response({
+            "message": "收藏成功",
+            # "is_collection": True,
+        },status.HTTP_201_CREATED)
 
-    # def put(self,request,pk):
-    #     """
-    #     修改收藏
-    #     """
-    #     try:
-    #         user = request.user
-    #     except Exception as e:
-    #         user = None
-    #     # 获取数据
-    #     dict_data = request.data
-    #
-    #     # 根据pk,查询是否关注
-    #     article = ArticledetailModel.objects.filder(bids_id=pk,mid=user.id)
-    #
-    #     # 判断是否已关注
-    #     if article.exists() and article.is_collection:
-    #         return self.post(request,pk)
-    #
-    #     # 修改关注
-    #     serializer = Articlecollection(instance=article, data=dict_data)
-    #     serializer.is_valid(raise_exception=True)
-    #     serializer.save()
-    #
-    #     # 4,转成字典,返回响应
-    #     return Response(serializer.validated_data)
-
-# class SKUSearchViewSet(HaystackViewSet):
-#     """
-#     Bids搜索
-#     """
-#
-#     index_models = [Bids]
-#     serializer_class = BidsIndexSerializer
-
+    def delete(self,request):
+        """
+        修改收藏
+        """
+        try:
+            user = User.objects.get(id=1)
+            # user = request.user
+        except Exception as e:
+            user = None
+        # 获取数据
+        dict_data = request.query_params
+        pk = dict_data['pk']
+        # 根据pk,查询是否关注
+        try:
+            # 判断用户是否关注
+            if int(pk) == 0: # 如果pk为0则删除所有
+                bid = user.article.all()
+                # 取消关注
+                for i in bid:
+                    user.article.remove(i)
+            else:
+                bid = user.article.get(id=dict_data['pk'])
+                # 取消关注
+                user.article.remove(bid)
+        except Exception:
+            # 不存在返回
+            return Response({
+                "message": "未关注或文章已不存在"
+            })
 
 
+        # 4,转成字典,返回响应
+        return Response({
+                "message": "取消成功"
+            })
 
+
+
+
+class SKUSearchViewSet(HaystackViewSet):
+    """
+    Bids搜索
+    """
+
+    index_models = [Bids]
+    serializer_class = BidsIndexSerializer

@@ -20,7 +20,10 @@ from django.contrib import admin
 urlpatterns = [
 
     url(r'^admin/', admin.site.urls),
+    # 地址获取
     url(r'^areas/',include('areas.urls')),
-    url(r'^subscribe/',include('subscribe.urls'))
-
+    # 推送订阅
+    url(r'^subscribe/',include('subscribe.urls')),
+    # 支付模块
+    url(r'^test/', include('Pays.urls')),
 ]

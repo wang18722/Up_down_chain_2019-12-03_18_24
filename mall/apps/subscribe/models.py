@@ -17,7 +17,7 @@ class Bids(BaseModel):
     isValid = models.BooleanField(default=True,verbose_name="是否有效")
     isDeleted = models.BooleanField(default=False,verbose_name="是否删除")
     # areas_id = models.SmallIntegerField(verbose_name="地区地址")
-
+    by_time = models.TimeField(null=True,verbose_name="截止时间")
     class Meta:
         db_table = "up_bids"
         verbose_name = "文章表"
@@ -58,22 +58,22 @@ class User(models.Model):
     neme = models.CharField(max_length=30,null=True,verbose_name="用户名")
     # image_url = models.CharField(max_length=200,verbose_name="t头像图片")
     bids_set_id = models.ForeignKey(BidsUserSetting,on_delete=models.SET_DEFAULT,null=True,blank=True,default=None,related_name="bidset",verbose_name="订阅表")
-
+    article = models.ManyToManyField(Bids,related_name="collections")
     class Meta:
         db_table = "up_user"
         verbose_name = "用户表"
         verbose_name_plural = verbose_name
 
 
-class ArticledetailModel(models.Model):
-    """
-    文章关注表
-    """
-    # focus = models.BooleanField(verbose_name="是否关注", default=False)
-    mid = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user", verbose_name="用户")
-    bids_id = models.ForeignKey(Bids, on_delete=models.CASCADE,default=None,related_name="bidset", verbose_name="订阅表")
-
-    class Meta:
-        db_table = "up_bids_user_follow"
-        verbose_name = "文章关注表"
-        verbose_name_plural = verbose_name
+# class ArticledetailModel(models.Model):
+#     """
+#     文章关注表
+#     """
+#     # focus = models.BooleanField(verbose_name="是否关注", default=False)
+#     mid = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user", verbose_name="用户")
+#     bids_id = models.ForeignKey(Bids, on_delete=models.CASCADE,default=None,related_name="bidset", verbose_name="订阅表")
+#
+#     class Meta:
+#         db_table = "up_bids_user_follow"
+#         verbose_name = "文章关注表"
+#         verbose_name_plural = verbose_name
