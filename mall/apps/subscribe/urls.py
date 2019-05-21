@@ -13,7 +13,7 @@ urlpatterns = [
     url(r"^article/$",views.BidsSinglearticle.as_view()),
 
     # 收藏操作
-    url(r"^collection/$",views.ArticledetailViews.as_view())
+    # url(r"^collection/$",views.ArticledetailViews.as_view())
 
 ]
 

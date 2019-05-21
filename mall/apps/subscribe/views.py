@@ -16,19 +16,22 @@ class RemindInfoViews(APIView):
     """
     关键词设置
     """
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
     def get(self,request):
-        user = request.user
+        # user = request.user
+        user = User.objects.filter(id=1)
         bids_set = user.bids_set_id
+
+        if bids_set is None:
+            # seriailzer =
+            return Response({
+                'user_name':user.name,
+                'user_image_url':user,
+                'start': None
+            })
+
         # keywords_array = bids_set.keywords_array.split(",")
         areas_array = bids_set.areas_id.split(",")
-
-        if bids_set is None or bids_set.areas_id is None:
-            return Response({
-                'user': user,
-                # 'bids_set':bids_set,
-                'areas_dict': [0],
-            })
 
         areas_dict = []
         for areas in areas_array:
@@ -45,7 +48,7 @@ class RemindInfoViews(APIView):
             'areas_dict':areas_dict,
         })
 
-    def put(self,request):
+    def post(self,request):
         # 获取前端数据
         dict_data = request.query_params
 
@@ -135,7 +138,7 @@ class BidsSinglearticle(APIView):
         pk = request.query_params.get('pk')
         # user = User.objects.get(id=1)
         # 默认未关注
-        is_collection = False
+        # is_collection = False
         # 获取redis
         collection = get_redis_connection('collection')
         # 获取查看次数
@@ -163,19 +166,19 @@ class BidsSinglearticle(APIView):
             article = Bids.objects.filter(id=pk)
             serializers = BidsSerializer(instance=article, many=True)
             return Response({
-                "is_collection": is_collection,
+                # "is_collection": is_collection,
                 "article": serializers.data,
                 "message": "获取成功"
             })
 
         # 存在查询
         article = user.article.filter(id=pk)
-        is_collection = True
+        # is_collection = True
         # 对象转字典
         serializers = BidsSerializer(instance=article, many=True)
 
         return Response({
-            "is_collection": is_collection,
+            # "is_collection": is_collection,
             "article": serializers.data,
             "message": "获取成功"
         })
@@ -198,87 +201,87 @@ class BidsSinglearticle(APIView):
 
 
 
-class ArticledetailViews(GenericAPIView):
-    """
-    点击收藏
-    """
-    # permission_classes = [IsAuthenticated]
-
-    def get(self,request):
-        """
-        获取用户收藏文章
-        """
-        user = request.user
-        bids = user.article.all()
-        serializers = BidsSerializer(instance=bids, many=True)
-        return Response(serializers.data)
-
-    def post(self,request):
-        """
-        收藏添加/删除
-        """
-        user = request.user
-        data_dict = request.data
-
-        try:
-            article = Bids.objects.get(id=data_dict['id'])
-        except Exception as e:
-            return Response({
-                "message": "服务器错误",
-            })
-
-        if not article:
-            return Response({
-                "message": "没有该文章",
-            })
-
-        # 反向添加/删除
-        if data_dict['is_collection'] == True:
-            user.article.remove(article.id)
-        else:
-            user.article.add(article.id)
-
-        # 转成字典返回响应
-        return Response({
-            "message": "收藏成功",
-            # "is_collection": True,
-        },status.HTTP_201_CREATED)
-
-    def delete(self,request):
-        """
-        修改收藏
-        """
-        try:
-            user = User.objects.get(id=1)
-            # user = request.user
-        except Exception as e:
-            user = None
-        # 获取数据
-        dict_data = request.query_params
-        pk = dict_data['pk']
-        # 根据pk,查询是否关注
-        try:
-            # 判断用户是否关注
-            if int(pk) == 0: # 如果pk为0则删除所有
-                bid = user.article.all()
-                # 取消关注
-                for i in bid:
-                    user.article.remove(i)
-            else:
-                bid = user.article.get(id=dict_data['pk'])
-                # 取消关注
-                user.article.remove(bid)
-        except Exception:
-            # 不存在返回
-            return Response({
-                "message": "未关注或文章已不存在"
-            })
-
-
-        # 4,转成字典,返回响应
-        return Response({
-                "message": "取消成功"
-            })
+# class ArticledetailViews(GenericAPIView):
+#     """
+#     点击收藏
+#     """
+#     # permission_classes = [IsAuthenticated]
+#
+#     def get(self,request):
+#         """
+#         获取用户收藏文章
+#         """
+#         user = request.user
+#         bids = user.article.all()
+#         serializers = BidsSerializer(instance=bids, many=True)
+#         return Response(serializers.data)
+#
+#     def post(self,request):
+#         """
+#         收藏添加/删除
+#         """
+#         user = request.user
+#         data_dict = request.data
+#
+#         try:
+#             article = Bids.objects.get(id=data_dict['id'])
+#         except Exception as e:
+#             return Response({
+#                 "message": "服务器错误",
+#             })
+#
+#         if not article:
+#             return Response({
+#                 "message": "没有该文章",
+#             })
+#
+#         # 反向添加/删除
+#         if data_dict['is_collection'] == True:
+#             user.article.remove(article.id)
+#         else:
+#             user.article.add(article.id)
+#
+#         # 转成字典返回响应
+#         return Response({
+#             "message": "收藏成功",
+#             # "is_collection": True,
+#         },status.HTTP_201_CREATED)
+#
+#     def delete(self,request):
+#         """
+#         修改收藏
+#         """
+#         try:
+#             user = User.objects.get(id=1)
+#             # user = request.user
+#         except Exception as e:
+#             user = None
+#         # 获取数据
+#         dict_data = request.query_params
+#         pk = dict_data['pk']
+#         # 根据pk,查询是否关注
+#         try:
+#             # 判断用户是否关注
+#             if int(pk) == 0: # 如果pk为0则删除所有
+#                 bid = user.article.all()
+#                 # 取消关注
+#                 for i in bid:
+#                     user.article.remove(i)
+#             else:
+#                 bid = user.article.get(id=dict_data['pk'])
+#                 # 取消关注
+#                 user.article.remove(bid)
+#         except Exception:
+#             # 不存在返回
+#             return Response({
+#                 "message": "未关注或文章已不存在"
+#             })
+#
+#
+#         # 4,转成字典,返回响应
+#         return Response({
+#                 "message": "取消成功"
+#             })
 
 
 
