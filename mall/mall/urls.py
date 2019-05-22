@@ -24,6 +24,4 @@ urlpatterns = [
     url(r'^areas/',include('areas.urls')),
     # 推送订阅
     url(r'^subscribe/',include('subscribe.urls')),
-    # 支付模块
-    url(r'^test/', include('Pays.urls')),
 ]

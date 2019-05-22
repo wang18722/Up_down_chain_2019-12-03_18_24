@@ -11785,3 +11785,181 @@ Traceback (most recent call last):
 AttributeError: 'datetime.date' object has no attribute 'utcoffset'
 ERROR 2019-05-21 20:28:12,246 basehttp 124 "GET /subscribe/article/?pk=1 HTTP/1.1" 500 20008
 INFO 2019-05-21 20:30:09,537 basehttp 124 "GET /subscribe/article/?pk=1 HTTP/1.1" 200 188
+INFO 2019-05-22 09:07:47,914 basehttp 124 "GET /subscribe/history/ HTTP/1.1" 200 69
+INFO 2019-05-22 09:08:05,874 basehttp 124 "DELETE /subscribe/history/ HTTP/1.1" 200 23
+INFO 2019-05-22 09:08:30,994 basehttp 124 "DELETE /subscribe/history/ HTTP/1.1" 200 26
+INFO 2019-05-22 09:08:35,097 basehttp 124 "GET /subscribe/history/ HTTP/1.1" 200 14
+ERROR 2019-05-22 09:18:48,738 exception 135 Internal Server Error: /subscribe/search/
+Traceback (most recent call last):
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/python/Desktop/Upperlower/mall/apps/subscribe/views.py", line 105, in get
+    end＿num = int(data_ditc.get('num'))
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'NoneType'
+ERROR 2019-05-22 09:18:48,888 basehttp 124 "GET /subscribe/search/ HTTP/1.1" 500 18619
+INFO 2019-05-22 09:50:11,355 basehttp 124 "GET /subscribe/search/?num=10&areas=0 HTTP/1.1" 200 23
+INFO 2019-05-22 10:43:21,891 basehttp 124 "GET /areas/info/ HTTP/1.1" 200 51
+INFO 2019-05-22 11:07:41,335 basehttp 124 "GET /subscribe/info/ HTTP/1.1" 200 99
+ERROR 2019-05-22 11:25:38,700 exception 135 Internal Server Error: /subscribe/article/
+Traceback (most recent call last):
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/python/Desktop/Upperlower/mall/apps/subscribe/views.py", line 203, in get
+    return self.retrieve(request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/mixins.py", line 56, in retrieve
+    instance = self.get_object()
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/generics.py", line 94, in get_object
+    (self.__class__.__name__, lookup_url_kwarg)
+AssertionError: Expected view BidsSinglearticle to be called with a URL keyword argument named "pk". Fix your URL conf, or set the `.lookup_field` attribute on the view correctly.
+ERROR 2019-05-22 11:25:38,884 basehttp 124 "GET /subscribe/article/?pk=1 HTTP/1.1" 500 19120
+ERROR 2019-05-22 11:25:55,034 exception 135 Internal Server Error: /subscribe/article/
+Traceback (most recent call last):
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+TypeError: get() missing 1 required positional argument: 'pk'
+ERROR 2019-05-22 11:25:55,182 basehttp 124 "GET /subscribe/article/?pk=1 HTTP/1.1" 500 18436
+WARNING 2019-05-22 11:26:58,237 base 152 Not Found: /subscribe/article/
+WARNING 2019-05-22 11:26:58,240 basehttp 124 "GET /subscribe/article/?pk=1 HTTP/1.1" 404 3053
+WARNING 2019-05-22 11:26:59,735 base 152 Not Found: /subscribe/article/
+WARNING 2019-05-22 11:26:59,736 basehttp 124 "GET /subscribe/article/?pk=1 HTTP/1.1" 404 3053
+WARNING 2019-05-22 11:27:19,193 base 152 Not Found: /subscribe/article/
+WARNING 2019-05-22 11:27:19,196 basehttp 124 "GET /subscribe/article/?pk=1 HTTP/1.1" 404 3053
+ERROR 2019-05-22 11:27:36,938 exception 135 Internal Server Error: /subscribe/article/
+Traceback (most recent call last):
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+TypeError: get() missing 1 required positional argument: 'pk'
+ERROR 2019-05-22 11:27:37,083 basehttp 124 "GET /subscribe/article/?pk=1 HTTP/1.1" 500 18436
+ERROR 2019-05-22 11:28:20,971 exception 135 Internal Server Error: /subscribe/article/
+Traceback (most recent call last):
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/python/Desktop/Upperlower/mall/apps/subscribe/views.py", line 203, in get
+    return self.retrieve(request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/mixins.py", line 56, in retrieve
+    instance = self.get_object()
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/generics.py", line 94, in get_object
+    (self.__class__.__name__, lookup_url_kwarg)
+AssertionError: Expected view BidsSinglearticle to be called with a URL keyword argument named "pk". Fix your URL conf, or set the `.lookup_field` attribute on the view correctly.
+ERROR 2019-05-22 11:28:21,159 basehttp 124 "GET /subscribe/article/?pk=1 HTTP/1.1" 500 19120
+ERROR 2019-05-22 11:28:56,174 exception 135 Internal Server Error: /subscribe/article/
+Traceback (most recent call last):
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/python/Desktop/Upperlower/mall/apps/subscribe/views.py", line 203, in get
+    return self.retrieve(request,pk)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/mixins.py", line 56, in retrieve
+    instance = self.get_object()
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/generics.py", line 94, in get_object
+    (self.__class__.__name__, lookup_url_kwarg)
+AssertionError: Expected view BidsSinglearticle to be called with a URL keyword argument named "pk". Fix your URL conf, or set the `.lookup_field` attribute on the view correctly.
+ERROR 2019-05-22 11:28:56,415 basehttp 124 "GET /subscribe/article/?pk=1 HTTP/1.1" 500 19123
+ERROR 2019-05-22 11:29:20,233 exception 135 Internal Server Error: /subscribe/article/
+Traceback (most recent call last):
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+TypeError: get() missing 1 required positional argument: 'pk'
+ERROR 2019-05-22 11:29:20,365 basehttp 124 "GET /subscribe/article/?pk=1 HTTP/1.1" 500 18436
+WARNING 2019-05-22 11:30:03,212 base 152 Not Found: /subscribe/article/pk=1/
+WARNING 2019-05-22 11:30:03,214 basehttp 124 "GET /subscribe/article/pk=1/ HTTP/1.1" 404 3066
+WARNING 2019-05-22 11:30:04,858 base 152 Not Found: /subscribe/article/pk=1/
+WARNING 2019-05-22 11:30:04,859 basehttp 124 "GET /subscribe/article/pk=1/ HTTP/1.1" 404 3066
+INFO 2019-05-22 11:30:16,370 basehttp 124 "GET /subscribe/article/1/ HTTP/1.1" 200 151

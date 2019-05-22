@@ -1,6 +1,6 @@
 from django.conf.urls import url
 from . import views
-from rest_framework.routers import DefaultRouter
+# from rest_framework.routers import DefaultRouter
 
 urlpatterns = [
     # 关键字设置
@@ -10,13 +10,16 @@ urlpatterns = [
     url(r"^search/$",views.BidsSearchViewSet.as_view()),
 
     # 单篇文章的获取
-    url(r"^article/$",views.BidsSinglearticle.as_view()),
+    url(r"^article/(?P<pk>\d+)/$",views.BidsSinglearticle.as_view()),
 
     # 收藏操作
     # url(r"^collection/$",views.ArticledetailViews.as_view())
 
     # 快搜
-    url(r'^fastseek/$',views.BidssearchView.as_view())
+    url(r'^fastseek/$',views.BidssearchView.as_view()),
+
+    # 快搜历史
+    url(r'^history/$',views.KeywordView.as_view())
 
 ]
 

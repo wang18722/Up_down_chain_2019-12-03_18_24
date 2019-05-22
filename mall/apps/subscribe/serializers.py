@@ -1,8 +1,8 @@
 from rest_framework import serializers
 from .models import BidsUserSetting,Bids,User
 # from .search_indexes import BidsIndex
-from drf_haystack.serializers import HaystackSerializer
-from django.db import models
+# from drf_haystack.serializers import HaystackSerializer
+# from django.db import models
 # class RemindInfoSerializer(serializers.Serializer):
 #
 #     class Meta:
@@ -42,17 +42,17 @@ class ArticledetailSerializer(serializers.ModelSerializer):
         model = Bids
         fields = ('pirce', 'id', 'company', 'isValid', 'title', 'by_time', 'create_time','content')
 
-class Articlecollection(serializers.ModelSerializer):
-    # pirce = serializers.DecimalField(max_digits=10, decimal_places=2, label='单价', read_only=True)
-    # id = serializers.IntegerField(label="ID", read_only=True)
-    # company = serializers.CharField(max_length=100, label="公司", read_only=True)
-    # isValid = serializers.BooleanField(label="是否有效", read_only=True)
-    # title = serializers.CharField(label='名字', max_length=100, read_only=True)
-    # by_time = serializers.DateTimeField(label="截止时间")
-
-    class Meta:
-        model = Bids
-        exclude = ('update_time','create_time')
+# class Articlecollection(serializers.ModelSerializer):
+#     # pirce = serializers.DecimalField(max_digits=10, decimal_places=2, label='单价', read_only=True)
+#     # id = serializers.IntegerField(label="ID", read_only=True)
+#     # company = serializers.CharField(max_length=100, label="公司", read_only=True)
+#     # isValid = serializers.BooleanField(label="是否有效", read_only=True)
+#     # title = serializers.CharField(label='名字', max_length=100, read_only=True)
+#     # by_time = serializers.DateTimeField(label="截止时间")
+#
+#     class Meta:
+#         model = Bids
+#         exclude = ('update_time','create_time')
 
 class FastSeekSerializer(serializers.ModelSerializer):
     """
@@ -80,11 +80,7 @@ class KeywordSerializer(serializers.ModelSerializer):
         # extra_kwargs = {
         #     'id': {'read_only': True},
         # }
-    # def update(self, instance, validated_data):
-    #     instance.areas_id = validated_data.get('areas_id')
-    #     instance.keywords_array = validated_data.get('keywords_array')
-    #     instance.remind_long_time = validated_data.get('remind_long_time')
-    #     instance.is_remind = validated_data.get('is_remind')
+
 
 class UserSerializer(serializers.Serializer):
     name = serializers.CharField(max_length=30, label="用户名")

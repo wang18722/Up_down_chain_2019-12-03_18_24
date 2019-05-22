@@ -63,7 +63,7 @@ class BidsUserSetting(BaseModel):
     is_remind = models.BooleanField(default=True, verbose_name="是否推送")
 
     class Meta:
-        db_table = "up_user_bids_setting"
+        db_table = "Subscribe_status"
         verbose_name = "推送用户记录表"
         verbose_name_plural = verbose_name
 

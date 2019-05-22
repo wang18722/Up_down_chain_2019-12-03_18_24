@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     # 'haystack',
-    'Pays.apps.PaysConfig',
     'areas.apps.AreasConfig',
     'subscribe.apps.SubscribeConfig',
 
@@ -237,14 +236,14 @@ REDIRECT_URI = 'http://sxl.weiren.me/sxl'
 SCOPE = 'snsapi_login'
 
 # =====================================Haystack===============================
-
-HAYSTACK_CONNECTIONS = {
-    'default': {
-        'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
-        'URL': 'http://192.168.179.143:9200/',
-        'INDEX_NAME': 'upperlower',  # 指定elasticsearch建立的索引库的名称
-    },
-}
-
-# 当添加、修改、删除数据时，自动生成索引
-HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
+#
+# HAYSTACK_CONNECTIONS = {
+#     'default': {
+#         'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
+#         'URL': 'http://192.168.179.143:9200/',
+#         'INDEX_NAME': 'upperlower',  # 指定elasticsearch建立的索引库的名称
+#     },
+# }
+#
+# # 当添加、修改、删除数据时，自动生成索引
+# HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
