@@ -1,16 +1,13 @@
 import re
 from rest_framework import status
-from rest_framework.mixins import ListModelMixin
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
-from rest_framework.generics import GenericAPIView
 from rest_framework.views import APIView
-from areas.models import Area
 from utils.endtoday import rest_of_day
-from .serializers import BidsSerializer, BidsIndexSerializer, Articlecollection
-from .models import Bids, User
+from .serializers import  UserSerializer, KeywordSerializer, FastSeekSerializer,ArticledetailSerializer
+from .models import Bids, User, BidsUserSetting
 from django_redis import get_redis_connection
-from drf_haystack.viewsets import HaystackViewSet
+# from drf_haystack.viewsets import HaystackViewSet
 
 class RemindInfoViews(APIView):
     """
@@ -19,102 +16,146 @@ class RemindInfoViews(APIView):
     # permission_classes = [IsAuthenticated]
     def get(self,request):
         # user = request.user
-        user = User.objects.filter(id=1)
-        bids_set = user.bids_set_id
+        # 测试用户
+        user = User.objects.get(id=1)
+        # user_serializer = UserSerializer(user)
+        bid = BidsUserSetting.objects.filter(mid=user.id)
 
-        if bids_set is None:
-            # seriailzer =
+        if bid is None:
             return Response({
-                'user_name':user.name,
-                'user_image_url':user,
-                'start': None
-            })
+                "message": "请设置关键字",
+            },status.HTTP_202_ACCEPTED)
 
+        # bid = BidsUserSetting.objects.get(id=bid_set_id)
+        bid_serializer =KeywordSerializer(instance=bid,many=True)
+
+        # 关键词不转换 看前端
         # keywords_array = bids_set.keywords_array.split(",")
-        areas_array = bids_set.areas_id.split(",")
+        # areas_array = bids_set.areas_id.split(",")
+        #
+        # areas_dict = []
+        # for areas in areas_array:
+        #     area = Area.objects.filter(id=areas)
+        #     areas_dict.append(area)
+        #
+        # keywords = bids_set.keywords_array.split(",")
+        # areas = bids_set.areas_id
 
-        areas_dict = []
-        for areas in areas_array:
-            area = Area.objects.filter(id=areas)
-            areas_dict.append(area)
-
-        keywords = bids_set.keywords_array.split(",")
-        areas = bids_set.areas_id
-
-        return Response({
-            'user': user,
-            "keywords":keywords,
-            'areas':areas,
-            'areas_dict':areas_dict,
-        })
+        return Response(
+            # 'user_name': user.name,
+            # 'user_image_url': user.image_url,
+            bid_serializer.data)
 
     def post(self,request):
-        # 获取前端数据
-        dict_data = request.query_params
-
-        areas_dict = dict_data.get('areas_dict')
-        keywords_array = dict_data.get('keywords_array')
-        is_remind =dict_data.get('is_remind')
-        remind_long_time = dict_data.get('remind_long_time')
-
-        user = request.user
-        # 判断关键字是否包含特殊字符
-        for keyword in keywords_array:
-            if bool(re.search('\W+', keyword)) or 2 > len(keyword) >= 7 :
-                return Response({"message":"关键词不能包含特殊字符或者超过2-6个字,请修改后保存"}, status=status.HTTP_404_NOT_FOUND)
-
-        # 把地区列表转换为字符串
-        areas_str = ','.join(areas_dict)
-        try:
-            user.bids_set_id.update(areas_id=areas_str,keywords_array=keywords_array,remind_long_time=remind_long_time,is_remind=is_remind)
-        except Exception:
-            return Response({
-                "message": "修改失败,服务器异常"
-            }, status=status.HTTP_400_BAD_REQUEST)
-        else:
-            return Response({
-                "message":"保存成功",
-            })
-
-class BidsSearchViewSet(APIView):
-    """
-    推送展示
-    """
-    permission_classes = [IsAuthenticated]
-    def get(self,request,areas,keywords):
+        """
+        关键词设置
+        """
 
         try:
             user = request.user
         except Exception as e:
             user = None
         if user and request.user.is_authenticated:
-            bids_set = user.bids_set_id
-            if bids_set is None:
+            # 获取前端数据
+            dict_data = request.data
+            keywords_array = dict_data.get('keywords_array')
+
+            # 判断关键字是否包含特殊字符
+            for keyword in keywords_array.split(","):
+                if bool(re.search('\W+', keyword)) or 2 > len(keyword) >= 7:
+                    return Response({"message": "关键词不能包含特殊字符或者超过2-6个字,请修改后保存"}, status=status.HTTP_404_NOT_FOUND)
+            try:
+                bid = BidsUserSetting.objects.get(mid_id=user.id)
+                serializer = KeywordSerializer(instance=bid, data=dict_data)
+            except Exception:
+                # 没有该对象则创建
+                serializer = KeywordSerializer(data=dict_data)
+
+            serializer.is_valid(raise_exception=True)
+            serializer.save()
+            return Response({
+                "message": "保存成功",
+            })
+        return Response({
+            "message": "用户不存在",
+        })
+
+# class SubscriptionPush(APIView):
+#     """
+#     推送展示
+#     """
+#     def get(self,request):
+#         # 测试用户
+#         user = User.objects.get(id=1)
+#         # user_serializer = UserSerializer(user)
+#         bid = BidsUserSetting.objects.filter(mid=user.id)
+#         if bid is None:
+#             return Response({
+#                 "message": "请设置关键字",
+#             }, status.HTTP_202_ACCEPTED)
+#
+#         for keyword in keywords.split(","):
+#             articles = Bids.objects.filter(Q(content__icontains=keyword) | Q(title__icontains=keyword),
+#                                            create_time__gte=end_time, areas_id__in=list_area).exclude(
+#                 id__in=id_dict)[begin_num:end＿num]
+#             if articles.exists():
+#                 serializer = FastSeekSerializer(articles, many=True)
+#                 for article in serializer.data:
+#                     # time = article.create_time
+#                     bid_dict.append(article)
+#                     id_dict.append(article['id'])
+
+class BidsSearchViewSet(APIView):
+    """
+    推送筛选
+    """
+    # permission_classes = [IsAuthenticated]
+    def get(self,request):
+        user = User.objects.get(id=1)
+
+        try:
+            user = request.user
+        except Exception as e:
+            user = None
+        if user and request.user.is_authenticated:
+            try:
+                bid = BidsUserSetting.objects.get(mid=user.id)
+            except Exception:
                 return Response({
                     "message": "请设置关键字",
                 })
             else:
+                data_ditc = request.query_params
                 # 定义文章字典
                 bid_dict = []
-                #　文章id列表
+                # 　文章id列表
                 id_dict = []
-                remind_time = request.user.bids_set_id.remind_long_time
-                end＿num = request.query_params.get('num')
 
+                # 推送时常
+                remind_time = int(bid.remind_long_time) * 86400
+                end＿num = int(data_ditc.get('num'))
+                try:
+
+                    areas = data_ditc.get('areas')
+                    keywords = data_ditc.get('keywords')
+                except Exception:
+                    areas = bid.areas
+                    keywords = bid.keywords
                 # 把地区编号转为列表
                 list_area = list(eval(areas))
-                begin_num = end＿num-10
-                import datetime
-                def get_date(days=7):
-                    return datetime.datetime.now() - datetime.timedelta(days=days)
-
+                begin_num = end＿num - 10
+                import time
+                end_time = time.strftime('%Y-%m-%d', time.localtime(time.time() - remind_time))
+                from django.db.models import Q
                 for keyword in keywords.split(","):
-                    articles = Bids.objects.filter(content__contains=keyword, create_time__gte=get_date(days=remind_time),areas_id__in=list_area).exclude(id__in=id_dict).order_by('-create_time')[begin_num:end＿num]
+                    articles = Bids.objects.filter(Q(content__icontains=keyword) | Q(title__icontains=keyword),
+                                                   create_time__gte=end_time, areas_id__in=list_area).exclude(
+                        id__in=id_dict)[begin_num:end＿num]
                     if articles.exists():
-                        serializer = BidsSerializer(instance=articles, many=True)
+                        serializer = FastSeekSerializer(articles, many=True)
                         for article in serializer.data:
-                            time = re.match("(.+)T", article['create_time']).group(1)
-                            bid_dict.append({time: article})
+                            # time = article.create_time
+                            bid_dict.append(article)
                             id_dict.append(article['id'])
                 return Response({
                     "bid_dict": bid_dict
@@ -128,13 +169,12 @@ class BidsSinglearticle(APIView):
     """
     单篇文章获取
     """
-
     def get(self, request):
         """
         获取单篇文章
         """
-
-        user = request.user
+        user = User.objects.get(id=1)
+        # user = request.user
         pk = request.query_params.get('pk')
         # user = User.objects.get(id=1)
         # 默认未关注
@@ -147,41 +187,47 @@ class BidsSinglearticle(APIView):
         if begin_num == None:
             # 设置阅读数 / 要与认证功能结合 暂定
             collection.setex("collection_%s" % user.id, rest_of_day(), 1)
-
-        # b类型转换
-        begin_num = int(begin_num.decode())
-        if begin_num >= 100:
-            return Response({
-                "message": "已到上线,请认证",
-            })
         else:
-            # 设置阅读数 / 要与认证功能结合 暂定
-            collection.setex("collection_%s" % user.id, rest_of_day(), begin_num + 1)
+            # b类型转换
+            begin_num = int(begin_num.decode())
+            if begin_num >= 7:
+                return Response({
+                    "message": "已到上线,请认证",
+                })
+            else:
+                # 设置阅读数 / 要与认证功能结合 暂定
+                collection.setex("collection_%s" % user.id, rest_of_day(), begin_num + 1)
 
-        try:
-            # 判断用户是否关注
-            user.article.get(id=pk)
-        except Exception:
-            # 不存在返回
-            article = Bids.objects.filter(id=pk)
-            serializers = BidsSerializer(instance=article, many=True)
-            return Response({
-                # "is_collection": is_collection,
-                "article": serializers.data,
-                "message": "获取成功"
-            })
-
-        # 存在查询
-        article = user.article.filter(id=pk)
-        # is_collection = True
-        # 对象转字典
-        serializers = BidsSerializer(instance=article, many=True)
-
+        article = Bids.objects.get(id=pk)
+        serializers = ArticledetailSerializer(article)
         return Response({
-            # "is_collection": is_collection,
             "article": serializers.data,
             "message": "获取成功"
-        })
+        },status.HTTP_200_OK)
+        # try:
+        #     # 判断用户是否关注
+        #     user.article.get(id=pk)
+        # except Exception:
+        #     # 不存在返回
+        #     article = Bids.objects.filter(id=pk)
+        #     serializers = ArticledetailSerializer(instance=article, many=True)
+        #     return Response({
+        #         # "is_collection": is_collection,
+        #         "article": serializers.data,
+        #         "message": "获取成功"
+        #     })
+        #
+        # # 存在查询
+        # article = user.article.filter(id=pk)
+        # # is_collection = True
+        # # 对象转字典
+        # serializers = ArticledetailSerializer(instance=article, many=True)
+        #
+        # return Response({
+        #     # "is_collection": is_collection,
+        #     "article": serializers.data,
+        #     "message": "获取成功"
+        # })
 
 # class ArticledetailViews(RetrieveUpdateAPIView):
 #     # queryset = Bids.objects.all()
@@ -286,10 +332,115 @@ class BidsSinglearticle(APIView):
 
 
 
-class SKUSearchViewSet(HaystackViewSet):
-    """
-    Bids搜索
-    """
+# class SKUSearchViewSet(HaystackViewSet):
+#     """
+#     Bids搜索
+#     """
+#
+#     index_models = [Bids]
+#     serializer_class = BidsIndexSerializer
 
-    index_models = [Bids]
-    serializer_class = BidsIndexSerializer
+class BidssearchView(APIView):
+    """
+    快搜搜索
+    """
+    def get(self,request):
+        """
+        搜索返回
+        """
+        try:
+            user = request.user
+        except Exception as e:
+            user = None
+        if user and request.user.is_authenticated:
+            # user = User.objects.get(id=1)
+            # 获取redis
+            collection = get_redis_connection('collection')
+            # 获取查看次数
+            begin_num = collection.get('collection_%s' % user.id)
+
+            if begin_num == None:
+                # 设置阅读数 / 要与认证功能结合 暂定
+                collection.setex("collection_%s" % user.id, rest_of_day(), 1)
+
+            # b类型转换
+            begin_num = int(begin_num.decode())
+            if begin_num >= 2:
+                return Response({
+                    "message": "已到上线,请认证",
+                })
+            else:
+                # 设置阅读数 / 要与认证功能结合 暂定
+                collection.setex("collection_%s" % user.id, rest_of_day(), begin_num + 1)
+
+            # 获取数据
+            data_dict = request.query_params
+            keyword = data_dict.get('keyword')
+            areas = data_dict.get('areas')
+            end_num = int(data_dict.get('end_num'))
+            # 设置懒加载条数
+            begin_num = end_num - 10
+
+            # 地区数据转换
+            areas_array = areas.split(",")
+            areas_dict = []
+            for areas in areas_array:
+                areas_dict.append(int(areas))
+
+            if areas is None and keyword is not None:
+                # 关键字查询
+                articles = Bids.objects.filter(content__contains=keyword).order_by('-create_time')[begin_num:end_num]
+            elif keyword is None and areas is not None:
+                articles = Bids.objects.filter(areas_id__in=areas).order_by('-create_time')[begin_num:end_num]
+            elif keyword is None and areas is None:
+                articles = Bids.objects.all().order_by('-create_time')[begin_num:end_num]
+            else:
+
+                from django.db.models import Q
+                # 关键字查询
+                articles = Bids.objects.filter(Q(content__icontains=keyword) | Q(title__icontains=keyword),
+                                               areas_id__in=areas_dict).order_by('-create_time')[begin_num:end_num]
+            serializers = FastSeekSerializer(instance=articles, many=True)
+            # 获取redis数据库
+            history = get_redis_connection('history')
+            history.zadd('keyword_%d' % user.id, 1, keyword)
+            history.expire('keyword_%d' % user.id, 86400)
+
+            return Response({
+                "keyword":keyword,
+                "articles": serializers.data,
+            }, status.HTTP_200_OK)
+
+        else:
+            return Response({
+                "message": "未授权",
+            })
+
+class KeywordView(APIView):
+    """
+    点击快搜
+    """
+    def get(self,request):
+        try:
+            user = request.user
+        except Exception as e:
+            user = None
+        if user and request.user.is_authenticated:
+            # 获取redis数据库
+            history = get_redis_connection('history')
+            # 设置有序集合
+            text = history.zrangebyscore('keyword_%d' % user.id, 1, 2)
+
+            # 判断是否有查询记录
+            if text is None:
+                bids_set = BidsUserSetting.objects.get(id=user.bids_set_id_id)
+                text = bids_set.keywords_array.split(",")
+
+            return Response({
+                "history": text
+            })
+
+        else:
+            return Response({
+                "message": "未授权",
+            })

@@ -7,7 +7,7 @@ urlpatterns = [
     url(r'^info/$',views.RemindInfoViews.as_view()),
 
     # 关键字/地址匹配的内容
-    url(r"^search/(?P<areas>.+)/(?P<keywords>.+)/$",views.BidsSearchViewSet.as_view()),
+    url(r"^search/$",views.BidsSearchViewSet.as_view()),
 
     # 单篇文章的获取
     url(r"^article/$",views.BidsSinglearticle.as_view()),
@@ -15,10 +15,13 @@ urlpatterns = [
     # 收藏操作
     # url(r"^collection/$",views.ArticledetailViews.as_view())
 
+    # 快搜
+    url(r'^fastseek/$',views.BidssearchView.as_view())
+
 ]
 
 
-router = DefaultRouter()
-router.register('search', views.SKUSearchViewSet, base_name='bids_search')
-
-urlpatterns += router.urls
+# router = DefaultRouter()
+# router.register('search', views.SKUSearchViewSet, base_name='bids_search')
+#
+# urlpatterns += router.urls

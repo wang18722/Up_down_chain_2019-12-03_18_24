@@ -41,10 +41,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'haystack',
+    # 'haystack',
     'Pays.apps.PaysConfig',
     'areas.apps.AreasConfig',
-    'subscribe.apps.SubscribeConfig'
+    'subscribe.apps.SubscribeConfig',
 
 ]
 
@@ -154,7 +154,14 @@ CACHES = {
             "OPTIONS": {
                 "CLIENT_CLASS": "django_redis.client.DefaultClient",
             }
-        }
+    },
+    "history": {
+            "BACKEND": "django_redis.cache.RedisCache",
+            "LOCATION": "redis://127.0.0.1:6379/3 --raw",
+            "OPTIONS": {
+                "CLIENT_CLASS": "django_redis.client.DefaultClient",
+            }
+    }
 }
 SESSION_ENGINE = "django.contrib.sessions.backends.cache"
 SESSION_CACHE_ALIAS = "session"

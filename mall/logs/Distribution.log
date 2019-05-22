@@ -10545,3 +10545,1243 @@ Traceback (most recent call last):
     bids_set = user.bids_set_id
 AttributeError: 'QuerySet' object has no attribute 'bids_set_id'
 ERROR 2019-05-20 18:16:29,484 basehttp 124 "GET /subscribe/info/ HTTP/1.1" 500 18396
+ERROR 2019-05-21 08:26:35,201 exception 135 Internal Server Error: /subscribe/info/
+Traceback (most recent call last):
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/python/Desktop/Upperlower/mall/apps/subscribe/views.py", line 23, in get
+    bids_set = user.bids_set_id
+AttributeError: 'QuerySet' object has no attribute 'bids_set_id'
+ERROR 2019-05-21 08:26:35,415 basehttp 124 "GET /subscribe/info/ HTTP/1.1" 500 18396
+ERROR 2019-05-21 08:27:04,805 basehttp 124 "GET /subscribe/info/ HTTP/1.1" 507 35
+ERROR 2019-05-21 08:27:08,574 basehttp 124 "GET /subscribe/info/ HTTP/1.1" 507 35
+ERROR 2019-05-21 08:30:32,733 exception 135 Internal Server Error: /subscribe/info/
+Traceback (most recent call last):
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 217, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 215, in _get_response
+    response = response.render()
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/template/response.py", line 107, in render
+    self.content = self.rendered_content
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/response.py", line 72, in rendered_content
+    ret = renderer.render(self.data, accepted_media_type, context)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/renderers.py", line 105, in render
+    allow_nan=not self.strict, separators=separators
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/utils/json.py", line 28, in dumps
+    return json.dumps(*args, **kwargs)
+  File "/usr/lib/python3.5/json/__init__.py", line 237, in dumps
+    **kw).encode(obj)
+  File "/usr/lib/python3.5/json/encoder.py", line 198, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/lib/python3.5/json/encoder.py", line 256, in iterencode
+    return _iterencode(o, 0)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/utils/encoders.py", line 68, in default
+    return super(JSONEncoder, self).default(obj)
+  File "/usr/lib/python3.5/json/encoder.py", line 179, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: <User: User object> is not JSON serializable
+ERROR 2019-05-21 08:30:33,164 basehttp 124 "GET /subscribe/info/ HTTP/1.1" 500 110333
+INFO 2019-05-21 08:30:51,049 basehttp 124 "GET /subscribe/info/ HTTP/1.1" 200 58
+ERROR 2019-05-21 08:31:50,257 basehttp 124 "GET /subscribe/info/ HTTP/1.1" 507 35
+INFO 2019-05-21 08:50:52,903 basehttp 124 "GET /subscribe/info/ HTTP/1.1" 200 58
+ERROR 2019-05-21 08:51:50,095 exception 135 Internal Server Error: /subscribe/info/
+Traceback (most recent call last):
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 217, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 215, in _get_response
+    response = response.render()
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/template/response.py", line 107, in render
+    self.content = self.rendered_content
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/response.py", line 72, in rendered_content
+    ret = renderer.render(self.data, accepted_media_type, context)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/renderers.py", line 105, in render
+    allow_nan=not self.strict, separators=separators
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/utils/json.py", line 28, in dumps
+    return json.dumps(*args, **kwargs)
+  File "/usr/lib/python3.5/json/__init__.py", line 237, in dumps
+    **kw).encode(obj)
+  File "/usr/lib/python3.5/json/encoder.py", line 198, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/lib/python3.5/json/encoder.py", line 256, in iterencode
+    return _iterencode(o, 0)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/utils/encoders.py", line 68, in default
+    return super(JSONEncoder, self).default(obj)
+  File "/usr/lib/python3.5/json/encoder.py", line 179, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: <User: User object> is not JSON serializable
+ERROR 2019-05-21 08:51:50,826 basehttp 124 "GET /subscribe/info/ HTTP/1.1" 500 110840
+ERROR 2019-05-21 08:52:15,424 exception 135 Internal Server Error: /subscribe/info/
+Traceback (most recent call last):
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 217, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 215, in _get_response
+    response = response.render()
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/template/response.py", line 107, in render
+    self.content = self.rendered_content
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/response.py", line 72, in rendered_content
+    ret = renderer.render(self.data, accepted_media_type, context)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/renderers.py", line 105, in render
+    allow_nan=not self.strict, separators=separators
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/utils/json.py", line 28, in dumps
+    return json.dumps(*args, **kwargs)
+  File "/usr/lib/python3.5/json/__init__.py", line 237, in dumps
+    **kw).encode(obj)
+  File "/usr/lib/python3.5/json/encoder.py", line 198, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/lib/python3.5/json/encoder.py", line 256, in iterencode
+    return _iterencode(o, 0)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/utils/encoders.py", line 68, in default
+    return super(JSONEncoder, self).default(obj)
+  File "/usr/lib/python3.5/json/encoder.py", line 179, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: <Area: Area object> is not JSON serializable
+ERROR 2019-05-21 08:52:15,847 basehttp 124 "GET /subscribe/info/ HTTP/1.1" 500 111265
+ERROR 2019-05-21 08:53:22,450 exception 135 Internal Server Error: /subscribe/info/
+Traceback (most recent call last):
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 217, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 215, in _get_response
+    response = response.render()
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/template/response.py", line 107, in render
+    self.content = self.rendered_content
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/response.py", line 72, in rendered_content
+    ret = renderer.render(self.data, accepted_media_type, context)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/renderers.py", line 105, in render
+    allow_nan=not self.strict, separators=separators
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/utils/json.py", line 28, in dumps
+    return json.dumps(*args, **kwargs)
+  File "/usr/lib/python3.5/json/__init__.py", line 237, in dumps
+    **kw).encode(obj)
+  File "/usr/lib/python3.5/json/encoder.py", line 198, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/lib/python3.5/json/encoder.py", line 256, in iterencode
+    return _iterencode(o, 0)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/utils/encoders.py", line 68, in default
+    return super(JSONEncoder, self).default(obj)
+  File "/usr/lib/python3.5/json/encoder.py", line 179, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: <Area: Area object> is not JSON serializable
+ERROR 2019-05-21 08:53:22,838 basehttp 124 "GET /subscribe/info/ HTTP/1.1" 500 111265
+ERROR 2019-05-21 09:05:11,031 exception 135 Internal Server Error: /subscribe/info/
+Traceback (most recent call last):
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/python/Desktop/Upperlower/mall/apps/subscribe/views.py", line 23, in get
+    bids_set = user.bids_set_id
+AttributeError: 'QuerySet' object has no attribute 'bids_set_id'
+ERROR 2019-05-21 09:05:11,193 basehttp 124 "GET /subscribe/info/ HTTP/1.1" 500 18396
+ERROR 2019-05-21 09:05:46,750 exception 135 Internal Server Error: /subscribe/info/
+Traceback (most recent call last):
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/python/Desktop/Upperlower/mall/apps/subscribe/views.py", line 25, in get
+    if bids_set is None:
+NameError: name 'bids_set' is not defined
+ERROR 2019-05-21 09:05:46,944 basehttp 124 "GET /subscribe/info/ HTTP/1.1" 500 18343
+ERROR 2019-05-21 09:09:47,139 exception 135 Internal Server Error: /subscribe/info/
+Traceback (most recent call last):
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/python/Desktop/Upperlower/mall/apps/subscribe/views.py", line 23, in get
+    bids_set = user.bids_set_id
+AttributeError: 'QuerySet' object has no attribute 'bids_set_id'
+ERROR 2019-05-21 09:09:47,423 basehttp 124 "GET /subscribe/info/ HTTP/1.1" 500 18396
+ERROR 2019-05-21 09:18:21,944 exception 135 Internal Server Error: /subscribe/info/
+Traceback (most recent call last):
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/python/Desktop/Upperlower/mall/apps/subscribe/views.py", line 25, in get
+    bids_set = serializer.data.bids_set_id
+AttributeError: 'ReturnList' object has no attribute 'bids_set_id'
+ERROR 2019-05-21 09:18:22,144 basehttp 124 "GET /subscribe/info/ HTTP/1.1" 500 18411
+INFO 2019-05-21 10:15:17,923 basehttp 124 "GET /subscribe/fastseek/?keyword=%E6%88%91&areas=1&end_num=1 HTTP/1.1" 200 23
+ERROR 2019-05-21 10:16:26,478 exception 135 Internal Server Error: /subscribe/fastseek/
+Traceback (most recent call last):
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/python/Desktop/Upperlower/mall/apps/subscribe/views.py", line 305, in get
+    end＿num = int(data_dict.get('num'))
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'NoneType'
+ERROR 2019-05-21 10:16:26,654 basehttp 124 "GET /subscribe/fastseek/?keyword=%E6%88%91&areas=1&end_num=1 HTTP/1.1" 500 18651
+ERROR 2019-05-21 10:16:54,668 exception 135 Internal Server Error: /subscribe/fastseek/
+Traceback (most recent call last):
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/python/Desktop/Upperlower/mall/apps/subscribe/views.py", line 305, in get
+    end＿num = int(data_dict.get('end＿num'))
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'NoneType'
+ERROR 2019-05-21 10:16:54,845 basehttp 124 "GET /subscribe/fastseek/?keyword=%E6%88%91&areas=1&end_num=1 HTTP/1.1" 500 18657
+ERROR 2019-05-21 10:25:54,270 exception 135 Internal Server Error: /subscribe/fastseek/
+Traceback (most recent call last):
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/python/Desktop/Upperlower/mall/apps/subscribe/views.py", line 318, in get
+    articles = Bids.objects.filter(content__contains=keyword, areas_id__in=areas).order_by('-create_time')[begin_num:end_num]
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/db/models/query.py", line 269, in __getitem__
+    "Negative indexing is not supported."
+AssertionError: Negative indexing is not supported.
+ERROR 2019-05-21 10:25:54,560 basehttp 124 "GET /subscribe/fastseek/?keyword=%E6%88%91&areas=1&end_num=1 HTTP/1.1" 500 18829
+ERROR 2019-05-21 10:26:31,731 basehttp 124 "GET /subscribe/fastseek/?keyword=%E6%88%91&areas=1&end_num=1 HTTP/1.1" 507 35
+ERROR 2019-05-21 10:40:11,123 exception 135 Internal Server Error: /subscribe/fastseek/
+Traceback (most recent call last):
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/python/Desktop/Upperlower/mall/apps/subscribe/views.py", line 318, in get
+    articles = Bids.objects.filter(Q(content__contains=keyword)| Q(title__contains=keyword), areas_id__in=areas).order_by('-create_time')[begin_num:end_num]
+NameError: name 'Q' is not defined
+ERROR 2019-05-21 10:40:11,315 basehttp 124 "GET /subscribe/fastseek/?keyword=%E6%88%91&areas=1&end_num=10 HTTP/1.1" 500 18659
+ERROR 2019-05-21 10:43:09,261 exception 135 Internal Server Error: /subscribe/fastseek/
+Traceback (most recent call last):
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/python/Desktop/Upperlower/mall/apps/subscribe/views.py", line 319, in get
+    articles = Bids.objects.filter(Q(content__icontains=keyword)| Q(title__icontains=keyword), areas_id__in=areas).order_by('-create_time')[begin_num:end_num]
+NameError: name 'Q' is not defined
+ERROR 2019-05-21 10:43:09,409 basehttp 124 "GET /subscribe/fastseek/?keyword=%E6%88%91&areas=1&end_num=10 HTTP/1.1" 500 18661
+ERROR 2019-05-21 10:50:46,593 basehttp 124 "GET /subscribe/fastseek/?keyword=%E6%88%91&areas=1&end_num=10 HTTP/1.1" 507 35
+INFO 2019-05-21 10:59:55,110 basehttp 124 "GET /subscribe/fastseek/?keyword=%E6%88%91&areas=1&end_num=10 HTTP/1.1" 200 32
+INFO 2019-05-21 11:00:37,139 basehttp 124 "GET /subscribe/fastseek/?keyword=%E6%88%91&areas=1&end_num=10 HTTP/1.1" 200 391
+INFO 2019-05-21 11:03:05,327 basehttp 124 "GET /subscribe/fastseek/?keyword=%E6%88%91&areas=1&end_num=10 HTTP/1.1" 200 213
+INFO 2019-05-21 11:03:30,391 basehttp 124 "GET /subscribe/fastseek/?keyword=%E6%88%91&areas=1&end_num=10 HTTP/1.1" 200 213
+INFO 2019-05-21 11:03:33,852 basehttp 124 "GET /subscribe/fastseek/?keyword=%E6%88%91&areas=1&end_num=10 HTTP/1.1" 200 213
+ERROR 2019-05-21 11:05:08,196 exception 135 Internal Server Error: /subscribe/fastseek/
+Traceback (most recent call last):
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/python/Desktop/Upperlower/mall/apps/subscribe/views.py", line 334, in get
+    "articles": serializers.data,
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/serializers.py", line 765, in data
+    ret = super(ListSerializer, self).data
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/serializers.py", line 262, in data
+    self._data = self.to_representation(self.instance)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/serializers.py", line 683, in to_representation
+    self.child.to_representation(item) for item in iterable
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/serializers.py", line 683, in <listcomp>
+    self.child.to_representation(item) for item in iterable
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/serializers.py", line 527, in to_representation
+    ret[field.field_name] = field.to_representation(attribute)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/fields.py", line 1215, in to_representation
+    value = self.enforce_timezone(value)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/fields.py", line 1163, in enforce_timezone
+    if timezone.is_aware(value):
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/utils/timezone.py", line 261, in is_aware
+    return value.utcoffset() is not None
+AttributeError: 'datetime.date' object has no attribute 'utcoffset'
+ERROR 2019-05-21 11:05:08,337 basehttp 124 "GET /subscribe/fastseek/?keyword=%E6%88%91&areas=1&end_num=10 HTTP/1.1" 500 20038
+INFO 2019-05-21 11:05:25,555 basehttp 124 "GET /subscribe/fastseek/?keyword=%E6%88%91&areas=1&end_num=10 HTTP/1.1" 200 135
+INFO 2019-05-21 11:05:43,302 basehttp 124 "GET /subscribe/fastseek/?keyword=%E6%88%91&areas=1&end_num=10 HTTP/1.1" 200 135
+ERROR 2019-05-21 11:06:31,380 basehttp 124 "GET /subscribe/fastseek/?keyword=%E6%88%91&areas=1&end_num=10 HTTP/1.1" 507 35
+INFO 2019-05-21 11:07:16,860 basehttp 124 "GET /subscribe/fastseek/?keyword=%E6%88%91&areas=1&end_num=10 HTTP/1.1" 200 135
+ERROR 2019-05-21 11:07:31,297 basehttp 124 "GET /subscribe/fastseek/?keyword=%E6%88%91&areas=1&end_num=10 HTTP/1.1" 507 35
+ERROR 2019-05-21 11:07:51,889 basehttp 124 "GET /subscribe/fastseek/?keyword=%E6%88%91&areas=1&end_num=10 HTTP/1.1" 507 35
+ERROR 2019-05-21 11:07:55,271 basehttp 124 "GET /subscribe/fastseek/?keyword=%E6%88%91&areas=1&end_num=10 HTTP/1.1" 507 35
+ERROR 2019-05-21 11:08:09,558 basehttp 124 "GET /subscribe/fastseek/?keyword=%E6%88%91&areas=1&end_num=10 HTTP/1.1" 507 35
+ERROR 2019-05-21 11:08:14,735 basehttp 124 "GET /subscribe/fastseek/?keyword=%E6%88%91&areas=1&end_num=10 HTTP/1.1" 507 35
+ERROR 2019-05-21 11:17:36,131 basehttp 124 "GET /subscribe/fastseek/?keyword=%E6%88%91&areas=1&end_num=10 HTTP/1.1" 507 35
+INFO 2019-05-21 11:23:17,989 basehttp 124 "GET /subscribe/fastseek/?keyword=%E6%88%91&areas=1&end_num=10 HTTP/1.1" 200 135
+INFO 2019-05-21 11:25:59,532 basehttp 124 "GET /subscribe/fastseek/?keyword=%E6%88%91&areas=1&end_num=10 HTTP/1.1" 200 135
+INFO 2019-05-21 11:27:13,169 basehttp 124 "GET /subscribe/fastseek/?keyword=%E6%88%91&areas=1&end_num=10 HTTP/1.1" 200 135
+INFO 2019-05-21 11:27:43,305 basehttp 124 "GET /subscribe/fastseek/?keyword=%E6%88%91&areas=1&end_num=10 HTTP/1.1" 200 135
+ERROR 2019-05-21 11:28:53,922 exception 135 Internal Server Error: /subscribe/fastseek/
+Traceback (most recent call last):
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/python/Desktop/Upperlower/mall/apps/subscribe/views.py", line 330, in get
+    history.execute()
+AttributeError: 'StrictRedis' object has no attribute 'execute'
+ERROR 2019-05-21 11:28:54,148 basehttp 124 "GET /subscribe/fastseek/?keyword=%E6%88%91&areas=1&end_num=10 HTTP/1.1" 500 18578
+INFO 2019-05-21 11:30:53,233 basehttp 124 "GET /subscribe/fastseek/?keyword=%E6%88%91&areas=1&end_num=10 HTTP/1.1" 200 135
+ERROR 2019-05-21 11:31:11,194 exception 135 Internal Server Error: /subscribe/fastseek/
+Traceback (most recent call last):
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/python/Desktop/Upperlower/mall/apps/subscribe/views.py", line 331, in get
+    print(history.smembers('keyword_%d' % user.id).encode())
+AttributeError: 'set' object has no attribute 'encode'
+ERROR 2019-05-21 11:31:11,357 basehttp 124 "GET /subscribe/fastseek/?keyword=%E6%88%91&areas=1&end_num=10 HTTP/1.1" 500 18599
+INFO 2019-05-21 11:32:46,750 basehttp 124 "GET /subscribe/fastseek/?keyword=%20%E4%BD%A0&areas=1&end_num=10 HTTP/1.1" 200 27
+ERROR 2019-05-21 11:34:27,598 exception 135 Internal Server Error: /subscribe/fastseek/
+Traceback (most recent call last):
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/python/Desktop/Upperlower/mall/apps/subscribe/views.py", line 333, in get
+    print(base64.b64encode(history.smembers('keyword_%d' % user.id)))
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/base64.py", line 59, in b64encode
+    encoded = binascii.b2a_base64(s)[:-1]
+TypeError: a bytes-like object is required, not 'set'
+ERROR 2019-05-21 11:34:27,907 basehttp 124 "GET /subscribe/fastseek/?keyword=%20%E4%BD%A0&areas=1&end_num=10 HTTP/1.1" 500 18742
+INFO 2019-05-21 11:35:15,027 basehttp 124 "GET /subscribe/fastseek/?keyword=%20%E4%BD%A0&areas=1&end_num=10 HTTP/1.1" 200 27
+INFO 2019-05-21 11:35:49,497 basehttp 124 "GET /subscribe/fastseek/?keyword=1%20&areas=1&end_num=10 HTTP/1.1" 200 27
+INFO 2019-05-21 11:36:00,461 basehttp 124 "GET /subscribe/fastseek/?keyword=2&areas=1&end_num=10 HTTP/1.1" 200 27
+INFO 2019-05-21 11:36:51,698 basehttp 124 "GET /subscribe/fastseek/?keyword=e&areas=1&end_num=10 HTTP/1.1" 200 27
+INFO 2019-05-21 11:36:58,953 basehttp 124 "GET /subscribe/fastseek/?keyword=3&areas=1&end_num=10 HTTP/1.1" 200 27
+INFO 2019-05-21 11:37:03,159 basehttp 124 "GET /subscribe/fastseek/?keyword=2&areas=1&end_num=10 HTTP/1.1" 200 27
+INFO 2019-05-21 11:37:14,945 basehttp 124 "GET /subscribe/fastseek/?keyword=a&areas=1&end_num=10 HTTP/1.1" 200 27
+ERROR 2019-05-21 11:37:40,949 exception 135 Internal Server Error: /subscribe/fastseek/
+Traceback (most recent call last):
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/python/Desktop/Upperlower/mall/apps/subscribe/views.py", line 333, in get
+    history.clear()
+AttributeError: 'StrictRedis' object has no attribute 'clear'
+ERROR 2019-05-21 11:37:41,132 basehttp 124 "GET /subscribe/fastseek/?keyword=a&areas=1&end_num=10 HTTP/1.1" 500 18554
+INFO 2019-05-21 11:37:57,249 basehttp 124 "GET /subscribe/fastseek/?keyword=%E6%88%91&areas=1&end_num=10 HTTP/1.1" 200 135
+INFO 2019-05-21 11:42:56,253 basehttp 124 "GET /subscribe/fastseek/?keyword=&areas=1&end_num=10 HTTP/1.1" 200 135
+INFO 2019-05-21 11:42:58,957 basehttp 124 "GET /subscribe/fastseek/?keyword=%E6%88%91&areas=1&end_num=10 HTTP/1.1" 200 135
+INFO 2019-05-21 11:43:02,730 basehttp 124 "GET /subscribe/fastseek/?keyword=%E4%BD%A0&areas=1&end_num=10 HTTP/1.1" 200 27
+ERROR 2019-05-21 11:44:05,935 exception 135 Internal Server Error: /subscribe/fastseek/
+Traceback (most recent call last):
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/python/Desktop/Upperlower/mall/apps/subscribe/views.py", line 334, in get
+    print(history.smembers('keyword_%d' % user.id).encode())
+AttributeError: 'set' object has no attribute 'encode'
+ERROR 2019-05-21 11:44:06,137 basehttp 124 "GET /subscribe/fastseek/?keyword=%E4%BD%A0%E4%BB%96&areas=1&end_num=10 HTTP/1.1" 500 18620
+ERROR 2019-05-21 11:44:27,779 exception 135 Internal Server Error: /subscribe/fastseek/
+Traceback (most recent call last):
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/python/Desktop/Upperlower/mall/apps/subscribe/views.py", line 334, in get
+    print(history.smembers('keyword_%d' % user.id).decode())
+AttributeError: 'set' object has no attribute 'decode'
+ERROR 2019-05-21 11:44:27,940 basehttp 124 "GET /subscribe/fastseek/?keyword=%E4%BD%A0%E4%BB%96&areas=1&end_num=10 HTTP/1.1" 500 18620
+ERROR 2019-05-21 11:50:24,032 exception 135 Internal Server Error: /subscribe/fastseek/
+Traceback (most recent call last):
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/python/Desktop/Upperlower/mall/apps/subscribe/views.py", line 335, in get
+    print(pickle.loads(history.smembers('keyword_%d' % user.id)))
+TypeError: a bytes-like object is required, not 'set'
+ERROR 2019-05-21 11:50:24,216 basehttp 124 "GET /subscribe/fastseek/?keyword=%E4%BD%A0%E4%BB%96&areas=1&end_num=10 HTTP/1.1" 500 18623
+ERROR 2019-05-21 11:50:55,649 exception 135 Internal Server Error: /subscribe/fastseek/
+Traceback (most recent call last):
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/python/Desktop/Upperlower/mall/apps/subscribe/views.py", line 335, in get
+    print(pickle.loads(history.smembers('keyword_%d' % user.id)[0]))
+TypeError: 'set' object does not support indexing
+ERROR 2019-05-21 11:50:55,918 basehttp 124 "GET /subscribe/fastseek/?keyword=%E4%BD%A0%E4%BB%96&areas=1&end_num=10 HTTP/1.1" 500 18618
+ERROR 2019-05-21 11:58:34,799 exception 135 Internal Server Error: /subscribe/fastseek/
+Traceback (most recent call last):
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/python/Desktop/Upperlower/mall/apps/subscribe/views.py", line 339, in get
+    print(json.loads(history.smembers('keyword_%d' % user.id)))
+  File "/usr/lib/python3.5/json/__init__.py", line 312, in loads
+    s.__class__.__name__))
+TypeError: the JSON object must be str, not 'set'
+ERROR 2019-05-21 11:58:35,006 basehttp 124 "GET /subscribe/fastseek/?keyword=%E4%BD%A0%E4%BB%96&areas=1&end_num=10 HTTP/1.1" 500 18724
+INFO 2019-05-21 13:04:25,721 basehttp 124 "GET /subscribe/fastseek/?keyword=%E4%BD%A0%E4%BB%96&areas=1&end_num=10 HTTP/1.1" 200 27
+INFO 2019-05-21 13:05:02,201 basehttp 124 "GET /subscribe/fastseek/?keyword=%E4%BD%A0%E4%BB%96&areas=1&end_num=10 HTTP/1.1" 200 27
+ERROR 2019-05-21 13:11:40,169 exception 135 Internal Server Error: /subscribe/fastseek/
+Traceback (most recent call last):
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/python/Desktop/Upperlower/mall/apps/subscribe/views.py", line 333, in get
+    history.sadd('keyword_%d' % user.id,json.dumps(keyword),encoding="utf-8")
+TypeError: sadd() got an unexpected keyword argument 'encoding'
+ERROR 2019-05-21 13:11:40,407 basehttp 124 "GET /subscribe/fastseek/?keyword=%E4%BB%96&areas=1&end_num=10 HTTP/1.1" 500 18640
+ERROR 2019-05-21 13:11:59,105 exception 135 Internal Server Error: /subscribe/fastseek/
+Traceback (most recent call last):
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/python/Desktop/Upperlower/mall/apps/subscribe/views.py", line 339, in get
+    text = history.smembers('keyword_%d' % user.id,encoding="utf-8")
+TypeError: smembers() got an unexpected keyword argument 'encoding'
+ERROR 2019-05-21 13:11:59,275 basehttp 124 "GET /subscribe/fastseek/?keyword=%E4%BB%96&areas=1&end_num=10 HTTP/1.1" 500 18639
+ERROR 2019-05-21 13:17:00,391 exception 135 Internal Server Error: /subscribe/fastseek/
+Traceback (most recent call last):
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/python/Desktop/Upperlower/mall/apps/subscribe/views.py", line 339, in get
+    text = history.smembers('keyword_%d' % user.id).decode()
+AttributeError: 'set' object has no attribute 'decode'
+ERROR 2019-05-21 13:17:00,584 basehttp 124 "GET /subscribe/fastseek/?keyword=%E4%BB%96&areas=1&end_num=10 HTTP/1.1" 500 18605
+INFO 2019-05-21 13:18:01,848 basehttp 124 "GET /subscribe/fastseek/?keyword=%E4%BB%96&areas=1&end_num=10 HTTP/1.1" 200 27
+INFO 2019-05-21 13:18:51,850 basehttp 124 "GET /subscribe/fastseek/?keyword=%E4%BB%96&areas=1&end_num=10 HTTP/1.1" 200 27
+ERROR 2019-05-21 13:19:04,038 exception 135 Internal Server Error: /subscribe/fastseek/
+Traceback (most recent call last):
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/python/Desktop/Upperlower/mall/apps/subscribe/views.py", line 341, in get
+    a = pickle.loads(i.decode())
+TypeError: a bytes-like object is required, not 'str'
+ERROR 2019-05-21 13:19:04,228 basehttp 124 "GET /subscribe/fastseek/?keyword=%E4%BB%96&areas=1&end_num=10 HTTP/1.1" 500 18579
+INFO 2019-05-21 13:27:36,290 basehttp 124 "GET /subscribe/fastseek/?keyword=%E4%BB%96&areas=1&end_num=10 HTTP/1.1" 200 27
+INFO 2019-05-21 13:33:51,117 basehttp 124 "GET /subscribe/fastseek/?keyword=%E4%BB%96&areas=1&end_num=10 HTTP/1.1" 200 33
+ERROR 2019-05-21 13:34:45,903 exception 135 Internal Server Error: /subscribe/fastseek/
+Traceback (most recent call last):
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/python/Desktop/Upperlower/mall/apps/subscribe/views.py", line 335, in get
+    "history": text[:6]
+TypeError: 'set' object is not subscriptable
+ERROR 2019-05-21 13:34:46,098 basehttp 124 "GET /subscribe/fastseek/?keyword=%E4%BB%96&areas=1&end_num=10 HTTP/1.1" 500 18552
+INFO 2019-05-21 13:34:59,140 basehttp 124 "GET /subscribe/fastseek/?keyword=%E4%BB%96&areas=1&end_num=10 HTTP/1.1" 200 33
+INFO 2019-05-21 13:35:04,486 basehttp 124 "GET /subscribe/fastseek/?keyword=%E4%BB%962&areas=1&end_num=10 HTTP/1.1" 200 40
+INFO 2019-05-21 13:35:07,381 basehttp 124 "GET /subscribe/fastseek/?keyword=%E4%BB%9623&areas=1&end_num=10 HTTP/1.1" 200 48
+INFO 2019-05-21 13:35:09,348 basehttp 124 "GET /subscribe/fastseek/?keyword=%E4%BB%96234&areas=1&end_num=10 HTTP/1.1" 200 57
+INFO 2019-05-21 13:35:11,456 basehttp 124 "GET /subscribe/fastseek/?keyword=%E4%BB%962345&areas=1&end_num=10 HTTP/1.1" 200 67
+ERROR 2019-05-21 13:36:25,634 basehttp 124 "GET /subscribe/fastseek/?keyword=%E4%BB%962345&areas=1&end_num=10 HTTP/1.1" 507 35
+ERROR 2019-05-21 13:36:42,414 basehttp 124 "GET /subscribe/fastseek/?keyword=%E4%BB%962345&areas=1&end_num=10 HTTP/1.1" 507 35
+ERROR 2019-05-21 13:36:59,250 basehttp 124 "GET /subscribe/fastseek/?keyword=%E4%BB%962345&areas=1&end_num=10 HTTP/1.1" 507 35
+INFO 2019-05-21 13:41:51,765 basehttp 124 "GET /subscribe/fastseek/?keyword=%E4%BB%962345&areas=1&end_num=10 HTTP/1.1" 200 37
+INFO 2019-05-21 13:41:57,546 basehttp 124 "GET /subscribe/fastseek/?keyword=%E4%BB%962343&areas=1&end_num=10 HTTP/1.1" 200 47
+INFO 2019-05-21 13:42:01,410 basehttp 124 "GET /subscribe/fastseek/?keyword=%E4%BB%962345&areas=1&end_num=10 HTTP/1.1" 200 47
+INFO 2019-05-21 13:42:04,688 basehttp 124 "GET /subscribe/fastseek/?keyword=%E4%BB%962342&areas=1&end_num=10 HTTP/1.1" 200 57
+INFO 2019-05-21 13:42:07,503 basehttp 124 "GET /subscribe/fastseek/?keyword=%E4%BB%962341&areas=1&end_num=10 HTTP/1.1" 200 67
+INFO 2019-05-21 13:42:22,497 basehttp 124 "GET /subscribe/fastseek/?keyword=%E4%BB%96234222&areas=1&end_num=10 HTTP/1.1" 200 39
+INFO 2019-05-21 13:42:28,441 basehttp 124 "GET /subscribe/fastseek/?keyword=%E4%BB%96234221&areas=1&end_num=10 HTTP/1.1" 200 51
+INFO 2019-05-21 13:42:30,981 basehttp 124 "GET /subscribe/fastseek/?keyword=%E4%BB%96234223&areas=1&end_num=10 HTTP/1.1" 200 63
+INFO 2019-05-21 13:42:33,335 basehttp 124 "GET /subscribe/fastseek/?keyword=%E4%BB%96234224&areas=1&end_num=10 HTTP/1.1" 200 75
+INFO 2019-05-21 13:42:35,284 basehttp 124 "GET /subscribe/fastseek/?keyword=%E4%BB%96234225&areas=1&end_num=10 HTTP/1.1" 200 87
+INFO 2019-05-21 13:42:38,147 basehttp 124 "GET /subscribe/fastseek/?keyword=%E4%BB%96234226&areas=1&end_num=10 HTTP/1.1" 200 99
+INFO 2019-05-21 13:42:41,097 basehttp 124 "GET /subscribe/fastseek/?keyword=%E4%BB%96234227&areas=1&end_num=10 HTTP/1.1" 200 111
+INFO 2019-05-21 13:42:44,594 basehttp 124 "GET /subscribe/fastseek/?keyword=%E4%BB%96234228&areas=1&end_num=10 HTTP/1.1" 200 111
+ERROR 2019-05-21 13:43:22,713 exception 135 Internal Server Error: /subscribe/fastseek/
+Traceback (most recent call last):
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/python/Desktop/Upperlower/mall/apps/subscribe/views.py", line 330, in get
+    history.expire('keyword_%d' % user.id, day=1)
+TypeError: expire() got an unexpected keyword argument 'day'
+ERROR 2019-05-21 13:43:23,060 basehttp 124 "GET /subscribe/fastseek/?keyword=%E4%BB%96234228&areas=1&end_num=10 HTTP/1.1" 500 18624
+INFO 2019-05-21 13:46:31,205 basehttp 124 "GET /subscribe/fastseek/?keyword=%E4%BB%96234228&areas=1&end_num=10 HTTP/1.1" 200 39
+INFO 2019-05-21 13:46:35,562 basehttp 124 "GET /subscribe/fastseek/?keyword=%E4%BB%96234227&areas=1&end_num=10 HTTP/1.1" 200 51
+INFO 2019-05-21 13:46:37,861 basehttp 124 "GET /subscribe/fastseek/?keyword=%E4%BB%96234228&areas=1&end_num=10 HTTP/1.1" 200 51
+INFO 2019-05-21 13:46:40,865 basehttp 124 "GET /subscribe/fastseek/?keyword=%E4%BB%96234229&areas=1&end_num=10 HTTP/1.1" 200 63
+INFO 2019-05-21 13:46:43,237 basehttp 124 "GET /subscribe/fastseek/?keyword=%E4%BB%9623421&areas=1&end_num=10 HTTP/1.1" 200 74
+INFO 2019-05-21 13:46:45,934 basehttp 124 "GET /subscribe/fastseek/?keyword=%E4%BB%9623422&areas=1&end_num=10 HTTP/1.1" 200 85
+INFO 2019-05-21 13:46:48,376 basehttp 124 "GET /subscribe/fastseek/?keyword=%E4%BB%9623423&areas=1&end_num=10 HTTP/1.1" 200 96
+INFO 2019-05-21 13:46:52,113 basehttp 124 "GET /subscribe/fastseek/?keyword=%E4%BB%9623424&areas=1&end_num=10 HTTP/1.1" 200 96
+INFO 2019-05-21 13:46:57,021 basehttp 124 "GET /subscribe/fastseek/?keyword=%E4%BB%9623425&areas=1&end_num=10 HTTP/1.1" 200 96
+INFO 2019-05-21 13:47:14,832 basehttp 124 "GET /subscribe/fastseek/?keyword=%E4%BB%9623425&areas=1&end_num=10 HTTP/1.1" 200 96
+INFO 2019-05-21 13:47:21,117 basehttp 124 "GET /subscribe/fastseek/?keyword=%E4%BB%96&areas=1&end_num=10 HTTP/1.1" 200 96
+INFO 2019-05-21 13:47:34,238 basehttp 124 "GET /subscribe/fastseek/?keyword=%E4%BB%96&areas=1&end_num=10 HTTP/1.1" 200 96
+INFO 2019-05-21 13:48:07,724 basehttp 124 "GET /subscribe/fastseek/?keyword=%E4%BB%96&areas=1&end_num=10 HTTP/1.1" 200 96
+INFO 2019-05-21 13:48:09,823 basehttp 124 "GET /subscribe/fastseek/?keyword=%E4%BB%96&areas=1&end_num=10 HTTP/1.1" 200 96
+INFO 2019-05-21 13:48:16,087 basehttp 124 "GET /subscribe/fastseek/?keyword=%E4%BB%961&areas=1&end_num=10 HTTP/1.1" 200 96
+INFO 2019-05-21 13:51:45,327 basehttp 124 "GET /subscribe/fastseek/?keyword=%E4%BB%961&areas=1&end_num=10 HTTP/1.1" 200 28
+INFO 2019-05-21 13:51:48,018 basehttp 124 "GET /subscribe/fastseek/?keyword=%E4%BB%961&areas=1&end_num=10 HTTP/1.1" 200 28
+INFO 2019-05-21 13:51:59,215 basehttp 124 "GET /subscribe/fastseek/?keyword=%E4%BB%961&areas=1&end_num=10 HTTP/1.1" 200 28
+INFO 2019-05-21 13:52:15,283 basehttp 124 "GET /subscribe/fastseek/?keyword=%E4%BB%961&areas=1&end_num=10 HTTP/1.1" 200 131
+INFO 2019-05-21 13:52:42,848 basehttp 124 "GET /subscribe/fastseek/?keyword=%E4%BB%961&areas=1&end_num=10 HTTP/1.1" 200 28
+ERROR 2019-05-21 13:55:48,188 exception 135 Internal Server Error: /subscribe/fastseek/
+Traceback (most recent call last):
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/python/Desktop/Upperlower/mall/apps/subscribe/views.py", line 331, in get
+    text = history.zrangebyscore('keyword_%d' % user.id,1)
+TypeError: zrangebyscore() missing 1 required positional argument: 'max'
+ERROR 2019-05-21 13:55:48,383 basehttp 124 "GET /subscribe/fastseek/?keyword=%E4%BB%961&areas=1&end_num=10 HTTP/1.1" 500 18642
+INFO 2019-05-21 13:56:01,593 basehttp 124 "GET /subscribe/fastseek/?keyword=%E4%BB%961&areas=1&end_num=10 HTTP/1.1" 200 45
+INFO 2019-05-21 13:56:07,184 basehttp 124 "GET /subscribe/fastseek/?keyword=%E4%BB%9612&areas=1&end_num=10 HTTP/1.1" 200 53
+INFO 2019-05-21 13:56:11,933 basehttp 124 "GET /subscribe/fastseek/?keyword=%E4%BB%96&areas=1&end_num=10 HTTP/1.1" 200 59
+INFO 2019-05-21 13:56:15,354 basehttp 124 "GET /subscribe/fastseek/?keyword=%E4%BB%964&areas=1&end_num=10 HTTP/1.1" 200 66
+INFO 2019-05-21 13:56:17,219 basehttp 124 "GET /subscribe/fastseek/?keyword=%E4%BB%9645&areas=1&end_num=10 HTTP/1.1" 200 74
+INFO 2019-05-21 13:56:19,457 basehttp 124 "GET /subscribe/fastseek/?keyword=%E4%BB%96456&areas=1&end_num=10 HTTP/1.1" 200 83
+INFO 2019-05-21 13:57:56,009 basehttp 124 "GET /subscribe/fastseek/?keyword=%E4%BB%96456&areas=1&end_num=10 HTTP/1.1" 200 28
+INFO 2019-05-21 14:05:43,080 basehttp 124 "GET /subscribe/fastseek/?keyword=%E4%BB%96456&areas=1&end_num=10 HTTP/1.1" 200 51
+INFO 2019-05-21 14:11:43,545 basehttp 124 "GET /subscribe/fastseek/?keyword=%E4%BB%96456&areas=1&end_num=10 HTTP/1.1" 200 83
+INFO 2019-05-21 14:39:33,520 basehttp 124 "GET /subscribe/info/ HTTP/1.1" 200 2
+INFO 2019-05-21 14:40:03,100 basehttp 124 "GET /subscribe/info/ HTTP/1.1" 200 89
+ERROR 2019-05-21 15:16:43,204 exception 135 Internal Server Error: /subscribe/info/
+Traceback (most recent call last):
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/request.py", line 411, in __getattr__
+    return getattr(self._request, attr)
+AttributeError: 'WSGIRequest' object has no attribute 'bata'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/python/Desktop/Upperlower/mall/apps/subscribe/views.py", line 51, in post
+    dict_data = request.bata
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/request.py", line 413, in __getattr__
+    return self.__getattribute__(attr)
+AttributeError: 'Request' object has no attribute 'bata'
+ERROR 2019-05-21 15:16:43,563 basehttp 124 "POST /subscribe/info/ HTTP/1.1" 500 19084
+ERROR 2019-05-21 15:17:12,871 exception 135 Internal Server Error: /subscribe/info/
+Traceback (most recent call last):
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/request.py", line 411, in __getattr__
+    return getattr(self._request, attr)
+AttributeError: 'WSGIRequest' object has no attribute 'bata'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/python/Desktop/Upperlower/mall/apps/subscribe/views.py", line 51, in post
+    dict_data = request.bata
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/request.py", line 413, in __getattr__
+    return self.__getattribute__(attr)
+AttributeError: 'Request' object has no attribute 'bata'
+ERROR 2019-05-21 15:17:13,175 basehttp 124 "POST /subscribe/info/ HTTP/1.1" 500 19084
+INFO 2019-05-21 15:28:48,270 basehttp 124 "POST /subscribe/info/ HTTP/1.1" 200 29
+WARNING 2019-05-21 15:29:16,171 basehttp 124 "POST /subscribe/info/ HTTP/1.1" 400 75
+WARNING 2019-05-21 15:30:01,808 basehttp 124 "POST /subscribe/info/ HTTP/1.1" 400 35
+WARNING 2019-05-21 15:30:47,031 basehttp 124 "POST /subscribe/info/ HTTP/1.1" 400 35
+WARNING 2019-05-21 15:30:48,949 basehttp 124 "POST /subscribe/info/ HTTP/1.1" 400 35
+INFO 2019-05-21 15:31:50,241 basehttp 124 "POST /subscribe/info/ HTTP/1.1" 200 26
+ERROR 2019-05-21 15:32:21,611 basehttp 124 "POST /subscribe/info/ HTTP/1.1" 507 35
+WARNING 2019-05-21 15:33:16,726 basehttp 124 "POST /subscribe/info/ HTTP/1.1" 400 35
+WARNING 2019-05-21 15:34:46,607 basehttp 124 "POST /subscribe/info/ HTTP/1.1" 400 35
+ERROR 2019-05-21 15:35:03,091 basehttp 124 "POST /subscribe/info/ HTTP/1.1" 507 35
+INFO 2019-05-21 15:35:30,416 basehttp 124 "POST /subscribe/info/ HTTP/1.1" 200 26
+WARNING 2019-05-21 15:38:13,097 basehttp 124 "POST /subscribe/info/ HTTP/1.1" 400 35
+WARNING 2019-05-21 15:38:59,348 basehttp 124 "POST /subscribe/info/ HTTP/1.1" 400 35
+INFO 2019-05-21 15:45:52,955 basehttp 124 "POST /subscribe/info/ HTTP/1.1" 200 26
+INFO 2019-05-21 15:46:50,659 basehttp 124 "POST /subscribe/info/ HTTP/1.1" 200 26
+ERROR 2019-05-21 15:50:14,365 exception 135 Internal Server Error: /subscribe/info/
+Traceback (most recent call last):
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/python/Desktop/Upperlower/mall/apps/subscribe/views.py", line 66, in post
+    serializer.save()
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/serializers.py", line 198, in save
+    "You cannot call `.save()` after accessing `serializer.data`."
+AssertionError: You cannot call `.save()` after accessing `serializer.data`.If you need to access data before committing to the database then inspect 'serializer.validated_data' instead. 
+ERROR 2019-05-21 15:50:14,569 basehttp 124 "POST /subscribe/info/ HTTP/1.1" 500 19057
+INFO 2019-05-21 15:50:22,471 basehttp 124 "POST /subscribe/info/ HTTP/1.1" 200 26
+ERROR 2019-05-21 15:57:10,954 exception 135 Internal Server Error: /subscribe/info/
+Traceback (most recent call last):
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/python/Desktop/Upperlower/mall/apps/subscribe/views.py", line 60, in post
+    if user.bids_set_id is None:
+AttributeError: 'User' object has no attribute 'bids_set_id'
+ERROR 2019-05-21 15:57:11,160 basehttp 124 "POST /subscribe/info/ HTTP/1.1" 500 18632
+ERROR 2019-05-21 15:58:04,129 exception 135 Internal Server Error: /subscribe/info/
+Traceback (most recent call last):
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/python/Desktop/Upperlower/mall/apps/subscribe/views.py", line 60, in post
+    if user.bids_set_id is None:
+AttributeError: 'User' object has no attribute 'bids_set_id'
+ERROR 2019-05-21 15:58:04,405 basehttp 124 "POST /subscribe/info/ HTTP/1.1" 500 18632
+ERROR 2019-05-21 16:00:18,730 exception 135 Internal Server Error: /subscribe/info/
+Traceback (most recent call last):
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/python/Desktop/Upperlower/mall/apps/subscribe/views.py", line 22, in get
+    bid = BidsUserSetting.objects.get(mid=user.id)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/db/models/query.py", line 380, in get
+    self.model._meta.object_name
+subscribe.models.DoesNotExist: BidsUserSetting matching query does not exist.
+ERROR 2019-05-21 16:00:18,931 basehttp 124 "GET /subscribe/info/ HTTP/1.1" 500 18909
+ERROR 2019-05-21 16:01:37,286 exception 135 Internal Server Error: /subscribe/info/
+Traceback (most recent call last):
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/python/Desktop/Upperlower/mall/apps/subscribe/views.py", line 60, in post
+    if user.bids_set_id is None:
+AttributeError: 'User' object has no attribute 'bids_set_id'
+ERROR 2019-05-21 16:01:37,469 basehttp 124 "POST /subscribe/info/ HTTP/1.1" 500 18632
+ERROR 2019-05-21 16:02:55,850 exception 135 Internal Server Error: /subscribe/info/
+Traceback (most recent call last):
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/python/Desktop/Upperlower/mall/apps/subscribe/views.py", line 59, in post
+    bid = BidsUserSetting.objects.get(mid_id=user.id)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/db/models/query.py", line 380, in get
+    self.model._meta.object_name
+subscribe.models.DoesNotExist: BidsUserSetting matching query does not exist.
+ERROR 2019-05-21 16:02:56,007 basehttp 124 "POST /subscribe/info/ HTTP/1.1" 500 19009
+INFO 2019-05-21 16:06:57,420 basehttp 124 "POST /subscribe/info/ HTTP/1.1" 200 26
+INFO 2019-05-21 16:07:21,553 basehttp 124 "POST /subscribe/info/ HTTP/1.1" 200 26
+INFO 2019-05-21 16:25:39,719 basehttp 124 "GET /subscribe/search/?num=10&areas=1,2,3&keywords=%E4%BD%A0,%E6%88%91 HTTP/1.1" 200 32
+ERROR 2019-05-21 16:28:41,667 exception 135 Internal Server Error: /subscribe/search/
+Traceback (most recent call last):
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/python/Desktop/Upperlower/mall/apps/subscribe/views.py", line 119, in get
+    articles = Bids.objects.filter(Q(content__icontains=keyword) | Q(title__icontains=keyword),create_time__gte=get_date(days=remind_time),areas_id__in=list_area).exclude(id__in=id_dict).order_by('-create_time')[begin_num:end＿num]
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/db/models/query.py", line 268, in __getitem__
+    (k.stop is None or k.stop >= 0))), \
+TypeError: unorderable types: str() >= int()
+ERROR 2019-05-21 16:28:41,877 basehttp 124 "GET /subscribe/search/?num=10&areas=1,2,3&keywords=%E4%BD%A0,%E6%88%91 HTTP/1.1" 500 19025
+INFO 2019-05-21 16:29:28,645 basehttp 124 "GET /subscribe/search/?num=10&areas=1,2,3&keywords=%E4%BD%A0,%E6%88%91 HTTP/1.1" 200 15
+ERROR 2019-05-21 16:42:48,017 exception 135 Internal Server Error: /subscribe/search/
+Traceback (most recent call last):
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/python/Desktop/Upperlower/mall/apps/subscribe/views.py", line 120, in get
+    for article in serializer.data:
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/serializers.py", line 765, in data
+    ret = super(ListSerializer, self).data
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/serializers.py", line 262, in data
+    self._data = self.to_representation(self.instance)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/serializers.py", line 683, in to_representation
+    self.child.to_representation(item) for item in iterable
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/serializers.py", line 683, in <listcomp>
+    self.child.to_representation(item) for item in iterable
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/serializers.py", line 527, in to_representation
+    ret[field.field_name] = field.to_representation(attribute)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/fields.py", line 1215, in to_representation
+    value = self.enforce_timezone(value)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/fields.py", line 1163, in enforce_timezone
+    if timezone.is_aware(value):
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/utils/timezone.py", line 261, in is_aware
+    return value.utcoffset() is not None
+AttributeError: 'datetime.date' object has no attribute 'utcoffset'
+ERROR 2019-05-21 16:42:48,171 basehttp 124 "GET /subscribe/search/?num=10&areas=1,2,3&keywords=%E4%BD%A0,%E6%88%91 HTTP/1.1" 500 20140
+ERROR 2019-05-21 16:45:05,729 exception 135 Internal Server Error: /subscribe/search/
+Traceback (most recent call last):
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/python/Desktop/Upperlower/mall/apps/subscribe/views.py", line 117, in get
+    articles = Bids.objects.filter(Q(content__icontains=keyword) | Q(title__icontains=keyword), create_time__gte =end_time, areas_id__in=list_area).exclude(id__in=id_dict).order_by('-create_time')[begin_num:end＿num]
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/db/models/query.py", line 784, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/db/models/query.py", line 802, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/db/models/sql/query.py", line 1250, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/db/models/sql/query.py", line 1276, in _add_q
+    allow_joins=allow_joins, split_subq=split_subq,
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/db/models/sql/query.py", line 1210, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/db/models/sql/query.py", line 1104, in build_lookup
+    return final_lookup(lhs, rhs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/db/models/lookups.py", line 24, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/db/models/lookups.py", line 74, in get_prep_lookup
+    return self.lhs.output_field.get_prep_value(self.rhs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/db/models/fields/__init__.py", line 1296, in get_prep_value
+    return self.to_python(value)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/db/models/fields/__init__.py", line 1271, in to_python
+    params={'value': value},
+django.core.exceptions.ValidationError: ['’2019.05.14‘ 必须为合法的日期格式，请使用 YYYY-MM-DD 格式。']
+ERROR 2019-05-21 16:45:06,210 basehttp 124 "GET /subscribe/search/?num=10&areas=1,2,3&keywords=%E4%BD%A0,%E6%88%91 HTTP/1.1" 500 20921
+INFO 2019-05-21 16:58:36,034 basehttp 124 "GET /subscribe/search/?num=10&areas=1,2,3&keywords=%E4%BD%A0,%E6%88%91 HTTP/1.1" 200 277
+INFO 2019-05-21 16:59:01,419 basehttp 124 "GET /subscribe/search/?num=10&areas=1,2,3&keywords=%E6%9D%A1%E4%BD%A0, HTTP/1.1" 200 277
+INFO 2019-05-21 16:59:15,083 basehttp 124 "GET /subscribe/search/?num=10&areas=1,2,3&keywords=123 HTTP/1.1" 200 15
+INFO 2019-05-21 16:59:23,236 basehttp 124 "GET /subscribe/search/?num=10&areas=1,2,3&keywords=%E4%BD%A0%E6%88%91%E4%BB%96 HTTP/1.1" 200 15
+INFO 2019-05-21 16:59:32,586 basehttp 124 "GET /subscribe/search/?num=10&areas=1,2,3&keywords=%E6%9C%89%E5%90%97 HTTP/1.1" 200 15
+INFO 2019-05-21 17:10:58,945 basehttp 124 "GET /subscribe/search/?keywords=%E6%9C%89%E5%90%97 HTTP/1.1" 200 23
+ERROR 2019-05-21 20:25:20,545 exception 135 Internal Server Error: /subscribe/article/
+Traceback (most recent call last):
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/python/Desktop/Upperlower/mall/apps/subscribe/views.py", line 222, in get
+    "article": serializers.data,
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/serializers.py", line 765, in data
+    ret = super(ListSerializer, self).data
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/serializers.py", line 262, in data
+    self._data = self.to_representation(self.instance)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/serializers.py", line 683, in to_representation
+    self.child.to_representation(item) for item in iterable
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/serializers.py", line 683, in <listcomp>
+    self.child.to_representation(item) for item in iterable
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/serializers.py", line 527, in to_representation
+    ret[field.field_name] = field.to_representation(attribute)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/fields.py", line 1215, in to_representation
+    value = self.enforce_timezone(value)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/fields.py", line 1163, in enforce_timezone
+    if timezone.is_aware(value):
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/utils/timezone.py", line 261, in is_aware
+    return value.utcoffset() is not None
+AttributeError: 'datetime.date' object has no attribute 'utcoffset'
+ERROR 2019-05-21 20:25:20,663 basehttp 124 "GET /subscribe/article/?pk=1 HTTP/1.1" 500 20008
+INFO 2019-05-21 20:27:58,830 basehttp 124 "GET /subscribe/article/?pk=1 HTTP/1.1" 200 36
+ERROR 2019-05-21 20:28:12,123 exception 135 Internal Server Error: /subscribe/article/
+Traceback (most recent call last):
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 483, in dispatch
+    response = self.handle_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 443, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/views.py", line 480, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/home/python/Desktop/Upperlower/mall/apps/subscribe/views.py", line 205, in get
+    "article": serializers.data,
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/serializers.py", line 765, in data
+    ret = super(ListSerializer, self).data
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/serializers.py", line 262, in data
+    self._data = self.to_representation(self.instance)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/serializers.py", line 683, in to_representation
+    self.child.to_representation(item) for item in iterable
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/serializers.py", line 683, in <listcomp>
+    self.child.to_representation(item) for item in iterable
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/serializers.py", line 527, in to_representation
+    ret[field.field_name] = field.to_representation(attribute)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/fields.py", line 1215, in to_representation
+    value = self.enforce_timezone(value)
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/rest_framework/fields.py", line 1163, in enforce_timezone
+    if timezone.is_aware(value):
+  File "/home/python/.virtualenvs/Django1.1/lib/python3.5/site-packages/django/utils/timezone.py", line 261, in is_aware
+    return value.utcoffset() is not None
+AttributeError: 'datetime.date' object has no attribute 'utcoffset'
+ERROR 2019-05-21 20:28:12,246 basehttp 124 "GET /subscribe/article/?pk=1 HTTP/1.1" 500 20008
+INFO 2019-05-21 20:30:09,537 basehttp 124 "GET /subscribe/article/?pk=1 HTTP/1.1" 200 188
