@@ -1,0 +1,7 @@
+{{ object.company_name }}
+{{ object.industry_involved }}
+{{ object.province }}
+{{ object.phone }}
+{{ object.company_id }}
+{{ object.industriesid }}
+

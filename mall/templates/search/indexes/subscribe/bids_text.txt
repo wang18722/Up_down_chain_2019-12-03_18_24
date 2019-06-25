@@ -1,3 +1,0 @@
-{\{ object.id }\}
-{\{ object.areas_id }\}
-{\{ object.content }\}
