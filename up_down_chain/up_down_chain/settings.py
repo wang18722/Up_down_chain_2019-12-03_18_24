@@ -361,11 +361,11 @@ TEMPLATE_DICT={
 }
 TEMPLATE_URL = 'https://api.weixin.qq.com/cgi-bin/message/template/send?access_token='
 
-
+print(BASE_DIR)
 # 定时任务
 CRONJOBS = [
     #五颗星分别代表: 分, 时, 日, 月, 周
     #设置格式 */时间
     # 每一小时执行一次,redis_client.get("access_token").decode()
-    ('*/1 * * * *', 'up_down_chain.utils.to_access_token.get_access_token', '>> /home/python/Desktop/Up_down_chain/logs/crontab.log')
+    ('*/1 * * * *', 'up_down_chain.app.Users.to_access_token.get_access_token', '>> /home/python/Desktop/up_down_chain/logs/crontab.log')
 ]

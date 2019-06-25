@@ -30,7 +30,7 @@ class ANlmy(models.Model):
 
 
 class BCky(models.Model):
-    company_id = models.CharField(primary_key=True, max_length=200)
+    company_id = models.CharField(max_length=200)
     unified_social_credit_code = models.CharField(db_column='Unified_social_credit_code', max_length=50, blank=True, null=True)  # Field name made lowercase.
     registered_capital = models.CharField(max_length=255, blank=True, null=True)
     status = models.CharField(max_length=50, blank=True, null=True)
@@ -45,16 +45,19 @@ class BCky(models.Model):
     official_website = models.CharField(max_length=2000, blank=True, null=True)
     business_address = models.CharField(db_column='Business_address', max_length=255, blank=True, null=True)  # Field name made lowercase.
     business_scope = models.TextField(blank=True, null=True)
-    company_name = models.CharField(max_length=255, blank=True, null=True)
+    company_name = models.CharField(primary_key=True,max_length=255)
     registration_mark = models.CharField(max_length=255, blank=True, null=True)
     province = models.CharField(db_column='Province', max_length=255, blank=True, null=True)  # Field name made lowercase.
     kind = models.TextField(db_column='Kind', blank=True, null=True)  # Field name made lowercase.
     industries = models.CharField(max_length=50, blank=True, null=True)
     industriesid = models.CharField(max_length=5, blank=True, null=True)
+    id = models.CharField(primary_key=True, max_length=50)
 
     class Meta:
         managed = False
         db_table = 'b_cky'
+
+
 
 
 class CZzy(models.Model):

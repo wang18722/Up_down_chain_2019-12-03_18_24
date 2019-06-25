@@ -28,7 +28,3 @@ def Caltime(begin_time):
 
     # 返回两个变量相差的值，就是相差天数
     return date2 - date1
-
-
-import random
-# print(time.timezone.now().strftime('%Y%m%d%H%M%S') + ('%09d' % random.randint(100000000, 999999999)))

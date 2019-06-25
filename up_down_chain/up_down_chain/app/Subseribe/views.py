@@ -1,4 +1,6 @@
 import re
+
+from drf_haystack.generics import HaystackGenericAPIView
 from drf_haystack.viewsets import HaystackViewSet
 from rest_framework import status
 from rest_framework.generics import GenericAPIView
@@ -226,6 +228,24 @@ class BidsSearchViewSet(HaystackViewSet):
     serializer_class = BidsIndexSerializer
     pagination_class = EnterprisePageNum
 
+    def get_queryset(self, index_models=[]):
+        """
+        Get the list of items for this view.
+        Returns ``self.queryset`` if defined and is a ``self.object_class``
+        instance.
+
+        @:param index_models: override `self.index_models`
+        """
+        if self.queryset is not None and isinstance(self.queryset, self.object_class):
+            queryset = self.queryset.all().order_by("-CreateTime")
+        else:
+            queryset = self.object_class()._clone().order_by("-CreateTime")
+            if len(index_models):
+                queryset = queryset.models(*index_models)
+            elif len(self.index_models):
+                queryset = queryset.models(*self.index_models)
+        return queryset
+
     def list(self, request, *args, **kwargs):
         """
         列表获取
@@ -270,7 +290,7 @@ class BidsSearchViewSet(HaystackViewSet):
                         data_ditc_content[time] = names['list_%s' % i]
                 i += 1
 
-            return Response({"content":data_ditc_content})
+            return Response({"content":data_ditc_content,"num":len(queryset)})
         return Response({"message": False})
 
     def retrieve(self, request, *args, **kwargs):

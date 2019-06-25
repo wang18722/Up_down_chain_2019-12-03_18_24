@@ -11,8 +11,8 @@ class ANlmyIndex(indexes.SearchIndex, indexes.Indexable):
     industry_involved = indexes.CharField(model_attr='industry_involved',null=True)
     province = indexes.CharField(model_attr='province',null=True)
     phone = indexes.CharField(model_attr='phone',null=True)
-    id = indexes.CharField(model_attr='company_id')
-    # id = indexes.IntegerField(model_attr='id')
+    company_id = indexes.CharField(model_attr='company_id')
+    id = indexes.IntegerField(model_attr='id')
     industriesid = indexes.CharField(model_attr='industriesid', null=True)
 
 
@@ -33,15 +33,15 @@ class BCkyIndex(indexes.SearchIndex, indexes.Indexable):
     BCky索引数据模型类
     """
     text = indexes.CharField(document=True, use_template=True)
+
     industry_involved = indexes.CharField(model_attr='industry_involved', null=True)
     province = indexes.CharField(model_attr='province', null=True)
     phone = indexes.CharField(model_attr='phone', null=True)
-    id = indexes.CharField(model_attr='company_id')
-    # id = indexes.IntegerField(model_attr='id')
+    company_id = indexes.CharField(model_attr='company_id')
+    id = indexes.CharField(model_attr='id')
     industriesid = indexes.CharField(model_attr='industriesid', null=True)
 
-
-    company_name = indexes.CharField(model_attr='company_name',null=True)
+    company_nameid = indexes.CharField(model_attr='company_name',null=True)
 
     def get_model(self):
         """返回建立索引的模型类"""
@@ -61,8 +61,8 @@ class CZzyIndex(indexes.SearchIndex, indexes.Indexable):
     industry_involved = indexes.CharField(model_attr='industry_involved', null=True)
     province = indexes.CharField(model_attr='province', null=True)
     phone = indexes.CharField(model_attr='phone', null=True)
-    id = indexes.CharField(model_attr='company_id')
-    # id = indexes.IntegerField(model_attr='id')
+    company_id = indexes.CharField(model_attr='company_id')
+    id = indexes.IntegerField(model_attr='id')
     industriesid = indexes.CharField(model_attr='industriesid', null=True)
 
     def get_model(self):
@@ -85,8 +85,8 @@ class DDrrsgyIndex(indexes.SearchIndex, indexes.Indexable):
     industry_involved = indexes.CharField(model_attr='industry_involved', null=True)
     province = indexes.CharField(model_attr='province', null=True)
     phone = indexes.CharField(model_attr='phone', null=True)
-    id = indexes.CharField(model_attr='company_id')
-    # id = indexes.IntegerField(model_attr='id')
+    company_id = indexes.CharField(model_attr='company_id')
+    id = indexes.IntegerField(model_attr='id')
     industriesid = indexes.CharField(model_attr='industriesid', null=True)
 
     def get_model(self):
@@ -108,8 +108,8 @@ class EJzyIndex(indexes.SearchIndex, indexes.Indexable):
     industry_involved = indexes.CharField(model_attr='industry_involved', null=True)
     province = indexes.CharField(model_attr='province', null=True)
     phone = indexes.CharField(model_attr='phone', null=True)
-    id = indexes.CharField(model_attr='company_id')
-    # id = indexes.IntegerField(model_attr='id')
+    company_id = indexes.CharField(model_attr='company_id')
+    id = indexes.IntegerField(model_attr='id')
     industriesid = indexes.CharField(model_attr='industriesid', null=True)
 
     def get_model(self):
@@ -119,6 +119,7 @@ class EJzyIndex(indexes.SearchIndex, indexes.Indexable):
     def index_queryset(self, using=None):
         """返回要建立索引的数据查询集"""
         return self.get_model().objects.filter()
+
 class FPflsyIndex(indexes.SearchIndex, indexes.Indexable):
     """
     FPflsy索引数据模型类
@@ -130,8 +131,8 @@ class FPflsyIndex(indexes.SearchIndex, indexes.Indexable):
     industry_involved = indexes.CharField(model_attr='industry_involved', null=True)
     province = indexes.CharField(model_attr='province', null=True)
     phone = indexes.CharField(model_attr='phone', null=True)
-    id = indexes.CharField(model_attr='company_id')
-    # id = indexes.IntegerField(model_attr='id')
+    company_id = indexes.CharField(model_attr='company_id')
+    id = indexes.IntegerField(model_attr='id')
     industriesid = indexes.CharField(model_attr='industriesid', null=True)
 
     def get_model(self):
@@ -151,8 +152,8 @@ class GJcyIndex(indexes.SearchIndex, indexes.Indexable):
     industry_involved = indexes.CharField(model_attr='industry_involved', null=True)
     province = indexes.CharField(model_attr='province', null=True)
     phone = indexes.CharField(model_attr='phone', null=True)
-    id = indexes.CharField(model_attr='company_id')
-    # id = indexes.IntegerField(model_attr='id')
+    company_id = indexes.CharField(model_attr='company_id')
+    id = indexes.IntegerField(model_attr='id')
     industriesid = indexes.CharField(model_attr='industriesid', null=True)
 
     def get_model(self):
@@ -173,8 +174,8 @@ class HZscyyIndex(indexes.SearchIndex, indexes.Indexable):
     industry_involved = indexes.CharField(model_attr='industry_involved', null=True)
     province = indexes.CharField(model_attr='province', null=True)
     phone = indexes.CharField(model_attr='phone', null=True)
-    id = indexes.CharField(model_attr='company_id')
-    # id = indexes.IntegerField(model_attr='id')
+    company_id = indexes.CharField(model_attr='company_id')
+    id = indexes.IntegerField(model_attr='id')
     industriesid = indexes.CharField(model_attr='industriesid', null=True)
 
 
@@ -196,8 +197,8 @@ class IXxrjyIndex(indexes.SearchIndex, indexes.Indexable):
     industry_involved = indexes.CharField(model_attr='industry_involved', null=True)
     province = indexes.CharField(model_attr='province', null=True)
     phone = indexes.CharField(model_attr='phone', null=True)
-    id = indexes.CharField(model_attr='company_id')
-    # id = indexes.IntegerField(model_attr='id')
+    company_id = indexes.CharField(model_attr='company_id')
+    id = indexes.IntegerField(model_attr='id')
     industriesid = indexes.CharField(model_attr='industriesid', null=True)
 
     def get_model(self):
@@ -217,8 +218,8 @@ class JJryIndex(indexes.SearchIndex, indexes.Indexable):
     industry_involved = indexes.CharField(model_attr='industry_involved', null=True)
     province = indexes.CharField(model_attr='province', null=True)
     phone = indexes.CharField(model_attr='phone', null=True)
-    id = indexes.CharField(model_attr='company_id')
-    # id = indexes.IntegerField(model_attr='id')
+    company_id = indexes.CharField(model_attr='company_id')
+    id = indexes.IntegerField(model_attr='id')
     industriesid = indexes.CharField(model_attr='industriesid', null=True)
 
     def get_model(self):
@@ -239,8 +240,8 @@ class KFdcyIndex(indexes.SearchIndex, indexes.Indexable):
     industry_involved = indexes.CharField(model_attr='industry_involved', null=True)
     province = indexes.CharField(model_attr='province', null=True)
     phone = indexes.CharField(model_attr='phone', null=True)
-    id = indexes.CharField(model_attr='company_id')
-    # id = indexes.IntegerField(model_attr='id')
+    company_id = indexes.CharField(model_attr='company_id')
+    id = indexes.IntegerField(model_attr='id')
     industriesid = indexes.CharField(model_attr='industriesid', null=True)
 
     def get_model(self):
@@ -262,8 +263,8 @@ class LZlswIndex(indexes.SearchIndex, indexes.Indexable):
     industry_involved = indexes.CharField(model_attr='industry_involved', null=True)
     province = indexes.CharField(model_attr='province', null=True)
     phone = indexes.CharField(model_attr='phone', null=True)
-    id = indexes.CharField(model_attr='company_id')
-    # id = indexes.IntegerField(model_attr='id')
+    company_id = indexes.CharField(model_attr='company_id')
+    id = indexes.IntegerField(model_attr='id')
     industriesid = indexes.CharField(model_attr='industriesid', null=True)
 
     def get_model(self):
@@ -282,8 +283,8 @@ class MKyjsIndex(indexes.SearchIndex, indexes.Indexable):
     industry_involved = indexes.CharField(model_attr='industry_involved', null=True)
     province = indexes.CharField(model_attr='province', null=True)
     phone = indexes.CharField(model_attr='phone', null=True)
-    id = indexes.CharField(model_attr='company_id')
-    # id = indexes.IntegerField(model_attr='id')
+    company_id = indexes.CharField(model_attr='company_id')
+    id = indexes.IntegerField(model_attr='id')
     company_name = indexes.CharField(model_attr='company_name',null=True)
     industriesid = indexes.CharField(model_attr='industriesid', null=True)
 
@@ -305,8 +306,8 @@ class NSlhjggIndex(indexes.SearchIndex, indexes.Indexable):
     industry_involved = indexes.CharField(model_attr='industry_involved', null=True)
     province = indexes.CharField(model_attr='province', null=True)
     phone = indexes.CharField(model_attr='phone', null=True)
-    id = indexes.CharField(model_attr='company_id')
-    # id = indexes.IntegerField(model_attr='id')
+    company_id = indexes.CharField(model_attr='company_id')
+    id = indexes.IntegerField(model_attr='id')
     industriesid = indexes.CharField(model_attr='industriesid', null=True)
 
     def get_model(self):
@@ -327,8 +328,8 @@ class OJmxlIndex(indexes.SearchIndex, indexes.Indexable):
     industry_involved = indexes.CharField(model_attr='industry_involved', null=True)
     province = indexes.CharField(model_attr='province', null=True)
     phone = indexes.CharField(model_attr='phone', null=True)
-    id = indexes.CharField(model_attr='company_id')
-    # id = indexes.IntegerField(model_attr='id')
+    company_id = indexes.CharField(model_attr='company_id')
+    id = indexes.IntegerField(model_attr='id')
     industriesid = indexes.CharField(model_attr='industriesid', null=True)
 
     def get_model(self):
@@ -349,8 +350,8 @@ class PJyIndex(indexes.SearchIndex, indexes.Indexable):
     industry_involved = indexes.CharField(model_attr='industry_involved', null=True)
     province = indexes.CharField(model_attr='province', null=True)
     phone = indexes.CharField(model_attr='phone', null=True)
-    id = indexes.CharField(model_attr='company_id')
-    # id = indexes.IntegerField(model_attr='id')
+    company_id = indexes.CharField(model_attr='company_id')
+    id = indexes.IntegerField(model_attr='id')
     industriesid = indexes.CharField(model_attr='industriesid', null=True)
 
     def get_model(self):
@@ -371,8 +372,8 @@ class QWsshIndex(indexes.SearchIndex, indexes.Indexable):
     industry_involved = indexes.CharField(model_attr='industry_involved', null=True)
     province = indexes.CharField(model_attr='province', null=True)
     phone = indexes.CharField(model_attr='phone', null=True)
-    id = indexes.CharField(model_attr='company_id')
-    # id = indexes.IntegerField(model_attr='id')
+    company_id = indexes.CharField(model_attr='company_id')
+    id = indexes.IntegerField(model_attr='id')
     industriesid = indexes.CharField(model_attr='industriesid', null=True)
 
     def get_model(self):
@@ -382,6 +383,7 @@ class QWsshIndex(indexes.SearchIndex, indexes.Indexable):
     def index_queryset(self, using=None):
         """返回要建立索引的数据查询集"""
         return self.get_model().objects.filter()
+
 class RWtyIndex(indexes.SearchIndex, indexes.Indexable):
     """
     RWty索引数据模型类
@@ -392,8 +394,8 @@ class RWtyIndex(indexes.SearchIndex, indexes.Indexable):
     industry_involved = indexes.CharField(model_attr='industry_involved', null=True)
     province = indexes.CharField(model_attr='province', null=True)
     phone = indexes.CharField(model_attr='phone', null=True)
-    id = indexes.CharField(model_attr='company_id')
-    # id = indexes.IntegerField(model_attr='id')
+    company_id = indexes.CharField(model_attr='company_id')
+    id = indexes.IntegerField(model_attr='id')
     industriesid = indexes.CharField(model_attr='industriesid', null=True)
 
     def get_model(self):
@@ -403,6 +405,7 @@ class RWtyIndex(indexes.SearchIndex, indexes.Indexable):
     def index_queryset(self, using=None):
         """返回要建立索引的数据查询集"""
         return self.get_model().objects.filter()
+
 class SGgshIndex(indexes.SearchIndex, indexes.Indexable):
     """
     SGgsh索引数据模型类
@@ -414,8 +417,8 @@ class SGgshIndex(indexes.SearchIndex, indexes.Indexable):
     industry_involved = indexes.CharField(model_attr='industry_involved', null=True)
     province = indexes.CharField(model_attr='province', null=True)
     phone = indexes.CharField(model_attr='phone', null=True)
-    id = indexes.CharField(model_attr='company_id')
-    # id = indexes.IntegerField(model_attr='id')
+    company_id = indexes.CharField(model_attr='company_id')
+    id = indexes.IntegerField(model_attr='id')
     industriesid = indexes.CharField(model_attr='industriesid', null=True)
 
 
