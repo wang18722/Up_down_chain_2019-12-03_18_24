@@ -38,7 +38,12 @@ class EnterpriseCertificationInfo(models.Model):
     opinion = models.CharField(max_length=100,verbose_name = "审核意见",null=True)
     province = models.CharField(max_length=20,verbose_name="省份",null=True)
     industry = models.CharField(max_length=100,verbose_name="行业",null=True)
+    username = models.CharField(max_length=100,verbose_name="用户名",null=True)
     demand_config = models.CharField(max_length=120, verbose_name="配置需求", default='1')
+    recommended = models.IntegerField(default=0, verbose_name="推荐数", null=True)
+    access = models.IntegerField(default=0, verbose_name="访问数", null=True)
+    kind = models.TextField(verbose_name="主营&企业标签", null=True)
+    lndividual_labels = models.TextField(verbose_name="个人标签", null=True)
 
 
     class Meta:
@@ -47,7 +52,7 @@ class EnterpriseCertificationInfo(models.Model):
 
 class Top_up_Payment(models.Model):
     """支付充值表"""
-    balance = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="总金额")
+    balance = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="总金额",default=0)
     userid = models.ForeignKey(EnterpriseCertificationInfo, on_delete=models.CASCADE)
 
     class Meta:
@@ -157,7 +162,6 @@ class ConsumptionRecord(models.Model):
         db_table = "db_ConsumptionRecord"
 
 class PayCertificationInfo(models.Model):
-
     """认证记录表"""
     order_id = models.CharField(max_length=100,verbose_name="订单id",primary_key=True)
     user_id = models.CharField(max_length=15,verbose_name="用户")
@@ -166,6 +170,7 @@ class PayCertificationInfo(models.Model):
     company_name = models.CharField(max_length=100,verbose_name="企业名称")
     mobile = models.CharField(max_length=20,verbose_name="联系人电话")
     name = models.CharField(max_length=20,verbose_name="联系人")
+   # create_time = models.DateTimeField(auto_now_add=True,verbose_name="生成时间")
 
     class Meta:
-        db_table = "db_PayCertificationInfo"
+        db_table = "PayCertificationInfo"

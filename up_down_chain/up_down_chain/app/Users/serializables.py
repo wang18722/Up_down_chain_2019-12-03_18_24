@@ -86,8 +86,8 @@ class EnterpriseCertificationSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError("手机号格式不正确")
         return attrs
 
-
     def create(self, validated_data):
+        print(validated_data)
         obj = EnterpriseCertificationInfo.objects.create(**validated_data)
 
         return obj
@@ -158,11 +158,36 @@ class PayCertificationSerializer(serializers.ModelSerializer):
         model = PayCertificationInfo
         fields = "__all__"
 
-    def validate_phone(self, attrs):
-        """验证手机号或电话号码"""
-        if not re.match(r"^1[3-9]\d{9}",attrs):
-            raise serializers.ValidationError("手机号格式不正确")
-        return attrs
+   
     def create(self, validated_data):
 
         return PayCertificationInfo.objects.create(**validated_data)
+
+class CreatePurseSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Top_up_Payment
+        fields = "__all__"
+
+    def create(self, validated_data):
+        print(validated_data)
+
+        return Top_up_Payment.objects.create(**validated_data)
+
+class ObtainAuthenticationAuditTemplateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = EnterpriseCertificationInfo
+        fields = "__all__"
+
+
+class  PayCertificationInfoSerializer(serializers.ModelSerializer):
+    """订单记录更新"""
+    class Meta:
+        model = PayCertificationInfo
+        fields = ("company_name",)
+
+    def update(self, instance, validated_data):
+        instance.company_name=validated_data["company_name"]
+
+        instance.save()
+        return instance
+

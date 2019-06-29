@@ -28,3 +28,25 @@ class OrderInfo(models.Model):
     class Meta:
         db_table = "payment_record"
         verbose_name = "支付记录表"
+
+class RechargeModel(models.Model):
+    """充值记录表"""
+    pay_order = models.CharField(max_length=64,verbose_name="支付订单号")
+    pay_state = models.SmallIntegerField(default=0,verbose_name="支付状态")
+    total_fee = models.DecimalField(max_digits=10,decimal_places=2,verbose_name="总金额")
+    mid = models.ForeignKey(CustomerInformation,on_delete=models.CASCADE,verbose_name="用户")
+    create_time = models.DateField(auto_now_add=True,verbose_name="充值时间")
+
+    class Meta:
+        db_table = "recharge_record"
+        verbose_name = "充值记录"
+
+class SmsCallback(models.Model):
+    """信息回调模型类"""
+    status = models.CharField(max_length=10,verbose_name="状态",null=True)
+    batchId = models.CharField(max_length=500,verbose_name="信息数组",null=True)
+    errorCode = models.CharField(max_length=50,verbose_name="错误代码",null=True)
+
+    class Meta:
+        db_table = "db_SmsCallback"
+        verbose_name = "信息回调"

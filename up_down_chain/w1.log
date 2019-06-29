@@ -1,0 +1,7 @@
+[2019-06-25 15:46:03,663: INFO/MainProcess] Connected to redis://127.0.0.1:6379/14
+[2019-06-25 15:46:03,673: INFO/MainProcess] mingle: searching for neighbors
+[2019-06-25 15:46:04,696: INFO/MainProcess] mingle: all alone
+[2019-06-25 15:46:04,710: WARNING/MainProcess] /root/.virtualenvs/task/lib/python3.5/site-packages/celery/fixups/django.py:200: UserWarning: Using settings.DEBUG leads to a memory leak, never use this setting in production environments!
+  warnings.warn('Using settings.DEBUG leads to a memory leak, never '
+[2019-06-25 15:46:04,710: INFO/MainProcess] w1@cloud.cloud ready.
+[2019-06-25 15:47:09,211: INFO/MainProcess] Received task: send_sms_code[c0af2fdb-3a2e-4cb0-84b6-8ac7671224a7]  

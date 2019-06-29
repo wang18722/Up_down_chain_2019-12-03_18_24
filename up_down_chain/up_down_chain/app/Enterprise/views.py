@@ -24,6 +24,7 @@ from Enterprise.models import *
 from Enterprise.utils import EnterprisesPageNum, value, num_func, EnterprisePageNum
 # from Users.models import User
 from Industry.models import *
+from Monitor.utils import monitor
 from Subseribe.models import Bids
 from Subseribe.views import BidsSearchView
 from Users.models import EnterpriseCertificationInfo
@@ -40,45 +41,66 @@ class IndexView(APIView):
     # permission_classes = [IsAuthenticated]
 
     def get(self, request):
+        try:
+            token = jwt_decode_handler(request.query_params['token'])
+        except:
+            return Response({"token_state": False})
 
-        token = jwt_decode_handler(request.query_params['token'])
+        monitor(token, "index/info")
 
 
         try:
 
-            data = EnterpriseCertificationInfo.objects.filter(user=token["user_id"],identity_status=True)
+            data = EnterpriseCertificationInfo.objects.filter(user=token["user_id"],identity_status=2).first()
         except:
             return Response({"massage":False})
-        if data.exists() == False:
+        if data:
+            data_info = {
+                    "enterprise": data.name,  # 企业名字
+                    "enterpriseid": data.company_id,  # 企业id
+                    "code": 0,  # 成功
+                    "industryid": data.industryid,  # 行业
+                    # 临时数据推荐数量和访问数量
+                    "identity_status": True,
+                    "count": data.access,  # 访问数总量
+                    "number": data.recommended,  # 推荐数
+                    "matching":0,
+                }
+            return Response(data_info)
+
+        #if data.exists() == False:
             # 随机
-            num = random.randint(1, 19)
+        num = random.randint(1, 19)
 
-            i = value(num)
+        i = value(num)
             # print(i)
-            list_data = globals()[i].objects.filter()
-            sample = random.sample(xrange(list_data.count()), 1)
+        list_data = globals()[i].objects.filter()
+        sample = random.sample(xrange(list_data.count()), 1)
 
-            result = [list_data[i] for i in sample]
+        result = [list_data[i] for i in sample]
             # 字符串类查询
-            j = num_func(num)
-            str_num = str(result[0].company_id)
+        j = num_func(num)
+        str_num = str(result[0].company_id)
             # # obj_data = globals()[j].objects.filter(company_id=result[0].company_id).first()
-            obj_data = globals()[j].objects.get(company_id=str_num)
-            obj_data.access_count += 1
-            obj_data.save()
+        obj_data = globals()[j].objects.get(company_id=str_num)
+        obj_data.access_count += 1
+        obj_data.save()
 
             # 分割出所有
-            kind = result[0].kind
+        kind = result[0].kind
 
-            if  kind:
+        if  kind:
 
-                print(kind)
-                matching = kind.split("|")
-                print(matching)
-                for i in matching:
-                    bids = Bids.objects.fliter(Title_contains=i).first()
-
-                data_dict = {
+                #print(kind)
+            matching = kind.split("|")
+                #print(matching)
+            dids_list = []
+            for i in matching:
+                bids = Bids.objects.filter(Title__contains=i)
+                for p in bids:
+                    dids_list.append(p)
+		
+            data_dict = {
                     "enterprise": result[0].company_name,  # 企业名字
                     "enterpriseid": result[0].company_id,  # 行业id
                     "code": 0,  # 成功
@@ -86,10 +108,11 @@ class IndexView(APIView):
                     # 临时数据推荐数量和访问数量
                     "identity_status": False,
                     "count": obj_data.access_count,  # 访问数总量
-                    "number": obj_data.recommended_count  # 推荐数
+                    "number": obj_data.recommended_count,  # 推荐数
+                    "matching":len(dids_list),
                 }
-                return Response(data_dict)
-            data_dict = {
+            return Response(data_dict)
+        data_dict = {
                 "enterprise": result[0].company_name,  # 企业名字
                 "enterpriseid": result[0].company_id,  # 行业id
                 "code": 0,  # 成功
@@ -101,57 +124,9 @@ class IndexView(APIView):
                 "matching":0,
 
             }
-            return Response(data_dict)
-        else:
-            if data[0].industryid:
-                i = value(int())
-                # print(i)
-                list_data = globals()[i].objects.get(company_id=data[0].company_id)
-                j = num_func(i)
-                str_num = str(list_data[0].company_id)
-                # # obj_data = globals()[j].objects.filter(company_id=result[0].company_id).first()
-                obj_data = globals()[j].objects.get(company_id=str_num)
-
-                # 匹配kind的信息
-
-                kind = list_data[0].kind
-                if kind:
-
-                    print(kind)
-                    matching = kind.split("|")
-                    print(matching)
-                    for i in matching:
-                        bids = Bids.objects.fliter(Title__contains=i).first()
-
-                    data = {
-                        "enterprise": list_data[0].company_name,  # 企业名字
-                        "enterpriseid": list_data[0].company_id,  # 行业id
-                        "code": 0,  # 成功
-                        "industryid": data.industryid,  # 行业
-                        # 临时数据推荐数量和访问数量
-                        "count": obj_data.access_count,  # 访问数总量
-                        "number": obj_data.recommended_count,  # 推荐数
-                        "identity_status": True,
-                        "matching": 0,
-                    }
-                    return Response(data)
-                data = {
-                    "enterprise": list_data[0].company_name,  # 企业名字
-                    "enterpriseid": list_data[0].company_id,  # 行业id
-                    "code": 0,  # 成功
-                    "industryid": data.industryid,  # 行业
-                    # 临时数据推荐数量和访问数量
-                    "count": obj_data.access_count,  # 访问数总量
-                    "number": obj_data.recommended_count,  # 推荐数
-                    "identity_status": True,
-                    "matching": 0,
-                }
-
-                return Response(data)
-
-            return Response(data)
-
-
+        return Response(data_dict)
+     
+           
 
 class IndexIndustryView(APIView):
     """下链省份数据返回"""
@@ -227,7 +202,6 @@ class IndexIndustryView(APIView):
 
         return Response(zong_list, status=200)
 
-
 class UpIndexIndustryView(APIView):
     """上链数据返回"""
 
@@ -278,45 +252,6 @@ class UpIndexIndustryView(APIView):
 
         return Response(zong_list)
 
-
-# class DefaultView(GenericAPIView):
-#     """默认首页"""
-#
-#     def post(self, request):
-#         # 1.获取传回来的指定功能参数
-#         data = request.data
-#         # 2.如果拿获取到的数据对应修改
-#         try:
-#             # 查询对应的企业和用户的信息
-#             obj = Function.objects.filter(user_id=data["user"])
-#             if obj[0].default_page and data["default_page"] == True:
-#                 return Response({"message": "你已经有默认企业"})
-#             state = Function.objects.filter(user_id=data["user"], company_id=data["company_id"])
-#
-#             if data["default_page"] == True and state.exists() == False:
-#
-#                 # 保存状态操作
-#                 serializer = DefaultSerializer(data=data, partial=True)
-#
-#                 if serializer.is_valid():
-#                     serializer.save()
-#                     return Response({"state": 1})
-#                 else:
-#                     return Response(serializer.errors)
-#
-#                     # 更新操作
-#             serializer = DefaultSerializer(state, data=data, partial=True)
-#
-#             if serializer.is_valid():
-#                 serializer.save()
-#                 return Response({"state": 1})
-#             else:
-#                 return Response(serializer.errors)
-#
-#         except:
-#             return Response({"message": "程序出错"})
-
-
 class RecommendedView(GenericAPIView):
     """我推荐"""
 
@@ -357,7 +292,6 @@ class RecommendedView(GenericAPIView):
         except:
             return Response({"message": "程序出错"})
 
-
 class BasicInformationView(APIView):
     """企业基本信息实现"""
 
@@ -381,8 +315,6 @@ class BasicInformationView(APIView):
         }
         return Response(data)
 
-
-
 class ListView(APIView):
     """实现列表数据返回功能"""
     # permission_classes = [IsAuthenticated]
@@ -390,12 +322,16 @@ class ListView(APIView):
     def get(self, request):
         # 获取用户点击的维度名称
         # 1.下链需要获取的参数
+        try:
+            token = jwt_decode_handler(request.query_params['token'])
+        except:
+            return Response({"token_state": False})
         conn = get_redis_connection("default")
         logo = request.GET["logo"]
         provinces = request.GET['provinces']
         industryid = request.GET['industryid']
         # name = request.GET['name']
-        token = jwt_decode_handler(request.query_params['token'])
+
         print(token)
         name = token["username"]
         if logo == "down":
@@ -509,14 +445,15 @@ class ListView(APIView):
         # result = [serializer.data[i] for i in sample]
         return Response(data)
 
-
-
 class InBatchView(APIView):
     """换一批"""
 
     def get(self, request):
         # 连接redis数据库
-        token = jwt_decode_handler(request.query_params['token'])
+        try:
+            token = jwt_decode_handler(request.query_params['token'])
+        except:
+            return Response({"token_state": False})
         conn = get_redis_connection("default")
         # 获取存在redis的数据
         data = conn.get(token["username"])
@@ -551,15 +488,11 @@ class InBatchView(APIView):
 
         return Response(data)
 
-
-
-
-
 class ColumnView(APIView):
     """首页随机认证滚动条"""
 
     def get(self, request):
-        num = random.randint(1, 20)
+        num = random.randint(1, 19)
         i = value(num)
         # print(i)
         list_data = globals()[i].objects.filter()
@@ -572,9 +505,6 @@ class ColumnView(APIView):
         }
 
         return Response(data)
-
-
-
 
 class SearchFunctionView(APIView):
     """访问和推荐数"""
@@ -647,8 +577,6 @@ class SingleIndustryView(APIView):
 
         return Response(serializer.data)
 
-
-
 class AreasViews(ListAPIView):
     """
     地区信息
@@ -659,7 +587,6 @@ class AreasViews(ListAPIView):
     # @cache_response(timeout=60 * 60, cache='default')
     #def get(self, request, *args, **kwargs):
     #    return self.list(self, request, *args, **kwargs)
-
 
 class EnterpriseMarketingView(ListAPIView):
     """

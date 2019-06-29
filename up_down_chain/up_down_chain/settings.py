@@ -57,6 +57,8 @@ INSTALLED_APPS = [
     'Subseribe.apps.SubseribeConfig',
     'oauth.apps.OauthConfig',
     'Industry.apps.IndustryConfig',
+    'Monitor.apps.MonitorConfig',
+    'Center.apps.CenterConfig',
 
 
 ]
@@ -94,6 +96,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'up_down_chain.wsgi.application'
 
 # Database
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',  # 数据库引擎
@@ -105,7 +108,7 @@ DATABASES = {
     },
     'industry': {
         'ENGINE': 'django.db.backends.mysql',  # 数据库引擎
-        'NAME': 'industry',  # 你要存储数据的库名，事先要创建之
+        'NAME': 'Original_DB',  # 你要存储数据的库名，事先要创建之
         'USER': 'root',  # 数据库用户名
         'PASSWORD': 'mysql',  # 密码
         'HOST': '127.0.0.1',  # 主机
@@ -157,6 +160,20 @@ CACHES = {
     "wechatpy": {
             "BACKEND": "django_redis.cache.RedisCache",
             "LOCATION": "redis://127.0.0.1/5",
+            "OPTIONS": {
+                "CLIENT_CLASS": "django_redis.client.DefaultClient",
+            }
+        },
+    "monitor": {
+            "BACKEND": "django_redis.cache.RedisCache",
+            "LOCATION": "redis://127.0.0.1/6",
+            "OPTIONS": {
+                "CLIENT_CLASS": "django_redis.client.DefaultClient",
+            }
+        },
+    "province_data": {
+            "BACKEND": "django_redis.cache.RedisCache",
+            "LOCATION": "redis://127.0.0.1/7",
             "OPTIONS": {
                 "CLIENT_CLASS": "django_redis.client.DefaultClient",
             }
@@ -247,17 +264,19 @@ LOGGING = {
 }
 
 # 使用自身类去认证
+
 AUTH_USER_MODEL = 'oauth.CustomerInformation'
+
+
 AUTO_INCREMENT = 1
 
-
 # 搜索认证 Haystack
+
 HAYSTACK_CONNECTIONS = {
     'default': {
         'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
         'URL': 'http://192.168.31.73:9200/',  # 此处为elasticsearch运行的服务器ip地址，端口号固定为9200
         'INDEX_NAME': 'task',  # 指定elasticsearch建立的索引库的名称
-
     },
 }
 # 添加此项，当数据库改变时，会自动更新索引，非常方便
@@ -265,14 +284,59 @@ HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
 
 HAYSTACK_SEARCH_RESULT_PER_PAGE = 3
 
-
+# # ----------------------------------------------微信公众号---------------------------------------------- #
+# # 公众号id
+# APPID = 'wx326433af14961e48'
+# # 公众号AppSecret
+# APPSECRET = '55ea50a326f183f17cf4bc2738121de9'
+#
+# # ----------------------------------------------微信商户平台---------------------------------------------- #
+# # 商户id
+# MCH_ID = '7551000001'
+# # 商户API秘钥
+# API_KEY = '9d101c97133837e13dde2d32a5054abb'
+#
+# # ----------------------------------------------回调页面---------------------------------------------- #
+# # 用户授权获取code后的回调页面，如果需要实现验证登录就必须填写
+# REDIRECT_URI = 'http://sxl.weiren.me/sxl'
+# PC_LOGIN_REDIRECT_URI = 'http://sxl.weiren.me/sxl'
+#
+# defaults = {
+#     # 微信内置浏览器获取code微信接口
+#     'wechat_browser_code': 'https://open.weixin.qq.com/connect/oauth2/authorize',
+#     # 微信内置浏览器获取access_token微信接口
+#     'wechat_browser_access_token': 'https://api.weixin.qq.com/sns/oauth2/access_token',
+#     # 微信内置浏览器获取用户信息微信接口
+#     'wechat_browser_user_info': 'https://api.weixin.qq.com/sns/userinfo',
+#     # pc获取登录二维码接口
+#     'pc_QR_code': 'https://open.weixin.qq.com/connect/qrconnect',
+#     # 获取微信公众号access_token接口
+#     'mp_access_token': 'https://api.weixin.qq.com/cgi-bin/token',
+#     # 设置公众号行业接口
+#     'change_industry': 'https://api.weixin.qq.com/cgi-bin/template/api_set_industry',
+#     # 获取公众号行业接口
+#     'get_industry': 'https://api.weixin.qq.com/cgi-bin/template/get_industry',
+#     # 发送模板信息接口
+#     'send_templates_message': 'https://api.weixin.qq.com/cgi-bin/message/template/send',
+#     # 支付下单接口
+#     'order_url': 'https://api.mch.weixin.qq.com/sandboxnew/pay/unifiedorder',
+# }
+#
+# # 拉取用户信息
+# SCOPE = 'snsapi_userinfo'
+# PC_LOGIN_SCOPE = 'snsapi_login'
+# GRANT_TYPE = 'client_credential'
+# STATE = 200
+# LANG = 'zh_CN'
 
 # 添加白名单
 CORS_ORIGIN_ALLOW_ALL = True
-
+#允许所有的请求头
+# CORS_ALLOW_HEADERS = ('*')
 # 添加白名单
 # # CORS
 CORS_ORIGIN_WHITELIST = ("*")
+
 CORS_ALLOW_CREDENTIALS = True  # 允许携带cookie
 
 CORS_ALLOW_METHODS = (
@@ -299,6 +363,41 @@ CORS_ALLOW_HEADERS = (
     'Pragma',
 )
 
+# 收集静态文件
+STATIC_ROOT = os.path.join(os.path.dirname(os.path.dirname(BASE_DIR)), 'front_end_pc/static')
+
+
+#微信部分
+
+PC_LOGIN_REDIRECT_URI = 'http://www.shangxialian.net/index/'
+
+defaults = {
+    # 微信内置浏览器获取code微信接口
+    'wechat_browser_code': 'https://open.weixin.qq.com/connect/oauth2/authorize',
+    # 微信内置浏览器获取access_token微信接口
+    'wechat_browser_access_token': 'https://api.weixin.qq.com/sns/oauth2/access_token',
+    # 微信内置浏览器获取用户信息微信接口
+    'wechat_browser_user_info': 'https://api.weixin.qq.com/sns/userinfo',
+    # pc获取登录二维码接口
+    'pc_QR_code': 'https://open.weixin.qq.com/connect/qrconnect',
+    # 获取微信公众号access_token接口
+    'mp_access_token': 'https://api.weixin.qq.com/cgi-bin/token',
+    # 设置公众号行业接口
+    'change_industry': 'https://api.weixin.qq.com/cgi-bin/template/api_set_industry',
+    # 获取公众号行业接口
+    'get_industry': 'https://api.weixin.qq.com/cgi-bin/template/get_industry',
+    # 发送模板信息接口
+    'send_templates_message': 'https://api.weixin.qq.com/cgi-bin/message/template/send',
+    # 支付下单接口
+    'order_url': 'https://api.mch.weixin.qq.com/pay/unifiedorder',
+}
+
+
+PC_LOGIN_SCOPE = 'snsapi_login'
+GRANT_TYPE = 'client_credential'
+STATE = ''
+LANG = 'zh_CN'
+
 
 
 # =====================================七牛云url===============================
@@ -316,7 +415,7 @@ WXAPPSECRET = '55ea50a326f183f17cf4bc2738121de9'
 Token = '20_VcJAwOyv6lEeZpwJfJlPuEQUCnkiFbWFiJxqq_EXo7_sDBoACRRfptVd-LjpC__kPRBRfhJxlG3Zs-kJHv-PHYtBnt76UussdN773TyE6VyvgkpySmpPpjmSooqY1TKWpcBcwm0Th6wMp9fxFPQdADALVW'
 
 # 公众号回调地址
-REDIRECT_URI = 'http://www.shangxialian.net/#/oauth/users'
+REDIRECT_URI = 'http://www.shangxialian.net/js/#/oauth/users'
 
 SCOPE = 'snsapi_userinfo'
 
@@ -331,13 +430,13 @@ REST_FRAMEWORK = {
 import datetime
 
 JWT_AUTH = {
-    'JWT_EXPIRATION_DELTA': datetime.timedelta(days=1),
+    'JWT_EXPIRATION_DELTA': datetime.timedelta(days=15),
     'JWT_RESPONSE_PAYLOAD_HANDLER': 'up_down_chain.utils.users.jwt_response_payload_handler',
 }
 
 #保存图片位置
 MEDIA_URL = "/media/"
-MEDIA_ROOT = os.path.join(BASE_DIR,"/home/python/Up_down_chain/up_down_chain")
+MEDIA_ROOT = os.path.join(BASE_DIR,"/root/Up_down_chain/up_down_chain")
 
 #=====================================模板推送===============================
 TEMPLATE_DICT={
@@ -361,11 +460,12 @@ TEMPLATE_DICT={
 }
 TEMPLATE_URL = 'https://api.weixin.qq.com/cgi-bin/message/template/send?access_token='
 
-print(BASE_DIR)
+
 # 定时任务
 CRONJOBS = [
     #五颗星分别代表: 分, 时, 日, 月, 周
     #设置格式 */时间
     # 每一小时执行一次,redis_client.get("access_token").decode()
-    ('*/1 * * * *', 'up_down_chain.app.Users.to_access_token.get_access_token', '>> /home/python/Desktop/up_down_chain/logs/crontab.log')
+    ('0 */1 * * *', 'up_down_chain.app.Users.to_access_token.get_access_token', '>> /root/Up_down_chain/logs/crontab.log'),
+    ('0 */1 * * *', 'up_down_chain.app.Users.update_obtainnumber.update', '>> /root/Up_down_chain/logs/crontab.log'),
 ]

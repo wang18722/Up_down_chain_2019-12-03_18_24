@@ -1,0 +1,5 @@
+[2019-06-25 15:48:40,930: WARNING/ForkPoolWorker-3] 13611427250
+[2019-06-25 15:48:40,930: WARNING/ForkPoolWorker-3] {'username': 'XY lim', 'contents': '来一发'}
+[2019-06-25 15:48:40,930: WARNING/ForkPoolWorker-3] {'username': 'XY lim', 'contents': '来一发'}
+[2019-06-25 15:48:40,931: WARNING/ForkPoolWorker-3] e99a18c428cb38d5f260853678922e03
+[2019-06-25 15:48:40,990: INFO/ForkPoolWorker-3] Task send_sms_code[5765db7d-bfca-44a5-9312-9a5e6e7804ef] succeeded in 0.06061018496984616s: None

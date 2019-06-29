@@ -1,4 +1,5 @@
 from django.contrib.auth import authenticate, login
+
 from oauth.models import OAuthWXUser, CustomerInformation
 from oauth.serializers import WXAuthUserSerializer
 from rest_framework import status

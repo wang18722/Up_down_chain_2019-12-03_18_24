@@ -1,0 +1,57 @@
+*** Starting uWSGI 2.0.18 (64bit) on [Fri Jun 21 20:53:35 2019] ***
+compiled with version: 5.4.0 20160609 on 28 May 2019 06:44:12
+os: Linux-4.4.0-78-generic #99-Ubuntu SMP Thu Apr 27 15:29:09 UTC 2017
+nodename: cloud.cloud
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 4
+current working directory: /root/Up_down_chain/up_down_chain
+writing pidfile to uwsgi.pid
+detected binary path: /root/.virtualenvs/task/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /root/Up_down_chain
+your processes number limit is 31774
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to TCP address 10.10.10.6:8001 fd 3
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+Python version: 3.5.2 (default, Nov 12 2018, 13:43:14)  [GCC 5.4.0 20160609]
+Set PythonHome to /root/.virtualenvs/task
+Python main interpreter initialized at 0x8d8590
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+python threads support enabled
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 416720 bytes (406 KB) for 8 cores
+*** Operational MODE: preforking+threaded ***
+failed to open python file /up_down_chain/wsgi.py
+unable to load app 0 (mountpoint='') (callable not found or import error)
+*** no app loaded. going in full dynamic mode ***
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI master process (pid: 10619)
+spawned uWSGI worker 1 (pid: 10620, cores: 2)
+spawned uWSGI worker 2 (pid: 10621, cores: 2)
+spawned uWSGI worker 3 (pid: 10622, cores: 2)
+spawned uWSGI worker 4 (pid: 10623, cores: 2)
+invalid request block size: 21327 (max 4096)...skip
+invalid request block size: 21327 (max 4096)...skip
+invalid request block size: 21327 (max 4096)...skip
+invalid request block size: 21327 (max 4096)...skip
+invalid request block size: 21573 (max 4096)...skip
+invalid request block size: 21573 (max 4096)...skip
+Fri Jun 21 22:04:27 2019 - uWSGI worker 1 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Fri Jun 21 22:04:27 2019 - uWSGI worker 3 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Fri Jun 21 22:04:27 2019 - uWSGI worker 3 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Fri Jun 21 22:04:27 2019 - uWSGI worker 1 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Fri Jun 21 22:04:27 2019 - uWSGI worker 4 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Fri Jun 21 22:04:27 2019 - uWSGI worker 2 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Fri Jun 21 22:04:27 2019 - uWSGI worker 4 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Fri Jun 21 22:04:27 2019 - uWSGI worker 2 screams: UAAAAAAH my master disconnected: i will kill myself !!!

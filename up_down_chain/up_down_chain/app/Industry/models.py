@@ -1,7 +1,18 @@
+# This is an auto-generated Django model module.
+# You'll have to do the following manually to clean this up:
+#   * Rearrange models' order
+#   * Make sure each model has one field with primary_key=True
+#   * Make sure each ForeignKey has `on_delete` set to the desired behavior.
+#   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
+# Feel free to rename the models, but don't rename db_table values or field names.
+from __future__ import unicode_literals
+
 from django.db import models
 
 
+
 class ANlmy(models.Model):
+    id = models.IntegerField(primary_key=True)
     company_id = models.CharField(primary_key=True, max_length=200)
     unified_social_credit_code = models.CharField(db_column='Unified_social_credit_code', max_length=50, blank=True, null=True)  # Field name made lowercase.
     registered_capital = models.CharField(max_length=255, blank=True, null=True)
@@ -20,17 +31,17 @@ class ANlmy(models.Model):
     company_name = models.CharField(max_length=255, blank=True, null=True)
     registration_mark = models.CharField(max_length=255, blank=True, null=True)
     province = models.CharField(db_column='Province', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    kind = models.TextField(db_column='Kind', blank=True, null=True)  # Field name made lowercase.
     industries = models.CharField(max_length=50, blank=True, null=True)
     industriesid = models.CharField(max_length=5, blank=True, null=True)
+    kind = models.TextField(db_column='Kind', blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
         managed = False
         db_table = 'a_nlmy'
 
-
 class BCky(models.Model):
-    company_id = models.CharField(max_length=200)
+    id = models.IntegerField(primary_key=True)
+    company_id = models.CharField(primary_key=True, max_length=200)
     unified_social_credit_code = models.CharField(db_column='Unified_social_credit_code', max_length=50, blank=True, null=True)  # Field name made lowercase.
     registered_capital = models.CharField(max_length=255, blank=True, null=True)
     status = models.CharField(max_length=50, blank=True, null=True)
@@ -45,43 +56,42 @@ class BCky(models.Model):
     official_website = models.CharField(max_length=2000, blank=True, null=True)
     business_address = models.CharField(db_column='Business_address', max_length=255, blank=True, null=True)  # Field name made lowercase.
     business_scope = models.TextField(blank=True, null=True)
-    company_name = models.CharField(primary_key=True,max_length=255)
+    company_name = models.CharField(max_length=255, blank=True, null=True)
     registration_mark = models.CharField(max_length=255, blank=True, null=True)
     province = models.CharField(db_column='Province', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    kind = models.TextField(db_column='Kind', blank=True, null=True)  # Field name made lowercase.
     industries = models.CharField(max_length=50, blank=True, null=True)
     industriesid = models.CharField(max_length=5, blank=True, null=True)
-    id = models.CharField(primary_key=True, max_length=50)
+    kind = models.TextField(db_column='Kind', blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
         managed = False
         db_table = 'b_cky'
 
 
-
-
 class CZzy(models.Model):
-    company_id = models.CharField(primary_key=True, max_length=50)
+    id = models.IntegerField(primary_key=True)
+    company_id = models.CharField(primary_key=True, max_length=200)
     unified_social_credit_code = models.CharField(db_column='Unified_social_credit_code', max_length=50, blank=True, null=True)  # Field name made lowercase.
-    registered_capital = models.CharField(max_length=50, blank=True, null=True)
-    status = models.CharField(max_length=5, blank=True, null=True)
-    legal_representative = models.CharField(max_length=100, blank=True, null=True)
-    registration_authority = models.CharField(max_length=200, blank=True, null=True)
+    registered_capital = models.CharField(max_length=255, blank=True, null=True)
+    status = models.CharField(max_length=50, blank=True, null=True)
+    legal_representative = models.CharField(max_length=255, blank=True, null=True)
+    registration_authority = models.CharField(max_length=255, blank=True, null=True)
     established_time = models.DateTimeField(blank=True, null=True)
     type_of_enterprise = models.CharField(max_length=50, blank=True, null=True)
     industry_involved = models.CharField(max_length=50, blank=True, null=True)
-    staff_size = models.CharField(max_length=100, blank=True, null=True)
+    staff_size = models.CharField(max_length=255, blank=True, null=True)
     phone = models.CharField(max_length=50, blank=True, null=True)
     mailbox = models.CharField(max_length=100, blank=True, null=True)
-    official_website = models.TextField(blank=True, null=True)
-    business_address = models.CharField(db_column='Business_address', max_length=200, blank=True, null=True)  # Field name made lowercase.
+    official_website = models.CharField(max_length=2000, blank=True, null=True)
+    business_address = models.CharField(db_column='Business_address', max_length=255, blank=True, null=True)  # Field name made lowercase.
     business_scope = models.TextField(blank=True, null=True)
-    company_name = models.CharField(max_length=200, blank=True, null=True)
-    registration_mark = models.CharField(max_length=100, blank=True, null=True)
-    province = models.CharField(db_column='Province', max_length=50, blank=True, null=True)  # Field name made lowercase.
-    kind = models.TextField(db_column='Kind', blank=True, null=True)  # Field name made lowercase.
+    company_name = models.CharField(max_length=255, blank=True, null=True)
+    registration_mark = models.CharField(max_length=255, blank=True, null=True)
+    province = models.CharField(db_column='Province', max_length=255, blank=True, null=True)  # Field name made lowercase.
     industries = models.CharField(max_length=50, blank=True, null=True)
     industriesid = models.CharField(max_length=5, blank=True, null=True)
+    
+    kind = models.TextField(blank=True, null=True)
 
     class Meta:
         managed = False
@@ -89,6 +99,7 @@ class CZzy(models.Model):
 
 
 class DDrrsgy(models.Model):
+    id = models.IntegerField(primary_key=True)
     company_id = models.CharField(primary_key=True, max_length=200)
     unified_social_credit_code = models.CharField(db_column='Unified_social_credit_code', max_length=50, blank=True, null=True)  # Field name made lowercase.
     registered_capital = models.CharField(max_length=255, blank=True, null=True)
@@ -107,9 +118,9 @@ class DDrrsgy(models.Model):
     company_name = models.CharField(max_length=255, blank=True, null=True)
     registration_mark = models.CharField(max_length=255, blank=True, null=True)
     province = models.CharField(db_column='Province', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    kind = models.TextField(db_column='Kind', blank=True, null=True)  # Field name made lowercase.
     industries = models.CharField(max_length=50, blank=True, null=True)
     industriesid = models.CharField(max_length=5, blank=True, null=True)
+    kind = models.TextField(db_column='Kind', blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
         managed = False
@@ -127,6 +138,7 @@ class DjangoMigrations(models.Model):
 
 
 class EJzy(models.Model):
+    id = models.IntegerField(primary_key=True)
     company_id = models.CharField(primary_key=True, max_length=200)
     unified_social_credit_code = models.CharField(db_column='Unified_social_credit_code', max_length=50, blank=True, null=True)  # Field name made lowercase.
     registered_capital = models.CharField(max_length=255, blank=True, null=True)
@@ -145,9 +157,9 @@ class EJzy(models.Model):
     company_name = models.CharField(max_length=255, blank=True, null=True)
     registration_mark = models.CharField(max_length=255, blank=True, null=True)
     province = models.CharField(db_column='Province', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    kind = models.TextField(db_column='Kind', blank=True, null=True)  # Field name made lowercase.
     industries = models.CharField(max_length=50, blank=True, null=True)
     industriesid = models.CharField(max_length=5, blank=True, null=True)
+    kind = models.TextField(db_column='Kind', blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
         managed = False
@@ -155,27 +167,28 @@ class EJzy(models.Model):
 
 
 class FPflsy(models.Model):
-    company_id = models.CharField(max_length=50)
+    id = models.IntegerField(primary_key=True)
+    company_id = models.CharField(primary_key=True, max_length=200)
     unified_social_credit_code = models.CharField(db_column='Unified_social_credit_code', max_length=50, blank=True, null=True)  # Field name made lowercase.
-    registered_capital = models.CharField(max_length=50, blank=True, null=True)
-    status = models.CharField(max_length=5, blank=True, null=True)
-    legal_representative = models.CharField(max_length=100, blank=True, null=True)
-    registration_authority = models.CharField(max_length=200, blank=True, null=True)
+    registered_capital = models.CharField(max_length=255, blank=True, null=True)
+    status = models.CharField(max_length=50, blank=True, null=True)
+    legal_representative = models.CharField(max_length=255, blank=True, null=True)
+    registration_authority = models.CharField(max_length=255, blank=True, null=True)
     established_time = models.DateTimeField(blank=True, null=True)
     type_of_enterprise = models.CharField(max_length=50, blank=True, null=True)
     industry_involved = models.CharField(max_length=50, blank=True, null=True)
-    staff_size = models.CharField(max_length=100, blank=True, null=True)
+    staff_size = models.CharField(max_length=255, blank=True, null=True)
     phone = models.CharField(max_length=50, blank=True, null=True)
     mailbox = models.CharField(max_length=100, blank=True, null=True)
-    official_website = models.TextField(blank=True, null=True)
-    business_address = models.CharField(db_column='Business_address', max_length=200, blank=True, null=True)  # Field name made lowercase.
+    official_website = models.CharField(max_length=2000, blank=True, null=True)
+    business_address = models.CharField(db_column='Business_address', max_length=255, blank=True, null=True)  # Field name made lowercase.
     business_scope = models.TextField(blank=True, null=True)
-    company_name = models.CharField(max_length=200, blank=True, null=True)
-    registration_mark = models.CharField(max_length=100, blank=True, null=True)
-    province = models.CharField(db_column='Province', max_length=50, blank=True, null=True)  # Field name made lowercase.
-    kind = models.TextField(db_column='Kind', blank=True, null=True)  # Field name made lowercase.
+    company_name = models.CharField(max_length=255, blank=True, null=True)
+    registration_mark = models.CharField(max_length=255, blank=True, null=True)
+    province = models.CharField(db_column='Province', max_length=255, blank=True, null=True)  # Field name made lowercase.
     industries = models.CharField(max_length=50, blank=True, null=True)
     industriesid = models.CharField(max_length=5, blank=True, null=True)
+    kind = models.TextField(db_column='Kind', blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
         managed = False
@@ -183,6 +196,7 @@ class FPflsy(models.Model):
 
 
 class GJcy(models.Model):
+    id = models.IntegerField(primary_key=True)
     company_id = models.CharField(primary_key=True, max_length=200)
     unified_social_credit_code = models.CharField(db_column='Unified_social_credit_code', max_length=50, blank=True, null=True)  # Field name made lowercase.
     registered_capital = models.CharField(max_length=255, blank=True, null=True)
@@ -201,9 +215,9 @@ class GJcy(models.Model):
     company_name = models.CharField(max_length=255, blank=True, null=True)
     registration_mark = models.CharField(max_length=255, blank=True, null=True)
     province = models.CharField(db_column='Province', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    kind = models.TextField(db_column='Kind', blank=True, null=True)  # Field name made lowercase.
     industries = models.CharField(max_length=50, blank=True, null=True)
     industriesid = models.CharField(max_length=5, blank=True, null=True)
+    kind = models.TextField(db_column='Kind', blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
         managed = False
@@ -211,6 +225,7 @@ class GJcy(models.Model):
 
 
 class HZscyy(models.Model):
+    id = models.IntegerField(primary_key=True)
     company_id = models.CharField(primary_key=True, max_length=200)
     unified_social_credit_code = models.CharField(db_column='Unified_social_credit_code', max_length=50, blank=True, null=True)  # Field name made lowercase.
     registered_capital = models.CharField(max_length=255, blank=True, null=True)
@@ -229,9 +244,9 @@ class HZscyy(models.Model):
     company_name = models.CharField(max_length=255, blank=True, null=True)
     registration_mark = models.CharField(max_length=255, blank=True, null=True)
     province = models.CharField(db_column='Province', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    kind = models.TextField(db_column='Kind', blank=True, null=True)  # Field name made lowercase.
     industries = models.CharField(max_length=50, blank=True, null=True)
     industriesid = models.CharField(max_length=5, blank=True, null=True)
+    kind = models.TextField(db_column='Kind', blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
         managed = False
@@ -239,6 +254,7 @@ class HZscyy(models.Model):
 
 
 class IXxrjy(models.Model):
+    id = models.IntegerField(primary_key=True)
     company_id = models.CharField(primary_key=True, max_length=200)
     unified_social_credit_code = models.CharField(db_column='Unified_social_credit_code', max_length=50, blank=True, null=True)  # Field name made lowercase.
     registered_capital = models.CharField(max_length=255, blank=True, null=True)
@@ -257,9 +273,9 @@ class IXxrjy(models.Model):
     company_name = models.CharField(max_length=255, blank=True, null=True)
     registration_mark = models.CharField(max_length=255, blank=True, null=True)
     province = models.CharField(db_column='Province', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    kind = models.TextField(db_column='Kind', blank=True, null=True)  # Field name made lowercase.
     industries = models.CharField(max_length=50, blank=True, null=True)
     industriesid = models.CharField(max_length=5, blank=True, null=True)
+    kind = models.TextField(db_column='Kind', blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
         managed = False
@@ -267,6 +283,7 @@ class IXxrjy(models.Model):
 
 
 class JJry(models.Model):
+    id = models.IntegerField(primary_key=True)
     company_id = models.CharField(primary_key=True, max_length=200)
     unified_social_credit_code = models.CharField(db_column='Unified_social_credit_code', max_length=50, blank=True, null=True)  # Field name made lowercase.
     registered_capital = models.CharField(max_length=255, blank=True, null=True)
@@ -285,9 +302,9 @@ class JJry(models.Model):
     company_name = models.CharField(max_length=255, blank=True, null=True)
     registration_mark = models.CharField(max_length=255, blank=True, null=True)
     province = models.CharField(db_column='Province', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    kind = models.TextField(db_column='Kind', blank=True, null=True)  # Field name made lowercase.
     industries = models.CharField(max_length=50, blank=True, null=True)
     industriesid = models.CharField(max_length=5, blank=True, null=True)
+    kind = models.TextField(db_column='Kind', blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
         managed = False
@@ -295,6 +312,7 @@ class JJry(models.Model):
 
 
 class KFdcy(models.Model):
+    id = models.IntegerField(primary_key=True)
     company_id = models.CharField(primary_key=True, max_length=200)
     unified_social_credit_code = models.CharField(db_column='Unified_social_credit_code', max_length=50, blank=True, null=True)  # Field name made lowercase.
     registered_capital = models.CharField(max_length=255, blank=True, null=True)
@@ -313,9 +331,9 @@ class KFdcy(models.Model):
     company_name = models.CharField(max_length=255, blank=True, null=True)
     registration_mark = models.CharField(max_length=255, blank=True, null=True)
     province = models.CharField(db_column='Province', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    kind = models.TextField(db_column='Kind', blank=True, null=True)  # Field name made lowercase.
     industries = models.CharField(max_length=50, blank=True, null=True)
     industriesid = models.CharField(max_length=5, blank=True, null=True)
+    kind = models.TextField(db_column='Kind', blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
         managed = False
@@ -323,6 +341,7 @@ class KFdcy(models.Model):
 
 
 class LZlsw(models.Model):
+    id = models.IntegerField(primary_key=True)
     company_id = models.CharField(primary_key=True, max_length=200)
     unified_social_credit_code = models.CharField(db_column='Unified_social_credit_code', max_length=50, blank=True, null=True)  # Field name made lowercase.
     registered_capital = models.CharField(max_length=255, blank=True, null=True)
@@ -341,9 +360,9 @@ class LZlsw(models.Model):
     company_name = models.CharField(max_length=255, blank=True, null=True)
     registration_mark = models.CharField(max_length=255, blank=True, null=True)
     province = models.CharField(db_column='Province', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    kind = models.TextField(db_column='Kind', blank=True, null=True)  # Field name made lowercase.
     industries = models.CharField(max_length=50, blank=True, null=True)
     industriesid = models.CharField(max_length=5, blank=True, null=True)
+    kind = models.TextField(db_column='Kind', blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
         managed = False
@@ -351,6 +370,7 @@ class LZlsw(models.Model):
 
 
 class MKyjs(models.Model):
+    id = models.IntegerField(primary_key=True)
     company_id = models.CharField(primary_key=True, max_length=200)
     unified_social_credit_code = models.CharField(db_column='Unified_social_credit_code', max_length=50, blank=True, null=True)  # Field name made lowercase.
     registered_capital = models.CharField(max_length=255, blank=True, null=True)
@@ -369,9 +389,9 @@ class MKyjs(models.Model):
     company_name = models.CharField(max_length=255, blank=True, null=True)
     registration_mark = models.CharField(max_length=255, blank=True, null=True)
     province = models.CharField(db_column='Province', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    kind = models.TextField(db_column='Kind', blank=True, null=True)  # Field name made lowercase.
     industries = models.CharField(max_length=50, blank=True, null=True)
     industriesid = models.CharField(max_length=5, blank=True, null=True)
+    kind = models.TextField(db_column='Kind', blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
         managed = False
@@ -379,6 +399,7 @@ class MKyjs(models.Model):
 
 
 class NSlhjgg(models.Model):
+    id = models.IntegerField(primary_key=True)
     company_id = models.CharField(primary_key=True, max_length=200)
     unified_social_credit_code = models.CharField(db_column='Unified_social_credit_code', max_length=50, blank=True, null=True)  # Field name made lowercase.
     registered_capital = models.CharField(max_length=255, blank=True, null=True)
@@ -397,9 +418,9 @@ class NSlhjgg(models.Model):
     company_name = models.CharField(max_length=255, blank=True, null=True)
     registration_mark = models.CharField(max_length=255, blank=True, null=True)
     province = models.CharField(db_column='Province', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    kind = models.TextField(db_column='Kind', blank=True, null=True)  # Field name made lowercase.
     industries = models.CharField(max_length=50, blank=True, null=True)
     industriesid = models.CharField(max_length=5, blank=True, null=True)
+    kind = models.TextField(db_column='Kind', blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
         managed = False
@@ -407,6 +428,7 @@ class NSlhjgg(models.Model):
 
 
 class OJmxl(models.Model):
+    id = models.IntegerField(primary_key=True)
     company_id = models.CharField(primary_key=True, max_length=200)
     unified_social_credit_code = models.CharField(db_column='Unified_social_credit_code', max_length=50, blank=True, null=True)  # Field name made lowercase.
     registered_capital = models.CharField(max_length=255, blank=True, null=True)
@@ -425,9 +447,9 @@ class OJmxl(models.Model):
     company_name = models.CharField(max_length=255, blank=True, null=True)
     registration_mark = models.CharField(max_length=255, blank=True, null=True)
     province = models.CharField(db_column='Province', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    kind = models.TextField(db_column='Kind', blank=True, null=True)  # Field name made lowercase.
     industries = models.CharField(max_length=50, blank=True, null=True)
     industriesid = models.CharField(max_length=5, blank=True, null=True)
+    kind = models.TextField(db_column='Kind', blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
         managed = False
@@ -435,6 +457,7 @@ class OJmxl(models.Model):
 
 
 class PJy(models.Model):
+    id = models.IntegerField(primary_key=True)
     company_id = models.CharField(primary_key=True, max_length=200)
     unified_social_credit_code = models.CharField(db_column='Unified_social_credit_code', max_length=50, blank=True, null=True)  # Field name made lowercase.
     registered_capital = models.CharField(max_length=255, blank=True, null=True)
@@ -453,9 +476,9 @@ class PJy(models.Model):
     company_name = models.CharField(max_length=255, blank=True, null=True)
     registration_mark = models.CharField(max_length=255, blank=True, null=True)
     province = models.CharField(db_column='Province', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    kind = models.TextField(db_column='Kind', blank=True, null=True)  # Field name made lowercase.
     industries = models.CharField(max_length=50, blank=True, null=True)
     industriesid = models.CharField(max_length=5, blank=True, null=True)
+    kind = models.TextField(db_column='Kind', blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
         managed = False
@@ -463,6 +486,7 @@ class PJy(models.Model):
 
 
 class QWssh(models.Model):
+    id = models.IntegerField(primary_key=True)
     company_id = models.CharField(primary_key=True, max_length=200)
     unified_social_credit_code = models.CharField(db_column='Unified_social_credit_code', max_length=50, blank=True, null=True)  # Field name made lowercase.
     registered_capital = models.CharField(max_length=255, blank=True, null=True)
@@ -481,9 +505,9 @@ class QWssh(models.Model):
     company_name = models.CharField(max_length=255, blank=True, null=True)
     registration_mark = models.CharField(max_length=255, blank=True, null=True)
     province = models.CharField(db_column='Province', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    kind = models.TextField(db_column='Kind', blank=True, null=True)  # Field name made lowercase.
     industries = models.CharField(max_length=50, blank=True, null=True)
     industriesid = models.CharField(max_length=5, blank=True, null=True)
+    kind = models.TextField(db_column='Kind', blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
         managed = False
@@ -491,6 +515,7 @@ class QWssh(models.Model):
 
 
 class RWty(models.Model):
+    id = models.IntegerField(primary_key=True)
     company_id = models.CharField(primary_key=True, max_length=200)
     unified_social_credit_code = models.CharField(db_column='Unified_social_credit_code', max_length=50, blank=True, null=True)  # Field name made lowercase.
     registered_capital = models.CharField(max_length=255, blank=True, null=True)
@@ -509,9 +534,9 @@ class RWty(models.Model):
     company_name = models.CharField(max_length=255, blank=True, null=True)
     registration_mark = models.CharField(max_length=255, blank=True, null=True)
     province = models.CharField(db_column='Province', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    kind = models.TextField(db_column='Kind', blank=True, null=True)  # Field name made lowercase.
     industries = models.CharField(max_length=50, blank=True, null=True)
     industriesid = models.CharField(max_length=5, blank=True, null=True)
+    kind = models.TextField(db_column='Kind', blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
         managed = False
@@ -519,6 +544,7 @@ class RWty(models.Model):
 
 
 class SGgsh(models.Model):
+    id = models.IntegerField(primary_key=True)
     company_id = models.CharField(primary_key=True, max_length=200)
     unified_social_credit_code = models.CharField(db_column='Unified_social_credit_code', max_length=50, blank=True, null=True)  # Field name made lowercase.
     registered_capital = models.CharField(max_length=255, blank=True, null=True)
@@ -537,38 +563,10 @@ class SGgsh(models.Model):
     company_name = models.CharField(max_length=255, blank=True, null=True)
     registration_mark = models.CharField(max_length=255, blank=True, null=True)
     province = models.CharField(db_column='Province', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    kind = models.TextField(db_column='Kind', blank=True, null=True)  # Field name made lowercase.
     industries = models.CharField(max_length=50, blank=True, null=True)
     industriesid = models.CharField(max_length=5, blank=True, null=True)
+    kind = models.TextField(db_column='Kind', blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
         managed = False
         db_table = 's_ggsh'
-
-
-class TGj(models.Model):
-    company_id = models.CharField(primary_key=True, max_length=200)
-    unified_social_credit_code = models.CharField(db_column='Unified_social_credit_code', max_length=50, blank=True, null=True)  # Field name made lowercase.
-    registered_capital = models.CharField(max_length=255, blank=True, null=True)
-    status = models.CharField(max_length=50, blank=True, null=True)
-    legal_representative = models.CharField(max_length=255, blank=True, null=True)
-    registration_authority = models.CharField(max_length=255, blank=True, null=True)
-    established_time = models.DateTimeField(blank=True, null=True)
-    type_of_enterprise = models.CharField(max_length=50, blank=True, null=True)
-    industry_involved = models.CharField(max_length=50, blank=True, null=True)
-    staff_size = models.CharField(max_length=255, blank=True, null=True)
-    phone = models.CharField(max_length=50, blank=True, null=True)
-    mailbox = models.CharField(max_length=100, blank=True, null=True)
-    official_website = models.CharField(max_length=2000, blank=True, null=True)
-    business_address = models.CharField(db_column='Business_address', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    business_scope = models.TextField(blank=True, null=True)
-    company_name = models.CharField(max_length=255, blank=True, null=True)
-    registration_mark = models.CharField(max_length=255, blank=True, null=True)
-    province = models.CharField(db_column='Province', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    kind = models.TextField(db_column='Kind', blank=True, null=True)  # Field name made lowercase.
-    industries = models.CharField(max_length=50, blank=True, null=True)
-    industriesid = models.CharField(max_length=5, blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 't_gj'

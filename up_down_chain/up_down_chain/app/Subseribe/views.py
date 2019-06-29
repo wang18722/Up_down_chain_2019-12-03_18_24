@@ -1,6 +1,4 @@
 import re
-
-from drf_haystack.generics import HaystackGenericAPIView
 from drf_haystack.viewsets import HaystackViewSet
 from rest_framework import status
 from rest_framework.generics import GenericAPIView

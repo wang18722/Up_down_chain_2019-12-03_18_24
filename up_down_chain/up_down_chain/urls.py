@@ -38,5 +38,10 @@ urlpatterns = [
     url(r'^subscribe/',include('Subseribe.urls')),
 
     #触客
-    url(r'^contact/',include('Contact.urls'))
+    url(r'^contact/',include('Contact.urls')),
+#监控后台
+    url(r'^monitor/',include('Monitor.urls')),
+    #个人中心
+    url(r'^center/',include('Center.urls')),
+
 ]
