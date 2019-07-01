@@ -26,11 +26,12 @@ class RemindInfoViews(GenericAPIView):
     serializer_class = KeywordSerializer
 
     def get(self,request):
-        token = jwt_decode_handler(request.query_params['token'])
-
-        # 测试用户
-        user = CustomerInformation.objects.get(id=token['user_id'])
-
+        dict_data= request.query_params
+        try:
+            token = jwt_decode_handler(dict_data['token'])
+            user = CustomerInformation.objects.get(id=token['user_id'])
+        except Exception as e:
+            return Response({"token_state":False})
         try:
             bid = BidsUserSetting.objects.get(mid=user.id)
         except Exception:
@@ -56,24 +57,20 @@ class RemindInfoViews(GenericAPIView):
         # request.data['user_id']
         # 获取前端数据
         dict_data = request.data
-
-        token = jwt_decode_handler(dict_data['token'])
-
-        user = CustomerInformation.objects.get(id=token['user_id'])
-        # 判断关键字是否包含特殊字符
         try:
-            keywords_array = dict_data['keywords_array']
-        except Exception:
-            return Response({
-                "message": "关键字不许为空",
-            })
+            token = jwt_decode_handler(dict_data['token'])
+            user = CustomerInformation.objects.get(id=token['user_id'])
+        except Exception as e:
+            return Response({"token_state":False})
+        # 判断关键字是否包含特殊字符
+        keywords_array = dict_data['keywords_array']
+
 
         for keyword in keywords_array.split(","):
             if bool(re.search('\W+', keyword)) or 2 > len(keyword) >= 7:
                 return Response({"message": "关键词不能包含特殊字符或者超过2-6个字,请修改后保存"}, status=status.HTTP_404_NOT_FOUND)
         area_name = dict_data['area_name']
-        del dict_data['token']
-        del dict_data['area_name']
+
         try:
             bid = BidsUserSetting.objects.get(mid_id=user.id)
             serializer = self.get_serializer(instance=bid, data=dict_data)
@@ -87,6 +84,8 @@ class RemindInfoViews(GenericAPIView):
 
         access_token = get_redis_connection('wechatpy').get("access_token").decode()
         Send_template().To_Examine_Template_Subscribe(user,serializer.data['keywords_array'],area_name,access_token)
+
+
         return Response({
             'data_dict':serializer.data,
             "message": "保存成功",
@@ -305,13 +304,15 @@ class RetrieveIndexView(HaystackViewSet):
         """
         获取单篇文章
         """
-
-        # 测试用户
-        token = jwt_decode_handler(request.query_params['token'])
-
-        user = CustomerInformation.objects.get(id=token['user_id'])
+        dict_data = request.query_params
         try:
-            EnterpriseCertificationInfo.objects.get(user=user.id)
+            token = jwt_decode_handler(dict_data['token'])
+            user = CustomerInformation.objects.get(id=token['user_id'])
+        except Exception as e:
+            return Response({"token_state":False})
+
+        try:
+            EnterpriseCertificationInfo.objects.get(user=user.id,identity_status=2)
         except:
             # 默认未关注  注销关注功能
             # is_collection = False
@@ -327,7 +328,7 @@ class RetrieveIndexView(HaystackViewSet):
             else:
                 # b类型转换
                 begin_num = int(begin_num.decode())
-                if begin_num >= 2000:
+                if begin_num >= 2:
                     return Response({
                         'message': False,
                     })
@@ -349,12 +350,13 @@ class BidsSearchView(HaystackViewSet):
 
 
     def list(self, request, *args, **kwargs):
-        # 用户获取
-        token = jwt_decode_handler(request.query_params['token'])
-
-
-        user = CustomerInformation.objects.get(id=token['user_id'])
-
+        dict_data = request.query_params
+        try:
+            # 用户
+            token = jwt_decode_handler(dict_data['token'])
+            user = CustomerInformation.objects.get(id=token['user_id'])
+        except Exception as e:
+            return Response({"token_state":False})
         # del request.query_params['token']
         # 获取查询机
         queryset = self.filter_queryset(self.get_queryset())
@@ -434,11 +436,11 @@ class KeywordView(APIView):
     def post(self,request):
         # user = User.objects.get(id=1)
         data_ditc = request.data
-        # 用户获取
-        token = jwt_decode_handler(data_ditc['token'])
-
-        user = CustomerInformation.objects.get(id=token['user_id'])
-
+        try:
+            token = jwt_decode_handler(data_ditc['token'])
+            user = CustomerInformation.objects.get(id=token['user_id'])
+        except Exception as e:
+            return Response({"token_state":False})
         # 获取redis数据库
         history = get_redis_connection('history')
         # 设置有序集合
@@ -468,11 +470,12 @@ class KeywordView(APIView):
     def delete(self, request):
         """删除数据"""
         # user = User.objects.get(id=1)
-        data_ditc = request.query_params
-        # 用户获取
-        token = jwt_decode_handler(data_ditc['token'])
-
-        user = CustomerInformation.objects.get(id=token['user_id'])
+        data_ditc = request.data
+        try:
+            token = jwt_decode_handler(data_ditc['token'])
+            user = CustomerInformation.objects.get(id=token['user_id'])
+        except Exception as e:
+            return Response({"token_state":False})
 
         # 获取redis数据库
         history = get_redis_connection('history')

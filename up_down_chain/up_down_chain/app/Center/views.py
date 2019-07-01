@@ -13,10 +13,11 @@ class UserCenterView(RetrieveAPIView):
     """个人中心"""
 
     def get(self, request, *args, **kwargs):
+
         try:
             token = jwt_decode_handler(request.GET["token"])
         except Exception as e:
-            return Response({"token_state":False})
+            return Response({"token_state": False})
         try:
             obj = EnterpriseCertificationInfo.objects.filter(user=token["user_id"], identity_status=2).first()
         except:
@@ -65,7 +66,8 @@ class SelfPortraitView(ListCreateAPIView):
         try:
             token = jwt_decode_handler(request.GET["token"])
         except Exception as e:
-            return Response({"token_state":False})
+            return Response({"token_state": False})
+        # token = jwt_decode_handler(request.GET["token"])
         try:
             obj = EnterpriseCertificationInfo.objects.filter(user=token["user_id"], identity_status=2).first()
         except:
@@ -79,11 +81,8 @@ class SelfPortraitView(ListCreateAPIView):
         return Response(data)
 
     def post(self, request, *args, **kwargs):
-        try:
-            data = request.data
-            token = jwt_decode_handler(data["token"])
-        except:
-            return Response({"token_state": False})
+        data = request.data
+        token = jwt_decode_handler(data["token"])
         try:
             obj = EnterpriseCertificationInfo.objects.filter(user=token["user_id"], identity_status=2).first()
         except:

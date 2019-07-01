@@ -40,6 +40,7 @@ class UserOpenIdViews(APIView):
         code = request.query_params.get('code')
 
         if not code:
+            print(1)
             return Response({'message':'缺少code'}, status=status.HTTP_400_BAD_REQUEST)
 
         # 微信授权配置
@@ -57,13 +58,19 @@ class UserOpenIdViews(APIView):
         # 判断用户是否绑定缘道美
         try:
             OAuthWXUser.objects.get(openid=wx_user_content['openid'])
-        except Exception:
+        except Exception as e:
+            if len(wx_user_content['province']) == 0:
+                wx_user_content['province'] = "0"
+            if len(wx_user_content['city']) == 0:
+                wx_user_content['city'] = "0"
+            print(wx_user_content)
             # 获取序列化器,校验数据
-            serializer = WXAuthUserSerializer(data=wx_user_content)
-            serializer.is_valid(raise_exception=True)
-
-            serializer.save()
-
+            try:
+                serializer = WXAuthUserSerializer(data=wx_user_content)
+                serializer.is_valid(raise_exception=True)
+                serializer.save()
+            except Exception as e:
+                print(e)
             # 加密openid返回token
             # access_token_openid = generate_save_token(wx_user_content['openid'])
             # return Response({'access_token': access_token_openid})

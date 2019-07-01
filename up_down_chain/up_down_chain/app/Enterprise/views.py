@@ -43,9 +43,9 @@ class IndexView(APIView):
     def get(self, request):
         try:
             token = jwt_decode_handler(request.query_params['token'])
-        except:
-            return Response({"token_state": False})
 
+        except Exception as e:
+            return Response({"token_state": False})
         monitor(token, "index/info")
 
 
@@ -64,7 +64,7 @@ class IndexView(APIView):
                     "identity_status": True,
                     "count": data.access,  # 访问数总量
                     "number": data.recommended,  # 推荐数
-                    "matching":0,
+                    "matching":0
                 }
             return Response(data_info)
 
@@ -79,12 +79,12 @@ class IndexView(APIView):
 
         result = [list_data[i] for i in sample]
             # 字符串类查询
-        j = num_func(num)
-        str_num = str(result[0].company_id)
+        #j = num_func(num)
+        #str_num = str(result[0].company_id)
             # # obj_data = globals()[j].objects.filter(company_id=result[0].company_id).first()
-        obj_data = globals()[j].objects.get(company_id=str_num)
-        obj_data.access_count += 1
-        obj_data.save()
+        #obj_data = globals()[j].objects.get(company_id=str_num)
+        #obj_data.access_count += 1
+        #obj_data.save()
 
             # 分割出所有
         kind = result[0].kind
@@ -107,9 +107,11 @@ class IndexView(APIView):
                     "industryid": num,  # 行业
                     # 临时数据推荐数量和访问数量
                     "identity_status": False,
-                    "count": obj_data.access_count,  # 访问数总量
-                    "number": obj_data.recommended_count,  # 推荐数
-                    "matching":len(dids_list),
+                    #"count": obj_data.access_count,  # 访问数总量
+                    #"number": obj_data.recommended_count,  # 推荐数
+                    "count":0,
+                    "number":0,
+                    "matching":len(dids_list)
                 }
             return Response(data_dict)
         data_dict = {
@@ -119,9 +121,11 @@ class IndexView(APIView):
                 "industryid": num,  # 行业
                 # 临时数据推荐数量和访问数量
                 "identity_status": False,
-                "count": obj_data.access_count,  # 访问数总量
-                "number": obj_data.recommended_count,  # 推荐数
-                "matching":0,
+                #"count": obj_data.access_count,  # 访问数总量
+                #"number": obj_data.recommended_count,  # 推荐数
+                "count":0,
+                "number":0,
+                "matching":0
 
             }
         return Response(data_dict)
@@ -256,12 +260,27 @@ class RecommendedView(GenericAPIView):
     """我推荐"""
 
     def post(self, request):
+
+        # 我推荐重写，推荐企业加1自己也加1，还要有记录
+
         # 1.获取传回来的指定功能参数
-        data = request.data
+        try:
+            data = request.data
+        #print(data)
+            token = jwt_decode_handler(data['token'])
+        except:
+            return Response({"token_state":False})
         # 2.如果拿获取到的数据对应修改
         try:
+            obj = EnterpriseCertificationInfo.objects.filter(user = token["user_id"],identity_status=2).first()
+        except:
+            return Response({"message":"查询出错"})
+        if obj:
+            obj.recommended +=1
+            obj.save()
+        try:
             # 查询对应的企业和用户的信息
-            state = Function.objects.filter(user_id=data["user"], company_id=data["company_id"])
+            state = Function.objects.filter(user_id=obj.company_id, company_id=data["company_id"])
 
             if data["i_recommend"] == True and state.exists() == False:
 
@@ -302,6 +321,8 @@ class BasicInformationView(APIView):
         # print(enterpriseid)
         industryid = request.GET["industryid"]
         # print(industryid)
+        if not industryid:
+            return Response({"message": "该企业没有信息"})
         try:
             i = value(int(industryid))
             list_data = globals()[i].objects.filter(company_id=enterpriseid).values()
@@ -322,17 +343,16 @@ class ListView(APIView):
     def get(self, request):
         # 获取用户点击的维度名称
         # 1.下链需要获取的参数
-        try:
-            token = jwt_decode_handler(request.query_params['token'])
-        except:
-            return Response({"token_state": False})
         conn = get_redis_connection("default")
         logo = request.GET["logo"]
         provinces = request.GET['provinces']
         industryid = request.GET['industryid']
         # name = request.GET['name']
+        try:
+            token = jwt_decode_handler(request.query_params['token'])
 
-        print(token)
+        except Exception as e:
+            return Response({"token_state": False})
         name = token["username"]
         if logo == "down":
 
@@ -452,7 +472,8 @@ class InBatchView(APIView):
         # 连接redis数据库
         try:
             token = jwt_decode_handler(request.query_params['token'])
-        except:
+
+        except Exception as e:
             return Response({"token_state": False})
         conn = get_redis_connection("default")
         # 获取存在redis的数据

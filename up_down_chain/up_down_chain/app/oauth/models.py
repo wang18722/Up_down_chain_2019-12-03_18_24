@@ -10,10 +10,10 @@ class CustomerInformation(AbstractUser):
     """
 
     headimgUrl = models.CharField(null=True,max_length=250, verbose_name='微信头像',unique=True)
-    sex = models.CharField(null=True, max_length=32, verbose_name='微信性别')
-    province = models.CharField(max_length=100, null=True, verbose_name='微信省份')
-    city = models.CharField(max_length=32, null=True, verbose_name='微信城市')
-    country = models.CharField(max_length=32, null=True, verbose_name=u'微信国家')
+    sex = models.CharField(null=True, blank=True, max_length=32, verbose_name='微信性别')
+    province = models.CharField(max_length=100, null=True, blank=True, verbose_name='微信省份')
+    city = models.CharField(max_length=32, null=True, blank=True, verbose_name='微信城市')
+    country = models.CharField(max_length=32, null=True, blank=True, verbose_name=u'微信国家')
     CreateTime = models.DateField(auto_now_add=True, verbose_name="创建时间",null=True,blank=True)
 
     # 元数据 User下面的子类Meta,

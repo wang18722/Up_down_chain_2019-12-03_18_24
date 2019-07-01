@@ -33,6 +33,8 @@ class PaymentSerializers(serializers.ModelSerializer):
         model = Top_up_Payment
         fields = "__all__"
 
+
+
 class SmsCallbackSerializers(serializers.ModelSerializer):
     """支付回调"""
     class Meta:

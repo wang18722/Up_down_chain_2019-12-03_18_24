@@ -39,7 +39,7 @@ class WXAuthUserSerializer(serializers.Serializer):
 
 
     def create(self, validated_data):
-
+        #print(validated_data["province"])
         # name = open(validated_data["nickname"],'wb',encoding="utf8")
         # print(validated_data["nickname"])
         user = CustomerInformation.objects.create(

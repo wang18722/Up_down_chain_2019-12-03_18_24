@@ -16,10 +16,10 @@ from up_down_chain.utils.payment import get_pay_info
 def imag(company_name,image):
     # 获取图片大小
     o_size = get_size(image)
-    quality = 90
-    step = 5
+    quality = 80
+    step = 10
     # 处理图片名称
-    data_time = datetime.now().strftime("%Y%m%d%H")
+    data_time = datetime.now().strftime("%Y%m%d%H%M%S")
     image_name = data_time + company_name + "." + image.name.split(".")[-1]
 
     # 图片路径

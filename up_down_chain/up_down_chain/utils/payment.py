@@ -16,7 +16,7 @@ def get_pay_info(openid,user_id,order_id,total_fee):
     pay_id = timezone.now().strftime('%Y%m%d%H%M%S') + ('%09d'%user_id)
 
     data = collections.OrderedDict()
-    data['body'] = 'Authentication'
+    data['body'] = '企业认证'
     data['is_raw'] = '1'
     data['mch_create_ip'] = '117.48.207.24'
     data['mch_id'] = '103580084665'
@@ -44,7 +44,7 @@ def get_pay_info(openid,user_id,order_id,total_fee):
     xml += '<sign>''<![CDATA[' + m.hexdigest().upper() + ']]></sign></xml>'
 
     head = {"Content-Type": "text/xml; charset=UTF-8", 'Connection': 'close'}
-    res = requests.post('https://pay.swiftpass.cn/pay/gateway',data=xml,headers=head)
+    res = requests.post('https://pay.swiftpass.cn/pay/gateway',data=xml.encode('utf-8').decode("latin1"),headers=head)
 
     root_xml = xmltodict.parse(res.text)['xml']
 
@@ -52,3 +52,47 @@ def get_pay_info(openid,user_id,order_id,total_fee):
 
     return pay_info
 
+def get_Recharge_pay_info(openid,user_id,order_id,total_fee):
+
+
+
+    # 支付订单id
+    pay_id = timezone.now().strftime('%Y%m%d%H%M%S') + ('%09d'%user_id)
+
+    data = collections.OrderedDict()
+    data['body'] = '充值缴费'
+    data['is_raw'] = '1'
+    data['mch_create_ip'] = '117.48.207.24'
+    data['mch_id'] = '103580084665'
+    data['nonce_str'] = '3454534534535'
+    data['notify_url'] = 'http://www.shangxialian.net:8000/pay/rechargeinfo/?order_id='+order_id+'&openid='+openid
+    data['out_trade_no'] = pay_id
+    data['service'] = 'pay.weixin.jspay'
+    data['sign_type'] = 'MD5'
+    data['sub_openid'] = openid
+    data['total_fee'] = total_fee
+    data['version'] = '1.0'
+
+    # 数据格式处理
+    xml = '<xml>'
+    string_content = ''
+    for key, value in data.items():
+        string_content += key + '=' + value + '&'
+        xml += '<' + key + '>''<![CDATA[' + value + ']]></' + key + '>'
+
+    string_content += 'key=' + '31768c8eaf2c790b25ab01bd2ccca5ed'
+
+    # MD5加密
+    content_md5 = hashlib.md5(string_content.encode()).hexdigest()
+
+    xml += '<sign>''<![CDATA[' + content_md5 + ']]></sign></xml>'
+
+
+    head = {"Content-Type": "text/xml; charset=utf-8", 'Connection': 'close'}
+    res = requests.post('https://pay.swiftpass.cn/pay/gateway',data=xml.encode('utf-8').decode("latin1"),headers=head)
+
+    root_xml = xmltodict.parse(res.text)['xml']
+
+    pay_info = json.loads(root_xml['pay_info'])
+
+    return pay_info

@@ -134,11 +134,12 @@ class EnterpriseCertificationView(ListCreateAPIView):
     def create(self, request, *args, **kwargs):
 
         # 获取提交数据
+        data = request.data
+
         try:
-            data = request.data
             token = jwt_decode_handler(data["token"])
-        except:
-            return Response({"token_state": False})
+        except Exception as e:
+            return Response({"token_state":False})
         """监控"""
         # monitor(token)
         user = token["user_id"]
@@ -203,6 +204,8 @@ class EnterpriseCertificationView(ListCreateAPIView):
                 s.enterprise(data)
                 s.createpurse(wallet)
                 s.recordupdate(order_new,data=company_name)
+
+
                 return Response({"message":"企业更新成功"})
 
             if obj_user_new_e.identity_status == 1:
@@ -259,6 +262,7 @@ class EnterpriseCertificationView(ListCreateAPIView):
             "company_name": company_name
         }
         s.pay(data_info)
+
 
         return Response({"pay_info": pay_info})
 
@@ -407,9 +411,8 @@ class TemplateView(APIView):
     def get(self, request):
         try:
             token = jwt_decode_handler(request.query_params['token'])
-        except:
+        except Exception as e:
             return Response({"token_state":False})
-
         try:
             obj = Template.objects.filter(user=token["user_id"])
 
@@ -442,12 +445,12 @@ class CreateDeleteTemplateView(RetrieveUpdateDestroyAPIView,ListCreateAPIView):
         #     "user": "老张",
         #     "content": "上线测试早日用户突破100万"
         # }
+        data = request.data
+
         try:
-            data = request.data
-            token = jwt_decode_handler(data["token"])
-        except:
+            token = jwt_decode_handler(data['token'])
+        except Exception as e:
             return Response({"token_state": False})
-        print(token)
 
         try:
             obj = Template.objects.filter(template_name=data["template_name"],user=token["user_id"])
@@ -494,13 +497,13 @@ class ReviewerView(CreateAPIView):
     """模板审核"""
 
     def post(self, request, *args, **kwargs):
+        data = request.data
         try:
-            data = request.data
-            token = jwt_decode_handler(data["token"])
-        except:
+            token = jwt_decode_handler(data['token'])
+        except Exception as e:
             return Response({"token_state": False})
         try:
-            obj = Template.objects.filter(template_name=data["template_name"]).first()
+            obj = Template.objects.filter(id=data["id"]).first()
 
         except:
             return Response({"message":"查询出错"})
@@ -517,17 +520,17 @@ class ReviewerView(CreateAPIView):
             return Response(serializer.errors)
         access_token = get_redis_connection('wechatpy').get("access_token").decode()
 
-        Send_template().To_examine_template_result(token,obj.state,access_token)
+        Send_template().To_examine_template_result(obj.user,obj.state,access_token)
         return Response({"message":"审核成功"})
 
 class SMSView(ListCreateAPIView):
     """首页的发送短信功能"""
 
     def post(self, request, *args, **kwargs):
+        post = request.data
         try:
-            data = request.data
-            token = jwt_decode_handler(data["token"])
-        except:
+            token = jwt_decode_handler(post['token'])
+        except Exception as e:
             return Response({"token_state": False})
         monitor(token, "users/sms")
         # token = post['token']#测试代码
@@ -545,6 +548,10 @@ class SMSView(ListCreateAPIView):
             return Response({"message": "认证企业才可以发短信"})
         conn = get_redis_connection("sms_code")
         # 获取存在redis中的数据
+        # 时间判断
+        currenttime = datetime.now().strftime("%H%M%S")
+        if not 80000 < int(currenttime) < 200000:
+            return Response({"message": "短信限制发送时段：运营商规定短信发送时间为上午8:00到晚上8:00"})
 
         data = conn.get(token["user_id"])  # 如果redis数据库没有数据
         if data == None:
@@ -654,6 +661,7 @@ class AccurateView(APIView):
 
                 all_data_dict["enterprises"] = obj.company_name
                 all_data_dict["kind"] = obj.kind
+                all_data_dict["enterprisesid"] = obj.company_id
 
                 if mobile:
                     #     2.1用正则提取手机号
@@ -668,6 +676,7 @@ class AccurateView(APIView):
                         data_dict["mobile"] = new_mobile[0][:7] + "****"
                         data_dict["enterprises"] = obj.company_name
                         data_dict["kind"] = obj.kind
+                        data_dict["enterprisesid"] = obj.company_id
                         data_list.append(data_dict)
                 all_data_list.append(all_data_dict)
             if len(data_list) < 16 or len(all_data_list) < 16:
@@ -722,7 +731,7 @@ class AccurateView(APIView):
 
             all_data_dict["enterprises"] = obj.company_name
             all_data_dict["kind"] = obj.kind
-
+            all_data_dict["enterprisesid"] = obj.company_id
 
             if mobile:
                 all_data_dict["mobile"] = mobile[:7] + "****"
@@ -737,6 +746,7 @@ class AccurateView(APIView):
                     data_dict["mobile"] = new_mobile[0][:7] + "****"
                     data_dict["enterprises"] = obj.company_name
                     data_dict["kind"] = obj.kind
+                    data_dict["enterprisesid"] = obj.company_id
                     data_list.append(data_dict)
             all_data_list.append(all_data_dict)
 
@@ -770,17 +780,17 @@ class AccurateView(APIView):
 class BalanceInfoView(APIView):
     """余额查询"""
     def get(self,request):
-        try:
 
-            token = jwt_decode_handler(request.query_params['token'])
-        except:
-            return Response({"token_state": False})
         conn = get_redis_connection("sms_code")
         provinces = request.GET['provinces']
         industryid = request.GET['industryid']
         business = request.GET['bussiness']
         phone = request.GET["mobile"]
+        try:
+            token = jwt_decode_handler(request.query_params['token'])
 
+        except Exception as e:
+            return Response({"token_state": False})
         try:
             obj = EnterpriseCertificationInfo.objects.filter(user=token["user_id"],identity_status=2)
             
@@ -799,7 +809,7 @@ class BalanceInfoView(APIView):
                 i = value(int(industryid))
 
                 # # orm查询总数
-                all_obj = globals()[i].objects.filter(province__startswith=provinces,business_scope__contains=business)
+                all_obj = globals()[i].objects.filter(province__startswith=provinces,kind__contains=business)
 
             except:
                 return Response({"code": 2})
@@ -827,7 +837,7 @@ class BalanceInfoView(APIView):
                                 list_data.append(num)
             if phone:
                 list_data.append(phone)
-                conn.set(token["user_id"],pickle.dumps(list_data),600)
+            conn.set(token["user_id"],pickle.dumps(list_data),600)
             count_money = len(list_data) * 0.05  # 电话号码数乘单价
             money = pay_obj[0].balance  # 用户余额
             # consumption_money = money - count_money
@@ -871,7 +881,8 @@ class BalanceInfoView(APIView):
                             list_data.append(num)
         if phone:
             list_data.append(phone)
-            conn.set(token["user_id"],pickle.dumps(list_data),600)
+        print(list_data)
+        conn.set(token["user_id"],pickle.dumps(list_data),600)
         count_money = len(list_data)*0.05 #电话号码数乘单价
         money = pay_obj[0].balance  #用户余额
         # consumption_money = money-count_money# 消费后还剩多少钱
@@ -885,13 +896,12 @@ class BalanceInfoView(APIView):
 class AuthenticationAuditTemplateView(ListCreateAPIView):
     """认证审核模板"""
     def post(self, request, *args, **kwargs):
-
+        data = request.data
         try:
-            data = request.data
-        #print(data)
             token = jwt_decode_handler(data['token'])
-        except:
-            return Response({"token_state":False})
+        except Exception as e:
+            return Response({"token_state": False})
+
         #print(token)
         try:
             obj = EnterpriseCertificationInfo.objects.filter(company_id=data["company_id"]).first()
@@ -925,12 +935,13 @@ class AuthenticationAuditTemplateView(ListCreateAPIView):
 class PayCertificationView(ListCreateAPIView):
     """认证支付"""
     def post(self, request, *args, **kwargs):
+        data = request.data
+
         try:
-            data = request.data
-        #print(data)
-            token = jwt_decode_handler(data['token'])
-        except:
-            return Response({"token_state":False})
+            token = jwt_decode_handler(request.data['token'])
+
+        except Exception as e:
+            return Response({"token_state": False})
         monitor(token, "users/certification/pay")
         num_six = random.randint(1, 1000000)
 
@@ -950,7 +961,7 @@ class PayCertificationView(ListCreateAPIView):
             wallet["userid"] = obj.company_id
 
             # ser = CreatePurseerializer(data=wallet, partial=True)
-
+            #
             # if ser.is_valid():
             #     ser.save()
         except:
@@ -980,9 +991,10 @@ class ObtainAuthenticationAuditTemplateView(RetrieveAPIView):
     def get(self, request, *args, **kwargs):
         try:
             token = jwt_decode_handler(request.GET["token"])
-        # print(token)
-        except:
-            return Response({"token_state":False})
+
+        except Exception as e:
+            return Response({"token_state": False})
+
         try:
             obj = EnterpriseCertificationInfo.objects.filter(identity_status=1)
 

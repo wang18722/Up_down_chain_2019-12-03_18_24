@@ -43,7 +43,7 @@ class BidsUserSetting(models.Model):
 
     mid = models.ForeignKey(CustomerInformation,null=True, on_delete=models.CASCADE, verbose_name="用户")
     areas_id = models.CharField(max_length=60, verbose_name="关注省范围")
-    keywords_array = models.CharField(max_length=60, verbose_name="关注关键字")
+    keywords_array = models.CharField(max_length=60,null=True,blank=True, verbose_name="关注关键字")
     # by_time = models.TimeField(null=True,verbose_name="截止时间")
     remind_long_time = models.SmallIntegerField(default=7, verbose_name="推送时常")
     is_remind = models.BooleanField(default=True, verbose_name="是否推送")

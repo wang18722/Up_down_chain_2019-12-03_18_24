@@ -178,7 +178,7 @@ class AiMarketingView(APIView):
 
     def post(self, request):
         data = request.data
-        print(data)
+        # print(data)
         # 1.获取对应省份的总数电话号码
         conn = get_redis_connection("sms_code")
         i = value(data["industry"])

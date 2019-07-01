@@ -6,3 +6,6 @@
 [2019-06-25 15:46:04,960: INFO/MainProcess] worker@cloud.cloud ready.
 [2019-06-25 15:46:39,558: INFO/MainProcess] Received task: send_sms_code[7f46b559-d5be-446e-b172-11dac870ab15]  
 [2019-06-25 15:48:40,928: INFO/MainProcess] Received task: send_sms_code[5765db7d-bfca-44a5-9312-9a5e6e7804ef]  
+[2019-06-29 18:18:21,682: INFO/MainProcess] Received task: send_sms_code[05662ee1-4445-45fe-a17e-d46f2ee11b7a]  
+[2019-06-29 20:17:04,064: INFO/MainProcess] Received task: send_sms_code[f3263d69-752b-46e4-ac0c-51ea14736a7f]  
+[2019-06-29 20:52:05,411: INFO/MainProcess] Received task: send_sms_code[e50b613e-fefe-4fb8-92e8-a9b96ff13673]  

@@ -3,3 +3,13 @@
 [2019-06-25 15:46:39,560: WARNING/ForkPoolWorker-4] {'username': 'XY lim', 'contents': '来一发'}
 [2019-06-25 15:46:39,560: WARNING/ForkPoolWorker-4] e99a18c428cb38d5f260853678922e03
 [2019-06-25 15:46:39,625: INFO/ForkPoolWorker-4] Task send_sms_code[7f46b559-d5be-446e-b172-11dac870ab15] succeeded in 0.06535995699232444s: None
+[2019-06-29 18:18:21,683: WARNING/ForkPoolWorker-4] 13926293516
+[2019-06-29 18:18:21,683: WARNING/ForkPoolWorker-4] {'username': '阿伟', 'contents': '文字短信模板测试，；文字短信模板测试，。文字短信模板测试，。文字短信模板测试，；文字短信模板测试，、文字短信模板测试，？'}
+[2019-06-29 18:18:21,683: WARNING/ForkPoolWorker-4] {'username': '阿伟', 'contents': '文字短信模板测试，；文字短信模板测试，。文字短信模板测试，。文字短信模板测试，；文字短信模板测试，、文字短信模板测试，？'}
+[2019-06-29 18:18:21,683: WARNING/ForkPoolWorker-4] e99a18c428cb38d5f260853678922e03
+[2019-06-29 18:18:21,980: INFO/ForkPoolWorker-4] Task send_sms_code[05662ee1-4445-45fe-a17e-d46f2ee11b7a] succeeded in 0.29690029099583626s: None
+[2019-06-29 20:52:05,413: WARNING/ForkPoolWorker-4] 13723441396
+[2019-06-29 20:52:05,414: WARNING/ForkPoolWorker-4] {'username': '阿伟', 'contents': '夏不为利，免邮疯抢！colortee 平台，东莞仓职业装，全场免邮！1件起，上不封顶，'}
+[2019-06-29 20:52:05,415: WARNING/ForkPoolWorker-4] {'username': '阿伟', 'contents': '夏不为利，免邮疯抢！colortee 平台，东莞仓职业装，全场免邮！1件起，上不封顶，'}
+[2019-06-29 20:52:05,415: WARNING/ForkPoolWorker-4] e99a18c428cb38d5f260853678922e03
+[2019-06-29 20:52:05,514: INFO/ForkPoolWorker-4] Task send_sms_code[e50b613e-fefe-4fb8-92e8-a9b96ff13673] succeeded in 0.10105288703925908s: None

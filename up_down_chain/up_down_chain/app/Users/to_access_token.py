@@ -8,7 +8,7 @@ def get_access_token():
     # print(1)
     redis_client = redis.Redis(host="127.0.0.1",port=6379,db=5)
 
-    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "up_down_chain.settings")  # project_name 项目名称
+    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "up_down_chain.settings")  # project_name 项�~[��~P~M称
     django.setup()
 
     wechat_client = WeChatClient(
@@ -23,3 +23,4 @@ def get_access_token():
 
     return "ok"
 
+get_access_token()

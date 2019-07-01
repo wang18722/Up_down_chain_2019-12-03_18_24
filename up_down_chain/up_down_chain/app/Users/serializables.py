@@ -52,7 +52,7 @@ class GetTemplateSerializer(serializers.ModelSerializer):
     '''获取模板序列化器'''
     class Meta:
         model = Template
-        fields = ("template_name","sms_type","data_time","content","state")
+        fields = ("id","template_name","sms_type","data_time","content","state")
 
 
 class TemplateSerializer(serializers.ModelSerializer):

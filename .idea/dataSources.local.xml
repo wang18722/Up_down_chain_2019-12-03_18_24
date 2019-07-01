@@ -12,10 +12,14 @@
       <resolve-scope>up_down_chain:</resolve-scope>
     </data-source>
     <data-source name="industry@localhost" uuid="2e3f7daf-887e-462d-a145-832be788b0e5">
-      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
+      <database-info product="MySQL" version="5.7.26-0ubuntu0.16.04.1" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.46 ( Revision: 9cc87a48e75c2d2e87c1a293b2862ce651cb256e )">
+        <extra-name-characters>#@</extra-name-characters>
+        <identifier-quote-string>`</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact" />
       <secret-storage>master_key</secret-storage>
-      <first-sync>true</first-sync>
       <user-name>root</user-name>
+      <resolve-scope>industry:</resolve-scope>
     </data-source>
   </component>
 </project>

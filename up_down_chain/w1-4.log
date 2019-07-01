@@ -3,3 +3,8 @@
 [2019-06-25 15:47:09,215: WARNING/ForkPoolWorker-4] {'username': 'XY lim', 'contents': '来一发'}
 [2019-06-25 15:47:09,215: WARNING/ForkPoolWorker-4] e99a18c428cb38d5f260853678922e03
 [2019-06-25 15:47:09,281: INFO/ForkPoolWorker-4] Task send_sms_code[c0af2fdb-3a2e-4cb0-84b6-8ac7671224a7] succeeded in 0.06787054700544104s: None
+[2019-06-29 20:34:07,284: WARNING/ForkPoolWorker-4] 18738512271
+[2019-06-29 20:34:07,286: WARNING/ForkPoolWorker-4] {'username': '阿伟', 'contents': '夏不为利，免邮疯抢！colortee 平台，东莞仓职业装，全场免邮！1件起，上不封顶，'}
+[2019-06-29 20:34:07,286: WARNING/ForkPoolWorker-4] {'username': '阿伟', 'contents': '夏不为利，免邮疯抢！colortee 平台，东莞仓职业装，全场免邮！1件起，上不封顶，'}
+[2019-06-29 20:34:07,286: WARNING/ForkPoolWorker-4] e99a18c428cb38d5f260853678922e03
+[2019-06-29 20:34:07,393: INFO/ForkPoolWorker-4] Task send_sms_code[bddb011b-ebf1-4728-a385-c140d7cd2180] succeeded in 0.10875046194996685s: None

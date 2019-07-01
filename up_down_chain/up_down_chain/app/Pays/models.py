@@ -41,6 +41,7 @@ class RechargeModel(models.Model):
         db_table = "recharge_record"
         verbose_name = "充值记录"
 
+
 class SmsCallback(models.Model):
     """信息回调模型类"""
     status = models.CharField(max_length=10,verbose_name="状态",null=True)

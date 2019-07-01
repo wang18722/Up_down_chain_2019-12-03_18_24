@@ -5,3 +5,5 @@
   warnings.warn('Using settings.DEBUG leads to a memory leak, never '
 [2019-06-25 15:46:04,710: INFO/MainProcess] w1@cloud.cloud ready.
 [2019-06-25 15:47:09,211: INFO/MainProcess] Received task: send_sms_code[c0af2fdb-3a2e-4cb0-84b6-8ac7671224a7]  
+[2019-06-29 16:35:41,892: INFO/MainProcess] Received task: send_sms_code[6c9c9f26-af0f-4de4-aa55-7aa8f05b84c3]  
+[2019-06-29 20:34:07,281: INFO/MainProcess] Received task: send_sms_code[bddb011b-ebf1-4728-a385-c140d7cd2180]  

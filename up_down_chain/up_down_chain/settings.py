@@ -31,10 +31,10 @@ sys.path.insert(0, os.path.join(BASE_DIR, 'up_down_chain/app'))
 SECRET_KEY = 'xb*eqod0z_%m92yqx6=uki%%n&^%(3bl!i*!ky1m26e)^d5%7h'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ["*"]
-
+#ALLOWED_HOSTS = ["117.48.207.24","www.shangxialian.net"]
+ALLOWED_HOSTS=["*"]
 
 # Application definition
 
@@ -102,7 +102,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',  # 数据库引擎
         'NAME': 'up_down_chain',  # 你要存储数据的库名，事先要创建之
         'USER': 'root',  # 数据库用户名
-        'PASSWORD': 'mysql',  # 密码
+        'PASSWORD': 'root',  # 密码
         'HOST': '127.0.0.1',  # 主机
         'PORT': '3306',  # 数据库使用的端口c
     },
@@ -110,7 +110,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',  # 数据库引擎
         'NAME': 'Original_DB',  # 你要存储数据的库名，事先要创建之
         'USER': 'root',  # 数据库用户名
-        'PASSWORD': 'mysql',  # 密码
+        'PASSWORD': 'root',  # 密码
         'HOST': '127.0.0.1',  # 主机
         'PORT': '3306',  # 数据库使用的端口
     }
@@ -208,8 +208,6 @@ AUTH_PASSWORD_VALIDATORS = [
 LANGUAGE_CODE = 'zh-hans'
 TIME_ZONE = 'Asia/Shanghai'
 
-# TIME_ZONE = 'UTC'
-
 USE_I18N = True
 
 USE_L10N = True
@@ -275,8 +273,9 @@ AUTO_INCREMENT = 1
 HAYSTACK_CONNECTIONS = {
     'default': {
         'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
-        'URL': 'http://192.168.31.73:9200/',  # 此处为elasticsearch运行的服务器ip地址，端口号固定为9200
+        'URL': 'http://10.10.10.6:9200/',  # 此处为elasticsearch运行的服务器ip地址，端口号固定为9200
         'INDEX_NAME': 'task',  # 指定elasticsearch建立的索引库的名称
+
     },
 }
 # 添加此项，当数据库改变时，会自动更新索引，非常方便
@@ -331,24 +330,24 @@ HAYSTACK_SEARCH_RESULT_PER_PAGE = 3
 
 # 添加白名单
 CORS_ORIGIN_ALLOW_ALL = True
-#允许所有的请求头
-# CORS_ALLOW_HEADERS = ('*')
-# 添加白名单
-# # CORS
-CORS_ORIGIN_WHITELIST = ("*")
 
-CORS_ALLOW_CREDENTIALS = True  # 允许携带cookie
-
+# CORS
+CORS_ORIGIN_WHITELIST = (
+    'shangxialian.net',
+    'www.shangxialian.net',
+    '117.48.207.24',
+)
+# 允许携带cookie
+CORS_ALLOW_CREDENTIALS = True
+#允许的请求方式
 CORS_ALLOW_METHODS = (
     'DELETE',
     'GET',
     'OPTIONS',
-    'PATCH',
     'POST',
     'PUT',
-    'VIEW',
 )
-
+#允许的请求头
 CORS_ALLOW_HEADERS = (
     'XMLHttpRequest',
     'X_FILENAME',
@@ -369,34 +368,34 @@ STATIC_ROOT = os.path.join(os.path.dirname(os.path.dirname(BASE_DIR)), 'front_en
 
 #微信部分
 
-PC_LOGIN_REDIRECT_URI = 'http://www.shangxialian.net/index/'
-
-defaults = {
-    # 微信内置浏览器获取code微信接口
-    'wechat_browser_code': 'https://open.weixin.qq.com/connect/oauth2/authorize',
-    # 微信内置浏览器获取access_token微信接口
-    'wechat_browser_access_token': 'https://api.weixin.qq.com/sns/oauth2/access_token',
-    # 微信内置浏览器获取用户信息微信接口
-    'wechat_browser_user_info': 'https://api.weixin.qq.com/sns/userinfo',
-    # pc获取登录二维码接口
-    'pc_QR_code': 'https://open.weixin.qq.com/connect/qrconnect',
-    # 获取微信公众号access_token接口
-    'mp_access_token': 'https://api.weixin.qq.com/cgi-bin/token',
-    # 设置公众号行业接口
-    'change_industry': 'https://api.weixin.qq.com/cgi-bin/template/api_set_industry',
-    # 获取公众号行业接口
-    'get_industry': 'https://api.weixin.qq.com/cgi-bin/template/get_industry',
-    # 发送模板信息接口
-    'send_templates_message': 'https://api.weixin.qq.com/cgi-bin/message/template/send',
-    # 支付下单接口
-    'order_url': 'https://api.mch.weixin.qq.com/pay/unifiedorder',
-}
-
-
+# PC_LOGIN_REDIRECT_URI = 'http://www.shangxialian.net/index/'
+#
+# defaults = {
+#     # 微信内置浏览器获取code微信接口
+#     'wechat_browser_code': 'https://open.weixin.qq.com/connect/oauth2/authorize',
+#     # 微信内置浏览器获取access_token微信接口
+#     'wechat_browser_access_token': 'https://api.weixin.qq.com/sns/oauth2/access_token',
+#     # 微信内置浏览器获取用户信息微信接口
+#     'wechat_browser_user_info': 'https://api.weixin.qq.com/sns/userinfo',
+#     # pc获取登录二维码接口
+#     'pc_QR_code': 'https://open.weixin.qq.com/connect/qrconnect',
+#     # 获取微信公众号access_token接口
+#     'mp_access_token': 'https://api.weixin.qq.com/cgi-bin/token',
+#     # 设置公众号行业接口
+#     'change_industry': 'https://api.weixin.qq.com/cgi-bin/template/api_set_industry',
+#     # 获取公众号行业接口
+#     'get_industry': 'https://api.weixin.qq.com/cgi-bin/template/get_industry',
+#     # 发送模板信息接口
+#     'send_templates_message': 'https://api.weixin.qq.com/cgi-bin/message/template/send',
+#     # 支付下单接口
+#     'order_url': 'https://api.mch.weixin.qq.com/pay/unifiedorder',
+# }
+#
+#
 PC_LOGIN_SCOPE = 'snsapi_login'
-GRANT_TYPE = 'client_credential'
-STATE = ''
-LANG = 'zh_CN'
+# GRANT_TYPE = 'client_credential'
+# STATE = ''
+# LANG = 'zh_CN'
 
 
 
